@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Integration / Import Data</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M24 3 42 13.5v21L24 45 6 34.5v-21L24 3Z' fill='%2312B9C3'/%3E%3Cpath d='M24 12.2 34.5 18.3v12.2L24 36.7l-10.5-6.2V18.3L24 12.2Z' fill='%23F8FBFD'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+  <aside class="sidebar" aria-label="Navigasi utama">
+    <a class="brand" href="modules.html" aria-label="COMBEN Home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg class="logo-cube" viewBox="0 0 48 48" fill="none">
+          <path d="M24 3 42 13.5v21L24 45 6 34.5v-21L24 3Z" fill="#12B9C3"/>
+          <path d="M24 12.2 34.5 18.3v12.2L24 36.7l-10.5-6.2V18.3L24 12.2Z" fill="#F8FBFD"/>
+          <path d="M24 12.2 34.5 18.3 24 24.3 13.5 18.3 24 12.2Z" fill="#D9F8F8"/>
+        </svg>
+      </span>
+      <span class="brand-copy">
+        <span class="brand-title">COMBEN</span>
+        <span class="brand-subtitle">Commission Benefit System</span>
+      </span>
+    </a>
+
+    <nav class="nav-list">
+      <a class="nav-link" href="dashboard.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 13h6V4H4v9Z"/><path d="M14 20h6V4h-6v16Z"/><path d="M4 20h6v-3H4v3Z"/></svg>
+        <span class="nav-text">Dashboard Management</span><span></span>
+      </a>
+      <a class="nav-link" href="modules.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/><circle cx="7" cy="5" r="1.5"/><circle cx="7" cy="12" r="1.5"/><circle cx="7" cy="19" r="1.5"/></svg>
+        <span class="nav-text">Daftar Modul COMBEN</span><span></span>
+      </a>
+      <a class="nav-link" href="formula-list.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 6h16M4 12h16M4 18h7"/><path d="m15 15 2 2 4-4"/></svg>
+        <span class="nav-text">Formula List</span><span></span>
+      </a>
+      <div class="nav-group">
+        <a class="nav-group-head" href="data-integration.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7a8 3 0 1 0 16 0A8 3 0 1 0 4 7"/><path d="M4 7v10a8 3 0 0 0 16 0V7"/><path d="M4 12a8 3 0 0 0 16 0"/></svg>
+          <span class="nav-text">Data Integration</span><span class="nav-chevron">⌃</span>
+        </a>
+        <div class="nav-submenu">
+          <a class="nav-sub-link active" href="data-integration.html">Import Data</a>
+          <a class="nav-sub-link" href="data-mapping.html">Data Mapping</a>
+          <a class="nav-sub-link" href="integration-logs.html">Integration Logs</a>
+          <a class="nav-sub-link" href="data-quality.html">Data Quality</a>
+        </div>
+      </div>
+      <a class="nav-link" href="data-preparation.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7Z"/><path d="M14 2v5h5"/><path d="m9 15 2 2 4-4"/></svg>
+        <span class="nav-text">Data Preparation</span><span></span>
+      </a>
+      <a class="nav-link" href="rule-builder.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7h16M7 7v10a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V7"/><path d="M9 11h6M9 15h4"/></svg>
+        <span class="nav-text">Rule Builder</span><span></span>
+      </a>
+      <a class="nav-link" href="commission-calculation.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19V5"/><path d="M4 19h16"/><path d="m7 15 4-4 3 3 5-7"/></svg>
+        <span class="nav-text">Commission Calculation</span><span></span>
+      </a>
+      <a class="nav-link" href="commission-approval.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></svg>
+        <span class="nav-text">Commission Approval</span><span></span>
+      </a>
+      <a class="nav-link" href="adjustment-management.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7h16M4 12h16M4 17h16"/><circle cx="8" cy="7" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="10" cy="17" r="2"/></svg>
+        <span class="nav-text">Adjustment Management</span><span></span>
+      </a>
+      <a class="nav-link" href="payout-file.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg>
+        <span class="nav-text">Pay Order / Payout File</span><span></span>
+      </a>
+      <a class="nav-link" href="e-slip-agent.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h6"/></svg>
+        <span class="nav-text">e-Slip Agent</span><span class="nav-external">&nearr;</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="system-card">
+        <div class="system-card-head">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#12B9C3" aria-hidden="true"><path d="M12 2 20 5.6v6.1c0 5-3.4 8.8-8 10.3-4.6-1.5-8-5.3-8-10.3V5.6L12 2Z"/></svg>
+          <span>Sistem Informasi</span>
+        </div>
+        <span class="system-version">COMBEN v2.0.0</span>
+        <span class="environment">Production <i class="environment-dot"></i></span>
+      </div>
+      <p class="copyright">&copy; 2025 COMBEN. All rights reserved.</p>
+    </div>
+  </aside>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="icon-button" type="button" data-sidebar-toggle aria-label="Tutup atau buka sidebar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+        <span class="page-label">Data Integration / Import Data</span>
+      </div>
+      <div class="topbar-actions">
+        <label class="field topbar-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <input class="input" type="search" data-import-search placeholder="Search agents, policies, documents..." aria-label="Search imports">
+        </label>
+        <button class="icon-button" type="button" aria-label="Notifikasi">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 7h18s-3 0-3-7"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="badge">8</span>
+        </button>
+        <div class="profile">
+          <span class="avatar">AD</span>
+          <span class="profile-copy">
+            <span class="profile-name">Arjun Dev</span>
+            <span class="profile-role">System Admin</span>
+          </span>
+          <button class="icon-button" type="button" aria-label="Menu profil">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-main">
+      <section class="integration-page" aria-labelledby="integration-title">
+        <h1 class="sr-only" id="integration-title">Data Integration / Import Data</h1>
+
+        <div class="integration-filter-panel">
+          <label class="control-label">Commission Period
+            <select class="select" data-import-period>
+              <option value="May 2025">May 2025 (01 May - 31 May)</option>
+              <option value="June 2025">June 2025 (01 Jun - 30 Jun)</option>
+              <option value="April 2025">April 2025 (01 Apr - 30 Apr)</option>
+            </select>
+          </label>
+          <label class="control-label">Source Type
+            <select class="select" data-import-source-filter>
+              <option value="all">All Source Types</option>
+              <option value="Core System / API">Core System / API</option>
+              <option value="Excel Upload">Excel Upload</option>
+              <option value="DTS Scheduler">DTS Scheduler</option>
+            </select>
+          </label>
+          <label class="control-label">Import Method
+            <select class="select" data-import-method-filter>
+              <option value="all">All Methods</option>
+              <option value="Manual Upload">Manual Upload</option>
+              <option value="Scheduled Sync">Scheduled Sync</option>
+              <option value="API Pull">API Pull</option>
+            </select>
+          </label>
+          <div class="integration-filter-actions">
+            <button class="mini-button" type="button" data-import-refresh>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg>
+              Refresh
+            </button>
+            <button class="primary-button" type="button" data-new-import>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 5v14M5 12h14"/></svg>
+              New Import
+            </button>
+          </div>
+        </div>
+
+        <div class="integration-grid">
+          <article class="integration-card upload-card">
+            <div class="source-tabs" role="tablist" aria-label="Import source tabs">
+              <button class="source-tab active" type="button" data-source-tab="Core System / API">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 16a4 4 0 0 1 .8-7.9A5 5 0 0 1 16 6a4 4 0 0 1 1 7.9"/><path d="M12 12v8M8 16l4-4 4 4"/></svg>
+                Core System / API
+              </button>
+              <button class="source-tab active-source" type="button" data-source-tab="Excel Upload">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="m8 13 3 3m0-3-3 3M14 13h2M14 17h2"/></svg>
+                Excel Upload
+              </button>
+              <button class="source-tab" type="button" data-source-tab="DTS Scheduler">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M12 14v3l2 1"/></svg>
+                DTS Scheduler
+              </button>
+            </div>
+            <div class="dropzone" data-dropzone>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 16a4 4 0 0 1 .8-7.9A5 5 0 0 1 16 6a4 4 0 0 1 1 7.9"/><path d="M12 12v8M8 16l4-4 4 4"/></svg>
+              <strong data-upload-title>Drag and drop your file here</strong>
+              <span data-upload-copy>Accepted formats: .xlsx, .xls, .csv | Max size: 50 MB</span>
+              <button class="mini-button" type="button" data-choose-file>Choose File</button>
+              <span class="upload-selected" data-upload-selected>No file selected</span>
+            </div>
+          </article>
+
+          <article class="integration-card queue-card">
+            <div class="panel-title-row">
+              <h2>Import Queue / Status <span data-queue-count>4</span></h2>
+              <a class="link-button" href="import-queue.html" data-view-queue>View Full Queue &rarr;</a>
+            </div>
+            <div class="queue-table-wrap">
+              <table class="queue-table">
+                <thead>
+                  <tr>
+                    <th>File Name</th>
+                    <th>Source</th>
+                    <th>Records</th>
+                    <th>Status</th>
+                    <th>Progress</th>
+                    <th>Started At</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody data-import-queue>
+                  <tr data-import-row data-source="Excel Upload" data-method="Manual Upload" data-status="Success">
+                    <td>Premium_Payment_May2025.xlsx</td><td>Excel Upload</td><td>125,430</td><td><span class="status-pill">Success</span></td><td><span class="progress-line"><i style="width:100%"></i></span><b>100%</b></td><td>20 May 2025, 10:45 AM</td><td><span class="row-actions compact"><button class="action-icon" type="button" data-import-action="Download" aria-label="Download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg></button><button class="action-icon" type="button" data-import-action="More" aria-label="More"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 5h.01M12 12h.01M12 19h.01"/></svg></button></span></td>
+                  </tr>
+                  <tr data-import-row data-source="Excel Upload" data-method="Manual Upload" data-status="In Progress">
+                    <td>Agent_Master_May2025.xlsx</td><td>Excel Upload</td><td>8,765</td><td><span class="status-pill progress">In Progress</span></td><td><span class="progress-line"><i style="width:68%"></i></span><b>68%</b></td><td>20 May 2025, 11:20 AM</td><td><span class="row-actions compact"><button class="action-icon" type="button" data-import-action="Inspect" aria-label="Inspect"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/></svg></button><button class="action-icon" type="button" data-import-action="More" aria-label="More"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 5h.01M12 12h.01M12 19h.01"/></svg></button></span></td>
+                  </tr>
+                  <tr data-import-row data-source="Excel Upload" data-method="Manual Upload" data-status="Warning">
+                    <td>Policy_Updates_May2025.xlsx</td><td>Excel Upload</td><td>23,542</td><td><span class="status-pill draft">Warning</span></td><td><span class="progress-line warning"><i style="width:100%"></i></span><b>100%</b></td><td>20 May 2025, 09:15 AM</td><td><span class="row-actions compact"><button class="action-icon" type="button" data-import-action="Download" aria-label="Download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg></button><button class="action-icon" type="button" data-import-action="More" aria-label="More"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 5h.01M12 12h.01M12 19h.01"/></svg></button></span></td>
+                  </tr>
+                  <tr data-import-row data-source="DTS Scheduler" data-method="Scheduled Sync" data-status="Failed">
+                    <td>Incentive_Adjustments.csv</td><td>DTS Scheduler</td><td>15,210</td><td><span class="status-pill inactive">Failed</span></td><td><span class="progress-line muted"><i style="width:0%"></i></span><b>0%</b></td><td>19 May 2025, 08:05 PM</td><td><span class="row-actions compact"><button class="action-icon" type="button" data-import-action="Retry" aria-label="Retry"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg></button><button class="action-icon" type="button" data-import-action="More" aria-label="More"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 5h.01M12 12h.01M12 19h.01"/></svg></button></span></td>
+                  </tr>
+                  <tr data-import-row data-extra-row hidden data-source="Core System / API" data-method="API Pull" data-status="Success">
+                    <td>Core_Agent_Profile_API.json</td><td>Core System / API</td><td>42,870</td><td><span class="status-pill">Success</span></td><td><span class="progress-line"><i style="width:100%"></i></span><b>100%</b></td><td>18 May 2025, 07:30 AM</td><td><span class="row-actions compact"><button class="action-icon" type="button" data-import-action="Inspect" aria-label="Inspect"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/></svg></button></span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="integration-card files-card">
+            <div class="panel-title-row">
+              <h2>Last Imported Files</h2>
+              <a class="link-button" href="import-queue.html" data-view-files>View All</a>
+            </div>
+            <div class="file-list" data-file-list>
+              <button class="file-item active" type="button" data-file-name="Premium_Payment_May2025.xlsx" data-status="Success">
+                <span class="file-icon">XL</span><span><strong>Premium_Payment_May2025.xlsx</strong><small>Imported by Arjun Dev - 20 May 2025, 10:45 AM</small></span><span class="status-pill">Success</span>
+              </button>
+              <button class="file-item" type="button" data-file-name="Agent_Master_Apr2025.xlsx" data-status="Success">
+                <span class="file-icon">XL</span><span><strong>Agent_Master_Apr2025.xlsx</strong><small>Imported by Meera Nair - 18 May 2025, 04:12 PM</small></span><span class="status-pill">Success</span>
+              </button>
+              <button class="file-item" type="button" data-file-name="Policy_Updates_May2025.xlsx" data-status="Warning">
+                <span class="file-icon">XL</span><span><strong>Policy_Updates_May2025.xlsx</strong><small>Imported by Arjun Dev - 18 May 2025, 09:32 AM</small></span><span class="status-pill draft">Warning</span>
+              </button>
+              <button class="file-item" type="button" data-file-name="Incentive_Adjustments.csv" data-status="Failed">
+                <span class="file-icon csv">CSV</span><span><strong>Incentive_Adjustments.csv</strong><small>Imported by Rohan Singh - 17 May 2025, 03:21 PM</small></span><span class="status-pill inactive">Failed</span>
+              </button>
+            </div>
+            <a class="link-button card-link" href="integration-logs.html">Go to Integration Logs &rarr;</a>
+          </article>
+
+          <article class="integration-card mapping-card">
+            <div class="panel-title-row">
+              <h2>Mapping Preview <span>(Current File)</span> <em data-current-file>Agent_Master_May2025.xlsx</em></h2>
+              <a class="mini-button" href="data-mapping.html" data-view-mapping>View Full Mapping</a>
+            </div>
+            <div class="mapping-stats">
+              <div class="mapping-stat teal"><span>Total Columns</span><strong data-total-columns>28</strong><small>Mapped: <b data-mapped-percent>26 (93%)</b></small></div>
+              <div class="mapping-stat blue"><span>Mapped</span><strong data-mapped-count>26</strong><small>Auto-mapped: 20</small></div>
+              <div class="mapping-stat orange"><span>Unmapped</span><strong data-unmapped-count>2</strong><small>Requires mapping</small></div>
+              <div class="mapping-stat purple"><span>Data Quality</span><strong data-quality-score>98%</strong><small>Good</small></div>
+            </div>
+            <div class="mapping-table">
+              <div class="mapping-row mapping-head"><span>Key Unmapped Fields</span><span>Recommended Source</span><span>Confidence</span><span></span></div>
+              <div class="mapping-row" data-map-row><span>Agent_Tier</span><strong>AGENT_LEVEL</strong><span>85%</span><button class="link-button" type="button" data-map-now>Map Now</button></div>
+              <div class="mapping-row" data-map-row><span>Channel_Sub_Type</span><strong>CHANNEL_SUBTYPE</strong><span>72%</span><button class="link-button" type="button" data-map-now>Map Now</button></div>
+            </div>
+            <a class="link-button card-link" href="data-mapping.html">Go to Data Mapping &rarr;</a>
+          </article>
+        </div>
+
+        <div class="integration-footer-bar">
+          <label class="check-row">
+            <input type="checkbox" data-quality-toggle>
+            <span>Run Data Quality Checks after import</span>
+          </label>
+          <span class="footer-note" data-footer-note>Quality check will follow default validation rules.</span>
+          <div class="footer-actions">
+            <div class="schedule-wrap">
+              <button class="mini-button" type="button" data-schedule-import>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                Schedule Import
+              </button>
+              <div class="schedule-popover" data-schedule-popover>
+                <strong>Schedule Import</strong>
+                <div class="calendar-preview-head"><span>May 2025</span><span>08:00 AM</span></div>
+                <div class="mini-calendar" aria-label="Calendar preview">
+                  <span class="day-name">Mo</span><span class="day-name">Tu</span><span class="day-name">We</span><span class="day-name">Th</span><span class="day-name">Fr</span><span class="day-name">Sa</span><span class="day-name">Su</span>
+                  <span>19</span><span>20</span><span>21</span><span class="selected-day">22</span><span>23</span><span>24</span><span>25</span>
+                </div>
+                <div class="schedule-time">
+                  <select class="select" aria-label="Schedule hour"><option>08:00</option><option>09:00</option><option>10:00</option></select>
+                  <select class="select" aria-label="Schedule timezone"><option>WIB</option><option>WITA</option><option>WIT</option></select>
+                </div>
+                <button class="primary-button" type="button" data-confirm-schedule>Confirm Schedule</button>
+              </div>
+            </div>
+            <button class="primary-button" type="button" data-start-import>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7Z"/></svg>
+              Start Import / Sync
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" data-toast></div>
+  <script src="../js/main.js"></script>
+</body>
+</html>

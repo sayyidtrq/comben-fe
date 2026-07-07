@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Import Queue</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+  <aside class="sidebar" aria-label="Navigasi utama">
+    <a class="brand" href="modules.html" aria-label="COMBEN Home">
+      <span class="brand-mark" aria-hidden="true"><svg class="logo-cube" viewBox="0 0 48 48" fill="none"><path d="M24 3 42 13.5v21L24 45 6 34.5v-21L24 3Z" fill="#12B9C3"/><path d="M24 12.2 34.5 18.3v12.2L24 36.7l-10.5-6.2V18.3L24 12.2Z" fill="#F8FBFD"/><path d="M24 12.2 34.5 18.3 24 24.3 13.5 18.3 24 12.2Z" fill="#D9F8F8"/></svg></span>
+      <span class="brand-copy"><span class="brand-title">COMBEN</span><span class="brand-subtitle">Commission Benefit System</span></span>
+    </a>
+    <nav class="nav-list">
+      <a class="nav-link" href="dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 13h6V4H4v9Z"/><path d="M14 20h6V4h-6v16Z"/><path d="M4 20h6v-3H4v3Z"/></svg><span class="nav-text">Dashboard Management</span><span></span></a>
+      <a class="nav-link" href="modules.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/><circle cx="7" cy="5" r="1.5"/><circle cx="7" cy="12" r="1.5"/><circle cx="7" cy="19" r="1.5"/></svg><span class="nav-text">Daftar Modul COMBEN</span><span></span></a>
+      <a class="nav-link" href="formula-list.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 6h16M4 12h16M4 18h7"/><path d="m15 15 2 2 4-4"/></svg><span class="nav-text">Formula List</span><span></span></a>
+      <div class="nav-group">
+        <a class="nav-group-head" href="data-integration.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7a8 3 0 1 0 16 0A8 3 0 1 0 4 7"/><path d="M4 7v10a8 3 0 0 0 16 0V7"/><path d="M4 12a8 3 0 0 0 16 0"/></svg><span class="nav-text">Data Integration</span><span class="nav-chevron">⌃</span></a>
+        <div class="nav-submenu"><a class="nav-sub-link active" href="data-integration.html">Import Data</a><a class="nav-sub-link" href="data-mapping.html">Data Mapping</a><a class="nav-sub-link" href="integration-logs.html">Integration Logs</a><a class="nav-sub-link" href="data-quality.html">Data Quality</a></div>
+      </div>
+      <a class="nav-link" href="data-preparation.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7Z"/><path d="M14 2v5h5"/><path d="m9 15 2 2 4-4"/></svg><span class="nav-text">Data Preparation</span><span></span></a>
+      <a class="nav-link" href="rule-builder.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7h16M7 7v10a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V7"/><path d="M9 11h6M9 15h4"/></svg><span class="nav-text">Rule Builder</span><span></span></a>
+      <a class="nav-link" href="commission-calculation.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19V5"/><path d="M4 19h16"/><path d="m7 15 4-4 3 3 5-7"/></svg><span class="nav-text">Commission Calculation</span><span></span></a>
+      <a class="nav-link" href="commission-approval.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></svg><span class="nav-text">Commission Approval</span><span></span></a>
+      <a class="nav-link" href="adjustment-management.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7h16M4 12h16M4 17h16"/><circle cx="8" cy="7" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="10" cy="17" r="2"/></svg><span class="nav-text">Adjustment Management</span><span></span></a>
+      <a class="nav-link" href="payout-file.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg><span class="nav-text">Pay Order / Payout File</span><span></span></a>
+      <a class="nav-link" href="e-slip-agent.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h6"/></svg><span class="nav-text">e-Slip Agent</span><span class="nav-external">&nearr;</span></a>
+    </nav>
+  </aside>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="topbar-left"><button class="icon-button" type="button" data-sidebar-toggle aria-label="Tutup atau buka sidebar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button><span class="page-label">Import Queue / Status</span></div>
+      <div class="topbar-actions"><label class="field topbar-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><input class="input" type="search" placeholder="Search import queue..." aria-label="Search queue"></label><div class="profile"><span class="avatar">AD</span><span class="profile-copy"><span class="profile-name">Arjun Dev</span><span class="profile-role">System Admin</span></span></div></div>
+    </header>
+    <main class="page-main">
+      <section class="subpage-grid">
+        <div class="content-header page-heading-row">
+          <div><h1 class="content-title">Import Queue</h1><p class="content-subtitle">Monitor all import jobs, progress state, retry queue, and imported file history.</p></div>
+          <a class="primary-button" href="data-integration.html">Back to Import Data</a>
+        </div>
+        <div class="metric-row">
+          <article class="metric-card"><span>Total Jobs</span><strong>148</strong><small>May 2025 commission period</small></article>
+          <article class="metric-card"><span>In Progress</span><strong>6</strong><small>2 high priority jobs</small></article>
+          <article class="metric-card"><span>Success Rate</span><strong>96%</strong><small>Last 30 days</small></article>
+          <article class="metric-card"><span>Failed</span><strong>3</strong><small>Ready for retry</small></article>
+        </div>
+        <article class="wide-panel">
+          <div class="subpage-toolbar">
+            <label class="field"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><input class="input" placeholder="Search file name or owner"></label>
+            <select class="select"><option>All Sources</option><option>Excel Upload</option><option>DTS Scheduler</option><option>Core System / API</option></select>
+            <select class="select"><option>All Status</option><option>Success</option><option>In Progress</option><option>Warning</option><option>Failed</option></select>
+            <button class="mini-button" type="button" data-show-toast="Queue refreshed.">Refresh</button>
+          </div>
+          <div class="table-scroll">
+            <table class="subpage-table">
+              <thead><tr><th>File Name</th><th>Source</th><th>Records</th><th>Status</th><th>Progress</th><th>Owner</th><th>Started At</th><th>Action</th></tr></thead>
+              <tbody>
+                <tr><td>Agent_Master_May2025.xlsx</td><td>Excel Upload</td><td>8,765</td><td><span class="status-pill progress">In Progress</span></td><td><span class="progress-line"><i style="width:68%"></i></span><b>68%</b></td><td>Arjun Dev</td><td>20 May 2025, 11:20 AM</td><td><button class="mini-button" type="button" data-show-toast="Opening live job detail.">Open</button></td></tr>
+                <tr><td>Premium_Payment_May2025.xlsx</td><td>Excel Upload</td><td>125,430</td><td><span class="status-pill">Success</span></td><td><span class="progress-line"><i style="width:100%"></i></span><b>100%</b></td><td>Arjun Dev</td><td>20 May 2025, 10:45 AM</td><td><button class="mini-button" type="button" data-show-toast="Download started.">Download</button></td></tr>
+                <tr><td>Policy_Updates_May2025.xlsx</td><td>Excel Upload</td><td>23,542</td><td><span class="status-pill draft">Warning</span></td><td><span class="progress-line warning"><i style="width:100%"></i></span><b>100%</b></td><td>Meera Nair</td><td>20 May 2025, 09:15 AM</td><td><button class="mini-button" type="button" data-show-toast="Warning detail opened.">Review</button></td></tr>
+                <tr><td>Incentive_Adjustments.csv</td><td>DTS Scheduler</td><td>15,210</td><td><span class="status-pill inactive">Failed</span></td><td><span class="progress-line muted"><i style="width:0%"></i></span><b>0%</b></td><td>Rohan Singh</td><td>19 May 2025, 08:05 PM</td><td><button class="mini-button" type="button" data-show-toast="Retry submitted.">Retry</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+  <div class="toast" data-toast></div>
+  <script src="../js/main.js"></script>
+</body>
+</html>
