@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pay Order / Payout File - COMBEN</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M24 3 42 13.5v21L24 45 6 34.5v-21L24 3Z' fill='%2312B9C3'/%3E%3Cpath d='M24 12.2 34.5 18.3v12.2L24 36.7l-10.5-6.2V18.3L24 12.2Z' fill='%23F8FBFD'/%3E%3C/svg%3E">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/payout-file.css">
+</head>
+<body>
+  <!-- SIDEBAR -->
+  <aside class="sidebar" aria-label="Navigasi utama">
+    <a class="brand" href="modules.html" aria-label="COMBEN Home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg class="logo-cube" viewBox="0 0 48 48" fill="none">
+          <path d="M24 3 42 13.5v21L24 45 6 34.5v-21L24 3Z" fill="#12B9C3"/>
+          <path d="M24 12.2 34.5 18.3v12.2L24 36.7l-10.5-6.2V18.3L24 12.2Z" fill="#F8FBFD"/>
+          <path d="M24 12.2 34.5 18.3 24 24.3 13.5 18.3 24 12.2Z" fill="#D9F8F8"/>
+        </svg>
+      </span>
+      <span class="brand-copy">
+        <span class="brand-title">COMBEN</span>
+        <span class="brand-subtitle">Commission Benefit System</span>
+      </span>
+    </a>
+
+    <nav class="nav-list">
+      <a class="nav-link" href="dashboard.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+        <span class="nav-text">Dashboard Management</span>
+        <span></span>
+      </a>
+      <a class="nav-link" href="modules.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+        <span class="nav-text">Daftar Modul COMBEN</span>
+        <span></span>
+      </a>
+      <a class="nav-link" href="formula-list.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 6h16M4 12h16M4 18h7"/><path d="m15 15 2 2 4-4"/></svg>
+        <span class="nav-text">Formula List</span>
+        <span></span>
+      </a>
+      <a class="nav-link" href="data-integration.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 16V4"/><path d="m7 9 5-5 5 5"/><path d="M20 16.5A4.5 4.5 0 0 1 15.5 21h-7A4.5 4.5 0 0 1 4 16.5"/></svg>
+        <span class="nav-text">Data Integration</span>
+        <span></span>
+      </a>
+      <a class="nav-link" href="data-preparation.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7Z"/><path d="M14 2v5h5"/><path d="m9 15 2 2 4-4"/></svg>
+        <span class="nav-text">Data Preparation</span>
+        <span></span>
+      </a>
+      <a class="nav-link" href="rule-builder.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7h16M7 7v10a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V7"/><path d="M9 11h6M9 15h4"/></svg>
+        <span class="nav-text">Rule Builder</span>
+        <span></span>
+      </a>
+      <a class="nav-link" href="commission-calculation.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19V5"/><path d="M4 19h16"/><path d="m7 15 4-4 3 3 5-7"/></svg>
+        <span class="nav-text">Commission Calculation</span>
+        <span></span>
+      </a>
+      <a class="nav-link" href="commission-approval.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></svg>
+        <span class="nav-text">Commission Approval</span>
+        <span></span>
+      </a>
+      <a class="nav-link" href="adjustment-management.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7h16M4 12h16M4 17h16"/><circle cx="8" cy="7" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="10" cy="17" r="2"/></svg>
+        <span class="nav-text">Adjustment Management</span>
+        <span></span>
+      </a>
+      <a class="nav-link active" href="payout-file.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg>
+        <span class="nav-text">Pay Order / Payout File</span>
+        <span></span>
+      </a>
+      <a class="nav-link" href="e-slip-agent.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h6"/></svg>
+        <span class="nav-text">e-Slip Agent</span>
+        <span class="nav-external">&nearr;</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="system-card">
+        <div class="system-card-head">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#12B9C3" aria-hidden="true"><path d="M12 2 20 5.6v6.1c0 5-3.4 8.8-8 10.3-4.6-1.5-8-5.3-8-10.3V5.6L12 2Z"/></svg>
+          <span>Sistem Informasi</span>
+        </div>
+        <span class="system-version">COMBEN v2.0.0</span>
+        <span class="environment">Production <i class="environment-dot"></i></span>
+      </div>
+      <p class="copyright">&copy; 2025 COMBEN. All rights reserved.</p>
+    </div>
+  </aside>
+
+  <!-- TOPBAR -->
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="icon-button" type="button" data-sidebar-toggle aria-label="Tutup atau buka sidebar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+
+      <div class="topbar-actions">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="16" height="16"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" placeholder="Search by agent, policy, SLIP...">
+        </div>
+        <button class="icon-button" type="button" aria-label="Notifikasi">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 7h18s-3 0-3-7"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="badge">0</span>
+        </button>
+        <button class="icon-button" type="button" aria-label="Bantuan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 1 1 5.8 1c-.7 1.1-1.8 1.4-2.4 2.3-.3.4-.5.9-.5 1.7"/><path d="M12 17h.01"/></svg>
+        </button>
+        <div class="profile">
+          <span class="avatar" style="background-color: #1E3A8A; color: white;">AD</span>
+          <span class="profile-copy">
+            <span class="profile-name">Admin User</span>
+            <span class="profile-role">Backoffice</span>
+          </span>
+          <button class="icon-button" type="button" aria-label="Menu profil">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-main pf-page">
+      
+      <!-- Header -->
+      <div class="pf-header">
+        <h1 class="pf-title">Pay Order / Payout File</h1>
+        <p class="pf-subtitle">Prepare payout batches and bank transfer files for commission payment</p>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="pf-filter-bar">
+        <div class="filter-group">
+          <div class="filter-item">
+            <label>Payout Period</label>
+            <input type="text" class="filter-input" value="May 01, 2024 - May 31, 2024" id="filter-period">
+          </div>
+          <div class="filter-item">
+            <label>Bank</label>
+            <select class="filter-input" id="filter-bank">
+              <option>BDO Unibank, Inc.</option>
+              <option>BPI</option>
+            </select>
+          </div>
+          <div class="filter-item">
+            <label>Branch / Channel</label>
+            <select class="filter-input" id="filter-branch">
+              <option>All Branches</option>
+            </select>
+          </div>
+          <div class="filter-item">
+            <label>Payment Status</label>
+            <select class="filter-input" id="filter-status">
+              <option>All Status</option>
+              <option>Ready</option>
+              <option>Paid</option>
+            </select>
+          </div>
+        </div>
+        <div class="pf-actions">
+          <button class="btn-primary" id="btn-generate-pay-order"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg> Generate Pay Order</button>
+          <button class="btn-outline" id="btn-export-bank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Export Bank File</button>
+          <button class="btn-outline" id="btn-reconcile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg> Reconcile</button>
+        </div>
+      </div>
+
+      <!-- 5 Metric Cards -->
+      <div class="pf-metrics">
+        <!-- 1 -->
+        <div class="pf-metric-card">
+          <div class="metric-icon bg-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <div class="metric-content">
+            <span class="metric-title">Total Payable</span>
+            <span class="metric-val">₱ 1,245,850.00</span>
+            <span class="metric-sub">vs Apr 01 - Apr 30, 2024 <span class="trend-up">▲ 12.35%</span></span>
+          </div>
+        </div>
+        <!-- 2 -->
+        <div class="pf-metric-card">
+          <div class="metric-icon bg-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="12" y2="18"/></svg></div>
+          <div class="metric-content">
+            <span class="metric-title">Ready for Payout</span>
+            <span class="metric-val">₱ 852,350.00</span>
+            <span class="metric-sub">vs Apr 01 - Apr 30, 2024 <span class="trend-up">▲ 8.45%</span></span>
+          </div>
+        </div>
+        <!-- 3 -->
+        <div class="pf-metric-card">
+          <div class="metric-icon bg-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <div class="metric-content">
+            <span class="metric-title">Paid</span>
+            <span class="metric-val">₱ 332,400.00</span>
+            <span class="metric-sub">vs Apr 01 - Apr 30, 2024 <span class="trend-up">▲ 6.27%</span></span>
+          </div>
+        </div>
+        <!-- 4 -->
+        <div class="pf-metric-card">
+          <div class="metric-icon bg-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="metric-content">
+            <span class="metric-title">Unpaid</span>
+            <span class="metric-val">₱ 61,800.00</span>
+            <span class="metric-sub">vs Apr 01 - Apr 30, 2024 <span class="trend-down">▼ 15.18%</span></span>
+          </div>
+        </div>
+        <!-- 5 -->
+        <div class="pf-metric-card">
+          <div class="metric-icon bg-red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+          <div class="metric-content">
+            <span class="metric-title">Failed Transfer</span>
+            <span class="metric-val">₱ 7,300.00</span>
+            <span class="metric-sub">vs Apr 01 - Apr 30, 2024 <span class="trend-down">▼ 3.65%</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table 1: Payout Batch List -->
+      <div class="pf-card">
+        <div class="pf-card-header">Payout Batch List</div>
+        <table class="pf-table" id="batch-table">
+          <thead>
+            <tr>
+              <th>Batch ID</th>
+              <th>Period</th>
+              <th>Bank</th>
+              <th>Total Agents</th>
+              <th>Total Amount</th>
+              <th>File Status</th>
+              <th>Payment Status</th>
+              <th>Created On</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-batch="PB-2024-000145">
+              <td style="color:#12B9C3; font-weight:500;">PB-2024-000145</td>
+              <td>May 01 - May 31, 2024</td>
+              <td>BDO Unibank, Inc.</td>
+              <td>128</td>
+              <td>₱ 852,350.00</td>
+              <td><span class="status-pill status-ready">Ready</span></td>
+              <td><span class="status-pill status-pending">Pending</span></td>
+              <td>May 20, 2024 09:15 AM</td>
+              <td class="actions">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+              </td>
+            </tr>
+            <tr class="selected" data-batch="PB-2024-000144">
+              <td style="color:#12B9C3; font-weight:500;">PB-2024-000144</td>
+              <td>May 01 - May 31, 2024</td>
+              <td>BDO Unibank, Inc.</td>
+              <td>126</td>
+              <td>₱ 617,650.00</td>
+              <td><span class="status-pill status-generated">Generated</span></td>
+              <td><span class="status-pill status-partial">Partial</span></td>
+              <td>May 18, 2024 04:30 PM</td>
+              <td class="actions">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+              </td>
+            </tr>
+            <tr data-batch="PB-2024-000143">
+              <td style="color:#12B9C3; font-weight:500;">PB-2024-000143</td>
+              <td>Apr 01 - Apr 30, 2024</td>
+              <td>BDO Unibank, Inc.</td>
+              <td>110</td>
+              <td>₱ 332,400.00</td>
+              <td><span class="status-pill status-generated">Generated</span></td>
+              <td><span class="status-pill status-paid">Paid</span></td>
+              <td>May 03, 2024 11:20 AM</td>
+              <td class="actions">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+              </td>
+            </tr>
+            <tr data-batch="PB-2024-000142">
+              <td style="color:#12B9C3; font-weight:500;">PB-2024-000142</td>
+              <td>Apr 01 - Apr 30, 2024</td>
+              <td>BDO Unibank, Inc.</td>
+              <td>17</td>
+              <td>₱ 41,250.00</td>
+              <td><span class="status-pill status-generated">Generated</span></td>
+              <td><span class="status-pill status-failed">Failed</span></td>
+              <td>May 03, 2024 11:20 AM</td>
+              <td class="actions">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+              </td>
+            </tr>
+            <tr data-batch="PB-2024-000141">
+              <td style="color:#12B9C3; font-weight:500;">PB-2024-000141</td>
+              <td>Mar 01 - Mar 31, 2024</td>
+              <td>BDO Unibank, Inc.</td>
+              <td>98</td>
+              <td>₱ 298,100.00</td>
+              <td><span class="status-pill status-generated">Generated</span></td>
+              <td><span class="status-pill status-paid">Paid</span></td>
+              <td>Apr 03, 2024 10:05 AM</td>
+              <td class="actions">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="pagination">
+          <span>Showing 1 to 5 of 45 batches</span>
+          <div class="page-controls">
+            <button class="page-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polyline points="15 18 9 12 15 6"/></svg></button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn">4</button>
+            <button class="page-btn">5</button>
+            <button class="page-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polyline points="9 18 15 12 9 6"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Dashboard (3 Columns) -->
+      <div class="dashboard-3col">
+        <!-- Col 1: Generate Payout File -->
+        <div class="dash-card">
+          <div class="dash-header">Generate Payout File</div>
+          <div class="dash-body" style="display:flex; flex-direction:column;">
+            <div class="form-grid">
+              <div class="form-row">
+                <div class="form-item">
+                  <label style="font-size:12px; color:#1E293B; display:block; margin-bottom:6px; font-weight:600;">Period</label>
+                  <input type="text" class="filter-input" value="May 01, 2024 - May 31, 2024">
+                </div>
+                <div class="form-item">
+                  <label style="font-size:12px; color:#1E293B; display:block; margin-bottom:6px; font-weight:600;">Payment Date</label>
+                  <input type="text" class="filter-input" value="May 22, 2024">
+                </div>
+                <div class="form-item">
+                  <label style="font-size:12px; color:#1E293B; display:block; margin-bottom:6px; font-weight:600;">Bank Format</label>
+                  <select class="filter-input"><option>BDO Corporate (TXT)</option></select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-item">
+                  <label style="font-size:12px; color:#1E293B; display:block; margin-bottom:6px; font-weight:600;">Source Batch</label>
+                  <select class="filter-input"><option>Select batch (optional)</option></select>
+                </div>
+                <div class="form-item wide">
+                  <label style="font-size:12px; color:#1E293B; display:block; margin-bottom:6px; font-weight:600;">Notes</label>
+                  <input type="text" class="filter-input" placeholder="Enter notes (optional)">
+                </div>
+              </div>
+            </div>
+            
+            <div class="checkbox-group" style="display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-bottom:16px;">
+              <div style="display:flex; flex-direction:column; gap:8px;">
+                <label class="checkbox-label"><input type="checkbox" checked> Include only approved commission</label>
+                <label class="checkbox-label"><input type="checkbox"> Exclude previously paid records</label>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:8px;">
+                <label class="checkbox-label"><input type="checkbox" checked> Include adjustments in payout</label>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button class="btn-outline" id="btn-save-draft" style="padding: 8px 16px; border-color:#CBD5E1; color:#334155;">Save Draft</button>
+              <button class="btn-primary" id="btn-generate-file"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg> Generate File</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 2: Selected Batch Summary -->
+        <div class="dash-card">
+          <div class="dash-header">Selected Batch Summary</div>
+          <div class="dash-body">
+            <div class="summary-grid">
+              <div class="sum-label">Batch ID</div>
+              <div class="sum-val" id="sum-batch">PB-2024-000144</div>
+              <div class="sum-label">Batch Total Amount</div>
+              <div class="sum-val" id="sum-amount">₱ 617,650.00</div>
+              
+              <div class="sum-label">Period</div>
+              <div class="sum-val" style="text-align:left; grid-column:2/5;">May 01 - May 31, 2024</div>
+              
+              <div class="sum-label">Bank</div>
+              <div class="sum-val" style="text-align:left; grid-column:2/5; color:#12B9C3;">BDO Unibank, Inc.</div>
+              
+              <div class="sum-label">File Status</div>
+              <div class="sum-val" style="text-align:left;" id="sum-fstatus"><span class="status-pill status-generated">Generated</span></div>
+              <div class="sum-label">Total Agents</div>
+              <div class="sum-val" id="sum-agents">126</div>
+              
+              <div class="sum-label">Payment Status</div>
+              <div class="sum-val" style="text-align:left;" id="sum-pstatus"><span class="status-pill status-partial">Partial</span></div>
+              <div class="sum-label">Approved Amount</div>
+              <div class="sum-val">₱ 625,200.00</div>
+              
+              <div class="sum-label">Created On</div>
+              <div class="sum-val" style="text-align:left;" id="sum-created">May 18, 2024 04:30 PM</div>
+              <div class="sum-label">Total Deductions</div>
+              <div class="sum-val red">(₱ 7,550.00)</div>
+              
+              <div class="sum-label" style="margin-top:8px;"></div>
+              <div class="sum-val" style="margin-top:8px;"></div>
+              <div class="sum-label" style="margin-top:8px; font-weight:600; color:#1E293B;">Net Payout</div>
+              <div class="sum-val green" style="margin-top:8px; font-size:14px;" id="sum-net">₱ 617,650.00</div>
+            </div>
+
+            <div class="download-title">Download File</div>
+            <div class="download-btns">
+              <button class="btn-dl" id="dl-csv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> CSV</button>
+              <button class="btn-dl" id="dl-txt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> TXT</button>
+              <button class="btn-dl" id="dl-xlsx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> XLSX</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 3: Approval / Reconciliation Timeline -->
+        <div class="dash-card">
+          <div class="dash-header">Approval / Reconciliation Timeline</div>
+          <div class="dash-body" style="padding-top:24px;">
+            <div class="timeline">
+              <div class="tl-item">
+                <div class="tl-dot done"></div>
+                <div class="tl-content">
+                  <span class="tl-title">Batch Created</span>
+                  <span class="tl-desc">May 18, 2024 04:30 PM<br>By: Admin User</span>
+                </div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-dot done" id="tl-generated-dot"></div>
+                <div class="tl-content">
+                  <span class="tl-title">File Generated</span>
+                  <span class="tl-desc" id="tl-generated-desc">May 18, 2024 05:02 PM<br>By: Admin User</span>
+                </div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-dot active" id="tl-paid-dot"></div>
+                <div class="tl-content">
+                  <span class="tl-title" id="tl-paid-title">Partially Paid</span>
+                  <span class="tl-desc" id="tl-paid-desc">May 20, 2024 11:15 AM<br>By: System</span>
+                </div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-dot" id="tl-recon-dot"></div>
+                <div class="tl-content">
+                  <span class="tl-title" style="color:#64748B;">Reconciled</span>
+                  <span class="tl-desc">Pending</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table 2: Reconciliation Status -->
+      <div class="pf-card">
+        <div class="pf-card-header">Reconciliation Status / Payment Verification</div>
+        <table class="pf-table">
+          <thead>
+            <tr>
+              <th>Agent Code</th>
+              <th>Agent Name</th>
+              <th>Account No.</th>
+              <th style="text-align:right;">Net Commission</th>
+              <th>Transfer Status</th>
+              <th>Reference No.</th>
+              <th>Reconciliation Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="color:#1E293B; font-weight:500;">AGT-00123</td>
+              <td>Juan Dela Cruz</td>
+              <td style="color:#64748B;">**** **** 1234</td>
+              <td style="text-align:right; font-weight:500;">₱ 12,540.00</td>
+              <td><span class="status-pill status-paid">Paid</span></td>
+              <td style="color:#64748B;">BDO20240520000123</td>
+              <td><span class="dot-status"><span class="dot green"></span>Matched</span></td>
+            </tr>
+            <tr>
+              <td style="color:#1E293B; font-weight:500;">AGT-00124</td>
+              <td>Maria Santos</td>
+              <td style="color:#64748B;">**** **** 5678</td>
+              <td style="text-align:right; font-weight:500;">₱ 9,850.00</td>
+              <td><span class="status-pill status-partial">Pending</span></td>
+              <td style="color:#64748B;">-</td>
+              <td><span class="dot-status"><span class="dot yellow"></span>Pending</span></td>
+            </tr>
+            <tr>
+              <td style="color:#1E293B; font-weight:500;">AGT-00125</td>
+              <td>Pedro Reyes</td>
+              <td style="color:#64748B;">**** **** 9012</td>
+              <td style="text-align:right; font-weight:500;">₱ 7,300.00</td>
+              <td><span class="status-pill status-failed">Failed</span></td>
+              <td style="color:#64748B;">ERR-BDO-104</td>
+              <td><span class="dot-status"><span class="dot red"></span>Failed</span></td>
+            </tr>
+            <tr>
+              <td style="color:#1E293B; font-weight:500;">AGT-00126</td>
+              <td>Liza Garcia</td>
+              <td style="color:#64748B;">**** **** 3456</td>
+              <td style="text-align:right; font-weight:500;">₱ 5,600.00</td>
+              <td><span class="status-pill status-paid">Paid</span></td>
+              <td style="color:#64748B;">BDO20240520000126</td>
+              <td><span class="dot-status"><span class="dot green"></span>Matched</span></td>
+            </tr>
+            <tr>
+              <td style="color:#1E293B; font-weight:500;">AGT-00127</td>
+              <td>Mark Anthony Tan</td>
+              <td style="color:#64748B;">**** **** 7890</td>
+              <td style="text-align:right; font-weight:500;">₱ 18,750.00</td>
+              <td><span class="status-pill status-paid">Paid</span></td>
+              <td style="color:#64748B;">BDO20240520000127</td>
+              <td><span class="dot-status"><span class="dot green"></span>Matched</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="pagination">
+          <span>Showing 1 to 5 of 126 records</span>
+          <div class="page-controls">
+            <button class="page-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polyline points="15 18 9 12 15 6"/></svg></button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn">4</button>
+            <button class="page-btn">5</button>
+            <button class="page-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polyline points="9 18 15 12 9 6"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/payout-file.js"></script>
+</body>
+</html>

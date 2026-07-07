@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commission Approval - COMBEN</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M24 3 42 13.5v21L24 45 6 34.5v-21L24 3Z' fill='%2312B9C3'/%3E%3Cpath d='M24 12.2 34.5 18.3v12.2L24 36.7l-10.5-6.2V18.3L24 12.2Z' fill='%23F8FBFD'/%3E%3C/svg%3E">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/commission-approval.css">
+</head>
+<body>
+  <aside class="sidebar" aria-label="Navigasi utama">
+    <a class="brand" href="modules.html" aria-label="COMBEN Home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg class="logo-cube" viewBox="0 0 48 48" fill="none">
+          <path d="M24 3 42 13.5v21L24 45 6 34.5v-21L24 3Z" fill="#12B9C3"/>
+          <path d="M24 12.2 34.5 18.3v12.2L24 36.7l-10.5-6.2V18.3L24 12.2Z" fill="#F8FBFD"/>
+          <path d="M24 12.2 34.5 18.3 24 24.3 13.5 18.3 24 12.2Z" fill="#D9F8F8"/>
+        </svg>
+      </span>
+      <span class="brand-copy">
+        <span class="brand-title">COMBEN</span>
+        <span class="brand-subtitle">Commission Benefit System</span>
+      </span>
+    </a>
+
+    <nav class="nav-list">
+      <a class="nav-link" href="dashboard.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+        <span class="nav-text">Dashboard Management</span>
+        <span></span>
+      </a>
+      <a class="nav-link" href="modules.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+        <span class="nav-text">Daftar Modul COMBEN</span>
+        <span></span>
+      </a>
+      <a class="nav-link" href="formula-list.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 6h16M4 12h16M4 18h7"/><path d="m15 15 2 2 4-4"/></svg>
+        <span class="nav-text">Formula List</span>
+        <span></span>
+      </a>
+      <a class="nav-link" href="data-integration.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 16V4"/><path d="m7 9 5-5 5 5"/><path d="M20 16.5A4.5 4.5 0 0 1 15.5 21h-7A4.5 4.5 0 0 1 4 16.5"/></svg>
+        <span class="nav-text">Data Integration</span>
+        <span></span>
+      </a>
+      <a class="nav-link" href="data-preparation.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7Z"/><path d="M14 2v5h5"/><path d="m9 15 2 2 4-4"/></svg>
+        <span class="nav-text">Data Preparation</span>
+        <span></span>
+      </a>
+      <a class="nav-link" href="rule-builder.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7h16M7 7v10a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V7"/><path d="M9 11h6M9 15h4"/></svg>
+        <span class="nav-text">Rule Builder</span>
+        <span></span>
+      </a>
+      <a class="nav-link" href="commission-calculation.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19V5"/><path d="M4 19h16"/><path d="m7 15 4-4 3 3 5-7"/></svg>
+        <span class="nav-text">Commission Calculation</span>
+        <span></span>
+      </a>
+      <a class="nav-link active" href="commission-approval.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></svg>
+        <span class="nav-text">Commission Approval</span>
+        <span></span>
+      </a>
+      <a class="nav-link" href="adjustment-management.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7h16M4 12h16M4 17h16"/><circle cx="8" cy="7" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="10" cy="17" r="2"/></svg>
+        <span class="nav-text">Adjustment Management</span>
+        <span></span>
+      </a>
+      <a class="nav-link" href="payout-file.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg>
+        <span class="nav-text">Pay Order / Payout File</span>
+        <span></span>
+      </a>
+      <a class="nav-link" href="e-slip-agent.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h6"/></svg>
+        <span class="nav-text">e-Slip Agent</span>
+        <span class="nav-external">&nearr;</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="system-card">
+        <div class="system-card-head">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#12B9C3" aria-hidden="true"><path d="M12 2 20 5.6v6.1c0 5-3.4 8.8-8 10.3-4.6-1.5-8-5.3-8-10.3V5.6L12 2Z"/></svg>
+          <span>Sistem Informasi</span>
+        </div>
+        <span class="system-version">COMBEN v2.0.0</span>
+        <span class="environment">Production <i class="environment-dot"></i></span>
+      </div>
+      <p class="copyright">&copy; 2025 COMBEN. All rights reserved.</p>
+    </div>
+  </aside>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="icon-button" type="button" data-sidebar-toggle aria-label="Tutup atau buka sidebar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+
+      <div class="topbar-actions">
+        <button class="icon-button" type="button" aria-label="Notifikasi">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 7h18s-3 0-3-7"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="badge">3</span>
+        </button>
+        <button class="icon-button" type="button" aria-label="Bantuan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 1 1 5.8 1c-.7 1.1-1.8 1.4-2.4 2.3-.3.4-.5.9-.5 1.7"/><path d="M12 17h.01"/></svg>
+        </button>
+        <div class="profile">
+          <span class="avatar" style="background-color: #0078D4;">AM</span>
+          <span class="profile-copy">
+            <span class="profile-name">Anita Menon</span>
+            <span class="profile-role">Approver Level 2</span>
+          </span>
+          <button class="icon-button" type="button" aria-label="Menu profil">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-main ca-page">
+        <!-- Header -->
+        <div class="ca-header">
+          <div class="ca-title-area">
+            <div class="ca-breadcrumbs">
+              <span>Home</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="m9 18 6-6-6-6"/></svg>
+              <span>Approvals</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="m9 18 6-6-6-6"/></svg>
+              <span class="active">Commission Approval</span>
+            </div>
+            <h1 class="ca-title">Commission Approval</h1>
+            <div class="ca-subtitle">Review and approve commission batches submitted for payment.</div>
+          </div>
+          <div class="ca-refresh-info">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+            Last refreshed: 10:45 AM
+          </div>
+        </div>
+
+        <!-- Metrics Row -->
+        <div class="ca-metrics-row">
+          <div class="ca-metric-card">
+            <div class="ca-metric-icon icon-teal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <div class="ca-metric-content">
+              <div class="ca-metric-label">Total Batch</div>
+              <div class="ca-metric-value" id="metric-total">48</div>
+              <div class="ca-metric-subtext">All status</div>
+            </div>
+          </div>
+          <div class="ca-metric-card">
+            <div class="ca-metric-icon icon-orange">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M21 12H3"/><path d="M18 3h-12a2 2 0 0 0-2 2v4.5C4 13 8 16 8 21h8c0-5 4-8 4-11.5V5a2 2 0 0 0-2-2z"/></svg>
+            </div>
+            <div class="ca-metric-content">
+              <div class="ca-metric-label">Waiting Approval</div>
+              <div class="ca-metric-value" id="metric-waiting">12</div>
+              <div class="ca-metric-subtext subtext-orange">Action required</div>
+            </div>
+          </div>
+          <div class="ca-metric-card">
+            <div class="ca-metric-icon icon-red">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div class="ca-metric-content">
+              <div class="ca-metric-label">Need Revision</div>
+              <div class="ca-metric-value" id="metric-revision">3</div>
+              <div class="ca-metric-subtext subtext-red">Returned by approvers</div>
+            </div>
+          </div>
+          <div class="ca-metric-card">
+            <div class="ca-metric-icon icon-teal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>
+            </div>
+            <div class="ca-metric-content">
+              <div class="ca-metric-label">Approved Amount</div>
+              <div class="ca-metric-value">₹ 12,45,67,890</div>
+              <div class="ca-metric-subtext">This month</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Card (Tabs + Table) -->
+        <div class="ca-main-card">
+          <div class="ca-card-header">
+            <div class="ca-tabs" id="tab-container">
+              <div class="ca-tab active" data-tab="pending">Pending Approval (<span id="tab-pending-count">12</span>)</div>
+              <div class="ca-tab" data-tab="all">All Batches (<span id="tab-all-count">48</span>)</div>
+            </div>
+            <div class="ca-card-actions">
+              <select class="ca-filter-select" id="level-filter">
+                <option value="">All Approval Levels</option>
+                <option value="Level 1">Level 1</option>
+                <option value="Level 2">Level 2</option>
+                <option value="Level 3">Level 3</option>
+              </select>
+              <button class="ca-icon-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+                Filters
+              </button>
+              <button class="ca-icon-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="ca-table-wrapper">
+            <table class="ca-table">
+              <thead>
+                <tr>
+                  <th>Batch ID</th>
+                  <th>Period</th>
+                  <th>Total Commission</th>
+                  <th>Total Adjustment</th>
+                  <th>Submitted By</th>
+                  <th>Approval Level</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="ca-table-body">
+                <!-- Rendered via JS -->
+              </tbody>
+            </table>
+          </div>
+
+          <div class="ca-pagination">
+            <div id="ca-pagination-info">Showing 1 to 4 of 12 entries</div>
+            <div class="ca-pagination-controls">
+              <button class="ca-icon-btn" id="ca-prev-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg></button>
+              <div id="ca-page-numbers" style="display: flex; gap: 4px;">
+                <!-- JS Pages -->
+              </div>
+              <button class="ca-icon-btn" id="ca-next-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></button>
+              
+              <select class="ca-filter-select" id="ca-per-page" style="margin-left: 12px; padding: 4px 28px 4px 12px;">
+                <option value="5">5 / page</option>
+                <option value="10" selected>10 / page</option>
+                <option value="20">20 / page</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detail Pane -->
+        <div class="ca-detail-pane" id="ca-detail-pane">
+          <div class="detail-pane-header">
+            <div class="detail-header-left">
+              <span class="detail-batch-id" id="detail-title-id">Batch ID: CB-2024-000512</span>
+              <span class="status-wait" id="detail-title-status">Waiting Approval - Level 2</span>
+            </div>
+            <button class="collapse-btn" id="btn-close-detail">
+              Collapse <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="m18 15-6-6-6 6"/></svg>
+            </button>
+          </div>
+          
+          <div class="detail-pane-body">
+            <!-- Batch Summary -->
+            <div class="detail-col">
+              <div class="detail-col-title">Batch Summary <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+              <div class="summary-list">
+                <div class="summary-item"><span class="summary-label">Period</span><span class="summary-value" id="ds-period">May 2024</span></div>
+                <div class="summary-item"><span class="summary-label">Total Commission</span><span class="summary-value" id="ds-comm">₹ 2,45,60,789.00</span></div>
+                <div class="summary-item"><span class="summary-label">Total Adjustment</span><span class="summary-value text-red" id="ds-adj">-₹ 12,34,567.00</span></div>
+                <div class="summary-item"><span class="summary-label">Net Payable</span><span class="summary-value text-teal" id="ds-net">₹ 2,33,26,222.00</span></div>
+                <div class="summary-item"><span class="summary-label">No. of Agents</span><span class="summary-value" id="ds-agents">1,245</span></div>
+                <div class="summary-item"><span class="summary-label">Submitted On</span><span class="summary-value" id="ds-date">03 Jun 2024, 09:15 AM</span></div>
+              </div>
+            </div>
+
+            <!-- Variance -->
+            <div class="detail-col">
+              <div class="detail-col-title">Variance (vs Last Approved) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+              <div class="variance-list">
+                <div class="variance-item">
+                  <span class="summary-label">Commission</span>
+                  <span class="variance-val up" id="dv-comm">+6.42% ↗</span>
+                </div>
+                <div class="variance-item">
+                  <span class="summary-label">Adjustment</span>
+                  <span class="variance-val up" id="dv-adj">+12.18% ↗</span>
+                </div>
+                <div class="variance-item">
+                  <span class="summary-label">Net Payable</span>
+                  <span class="variance-val up" id="dv-net">+6.91% ↗</span>
+                </div>
+              </div>
+              <div class="variance-alert">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                <span>Variance is above the threshold of 5%</span>
+              </div>
+            </div>
+
+            <!-- Notes -->
+            <div class="detail-col">
+              <div class="detail-col-title">Notes</div>
+              <div class="notes-container">
+                <textarea class="notes-textarea" placeholder="Add your notes here..."></textarea>
+                <div class="notes-footer">
+                  <span class="char-count">0/500</span>
+                  <button class="save-note-btn">Save Note</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Approval History -->
+            <div class="detail-col">
+              <div class="detail-col-title">Approval History</div>
+              <div class="history-timeline">
+                <div class="history-item">
+                  <div class="history-dot approved"></div>
+                  <div class="history-content">
+                    <div class="history-header">
+                      <span class="history-level">Level 1 - Approved</span>
+                      <span class="history-date">03 Jun 2024, 09:20 AM</span>
+                    </div>
+                    <div class="history-user">Arun Patel</div>
+                    <div class="history-comment">Looks good.</div>
+                  </div>
+                </div>
+                <div class="history-item">
+                  <div class="history-dot"></div>
+                  <div class="history-content">
+                    <div class="history-header">
+                      <span class="history-level">Level 2 - Current</span>
+                      <span class="history-date">Pending</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="history-item">
+                  <div class="history-dot"></div>
+                  <div class="history-content">
+                    <div class="history-header">
+                      <span class="history-level" style="color:#94A3B8;">Level 3 - Pending</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="detail-pane-actions">
+              <button class="btn-reject" onclick="alert('Batch Rejected')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                Reject
+              </button>
+              <button class="btn-return" onclick="alert('Returned for Revision')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                Return for Revision
+              </button>
+              <button class="btn-approve" onclick="alert('Batch Approved')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>
+                Approve
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/commission-approval.js"></script>
+</body>
+</html>
