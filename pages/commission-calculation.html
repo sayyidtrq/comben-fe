@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commission Calculation - COMBEN</title>
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M24 3 42 13.5v21L24 45 6 34.5v-21L24 3Z' fill='%2312B9C3'/%3E%3Cpath d='M24 12.2 34.5 18.3v12.2L24 36.7l-10.5-6.2V18.3L24 12.2Z' fill='%23F8FBFD'/%3E%3C/svg%3E">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/commission-calculation.css">
+</head>
+
+<body>
+  <!-- SIDEBAR -->
+  <aside class="sidebar" aria-label="Navigasi utama">
+    <a class="brand" href="modules.html" aria-label="COMBEN Home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg class="logo-cube" viewBox="0 0 48 48" fill="none">
+          <path d="M24 3 42 13.5v21L24 45 6 34.5v-21L24 3Z" fill="#12B9C3" />
+          <path d="M24 12.2 34.5 18.3v12.2L24 36.7l-10.5-6.2V18.3L24 12.2Z" fill="#F8FBFD" />
+          <path d="M24 12.2 34.5 18.3 24 24.3 13.5 18.3 24 12.2Z" fill="#D9F8F8" />
+        </svg>
+      </span>
+      <span class="brand-copy">
+        <span class="brand-title">COMBEN</span>
+        <span class="brand-subtitle">Commission Benefit System</span>
+      </span>
+    </a>
+
+    <nav class="nav-list">
+      <a class="nav-link" href="dashboard.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <rect x="3" y="3" width="7" height="7" rx="1.5" />
+          <rect x="14" y="3" width="7" height="7" rx="1.5" />
+          <rect x="3" y="14" width="7" height="7" rx="1.5" />
+          <rect x="14" y="14" width="7" height="7" rx="1.5" />
+        </svg>
+        <span class="nav-text">Dashboard Management</span>
+        <span></span>
+      </a>
+      <a class="nav-link" href="modules.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <rect x="3" y="3" width="7" height="7" rx="1.5" />
+          <rect x="14" y="3" width="7" height="7" rx="1.5" />
+          <rect x="3" y="14" width="7" height="7" rx="1.5" />
+          <rect x="14" y="14" width="7" height="7" rx="1.5" />
+        </svg>
+        <span class="nav-text">Daftar Modul COMBEN</span>
+        <span></span>
+      </a>
+      <a class="nav-link" href="formula-list.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M4 6h16M4 12h16M4 18h7" />
+          <path d="m15 15 2 2 4-4" />
+        </svg>
+        <span class="nav-text">Formula List</span>
+        <span></span>
+      </a>
+      <a class="nav-link" href="data-integration.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M12 16V4" />
+          <path d="m7 9 5-5 5 5" />
+          <path d="M20 16.5A4.5 4.5 0 0 1 15.5 21h-7A4.5 4.5 0 0 1 4 16.5" />
+        </svg>
+        <span class="nav-text">Data Integration</span>
+        <span></span>
+      </a>
+      <a class="nav-link" href="data-preparation.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7Z" />
+          <path d="M14 2v5h5" />
+          <path d="m9 15 2 2 4-4" />
+        </svg>
+        <span class="nav-text">Data Preparation</span>
+        <span></span>
+      </a>
+      <a class="nav-link" href="rule-builder.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M4 7h16M7 7v10a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V7" />
+          <path d="M9 11h6M9 15h4" />
+        </svg>
+        <span class="nav-text">Rule Builder</span>
+        <span></span>
+      </a>
+      <a class="nav-link active" href="commission-calculation.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M4 19V5" />
+          <path d="M4 19h16" />
+          <path d="m7 15 4-4 3 3 5-7" />
+        </svg>
+        <span class="nav-text">Commission Calculation</span>
+        <span></span>
+      </a>
+      <a class="nav-link" href="commission-approval.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="m16 11 2 2 4-4" />
+        </svg>
+        <span class="nav-text">Commission Approval</span>
+        <span></span>
+      </a>
+      <a class="nav-link" href="adjustment-management.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M4 7h16M4 12h16M4 17h16" />
+          <circle cx="8" cy="7" r="2" />
+          <circle cx="16" cy="12" r="2" />
+          <circle cx="10" cy="17" r="2" />
+        </svg>
+        <span class="nav-text">Adjustment Management</span>
+        <span></span>
+      </a>
+      <a class="nav-link" href="payout-file.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <rect x="3" y="5" width="18" height="14" rx="2" />
+          <path d="M3 10h18M7 15h4" />
+        </svg>
+        <span class="nav-text">Pay Order / Payout File</span>
+        <span></span>
+      </a>
+      <a class="nav-link" href="e-slip-agent.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" />
+          <path d="M14 2v6h6" />
+          <path d="M8 13h8M8 17h6" />
+        </svg>
+        <span class="nav-text">e-Slip Agent</span>
+        <span class="nav-external">&nearr;</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="system-card">
+        <div class="system-card-head">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#12B9C3" aria-hidden="true">
+            <path d="M12 2 20 5.6v6.1c0 5-3.4 8.8-8 10.3-4.6-1.5-8-5.3-8-10.3V5.6L12 2Z" />
+          </svg>
+          <span>Sistem Informasi</span>
+        </div>
+        <span class="system-version">COMBEN v2.0.0</span>
+        <span class="environment">Production <i class="environment-dot"></i></span>
+      </div>
+      <p class="copyright">&copy; 2025 COMBEN. All rights reserved.</p>
+    </div>
+  </aside>
+
+  <!-- TOPBAR -->
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="icon-button" type="button" data-sidebar-toggle aria-label="Tutup atau buka sidebar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="topbar-actions">
+        <button class="icon-button" type="button" aria-label="Notifikasi">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 7h18s-3 0-3-7" />
+            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+          </svg>
+          <span class="badge">8</span>
+        </button>
+        <button class="icon-button" type="button" aria-label="Bantuan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M9.1 9a3 3 0 1 1 5.8 1c-.7 1.1-1.8 1.4-2.4 2.3-.3.4-.5.9-.5 1.7" />
+            <path d="M12 17h.01" />
+          </svg>
+        </button>
+        <div class="profile">
+          <span class="avatar" style="background-color: #1E3A8A; color: white;">AD</span>
+          <span class="profile-copy">
+            <span class="profile-name">Alicia Demo</span>
+            <span class="profile-role">Administrator</span>
+          </span>
+          <button class="icon-button" type="button" aria-label="Menu profil">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-main cc-page">
+
+      <!-- Header -->
+      <div class="cc-header">
+        <h1 class="cc-title">Commission Calculation</h1>
+        <button class="btn-history" onclick="alert('Viewing calculation history...')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
+          Calculation History
+        </button>
+      </div>
+
+      <!-- Stepper -->
+      <div class="stepper-container">
+        <div class="step-item done first">
+          <div class="step-num"><svg class="step-icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="3">
+              <polyline points="20 6 9 17 4 12" />
+            </svg></div>
+          <div class="step-text">Select Period</div>
+        </div>
+        <div class="step-item done">
+          <div class="step-num"><svg class="step-icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="3">
+              <polyline points="20 6 9 17 4 12" />
+            </svg></div>
+          <div class="step-text">Select Scope</div>
+        </div>
+        <div class="step-item done">
+          <div class="step-num"><svg class="step-icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="3">
+              <polyline points="20 6 9 17 4 12" />
+            </svg></div>
+          <div class="step-text">Select Formula Set</div>
+        </div>
+        <div class="step-item done">
+          <div class="step-num"><svg class="step-icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="3">
+              <polyline points="20 6 9 17 4 12" />
+            </svg></div>
+          <div class="step-text">Review Data Summary</div>
+        </div>
+        <div class="step-item active last">
+          <div class="step-num">5</div>
+          <div class="step-text">Run Calculation</div>
+        </div>
+      </div>
+
+      <!-- Top Grid: 4 Cards -->
+      <div class="cc-grid-top">
+
+        <!-- 1. Calculation Scope -->
+        <div class="cc-card">
+          <div class="cc-card-header">
+            <div class="cc-card-title">
+              <div class="cc-card-icon icon-teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg></div>
+              Calculation Scope
+            </div>
+            <div class="cc-status-pill">Selected <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" width="10" height="10" style="display:inline-block; margin-left:2px;">
+                <polyline points="20 6 9 17 4 12" />
+              </svg></div>
+          </div>
+          <div class="cc-data-list">
+            <div class="cc-data-item"><span class="cc-data-label">Scope Type</span><span class="cc-data-val">Agent
+                Hierarchy</span></div>
+            <div class="cc-data-item"><span class="cc-data-label">Hierarchy</span><span class="cc-data-val">All
+                Agencies</span></div>
+            <div class="cc-data-item"><span class="cc-data-label">Agent Count</span><span
+                class="cc-data-val">1,245</span></div>
+            <div class="cc-data-item"><span class="cc-data-label">Policy Count</span><span
+                class="cc-data-val">18,732</span></div>
+            <div class="cc-data-item"><span class="cc-data-label">Product Lines</span><span
+                class="cc-data-val">All</span></div>
+            <div class="cc-data-item"><span class="cc-data-label">States</span><span class="cc-data-val">All</span>
+            </div>
+          </div>
+          <a href="#" class="cc-card-link" onclick="openDetailModal('Scope Details', 'Agent Hierarchy, 1,245 Agents, 18,732 Policies in All States')">View Scope Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polyline points="9 18 15 12 9 6"/></svg></a>
+        </div>
+
+        <!-- 2. Selected Formula Set -->
+        <div class="cc-card">
+          <div class="cc-card-header">
+            <div class="cc-card-title">
+              <div class="cc-card-icon icon-teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
+                </svg></div>
+              Selected Formula Set
+            </div>
+            <div class="cc-status-pill">Selected <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" width="10" height="10" style="display:inline-block; margin-left:2px;">
+                <polyline points="20 6 9 17 4 12" />
+              </svg></div>
+          </div>
+          <div class="cc-data-list">
+            <div class="cc-data-item"><span class="cc-data-label">Formula Set</span><span class="cc-data-val">Standard
+                Commission Plan 2024</span></div>
+            <div class="cc-data-item"><span class="cc-data-label">Version</span><span class="cc-data-val">v2.1</span>
+            </div>
+            <div class="cc-data-item"><span class="cc-data-label">Effective Date</span><span
+                class="cc-data-val">01/01/2024</span></div>
+            <div class="cc-data-item"><span class="cc-data-label">Description</span><span class="cc-data-val">Standard
+                commission plan for personal and commercial lines.</span></div>
+          </div>
+          <a href="#" class="cc-card-link" onclick="openDetailModal('Formula Details', 'Standard Commission Plan 2024 (v2.1). Effective from 01/01/2024')">View Formula Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polyline points="9 18 15 12 9 6"/></svg></a>
+        </div>
+
+        <!-- 3. Calculation Progress -->
+        <div class="cc-card">
+          <div class="cc-card-header">
+            <div class="cc-card-title">
+              <div class="cc-card-icon icon-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                </svg></div>
+              Calculation Progress
+            </div>
+          </div>
+
+          <div class="progress-container">
+            <svg viewBox="0 0 36 36" class="circular-chart">
+              <path class="circle-bg" d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path class="circle" id="progress-circle" stroke-dasharray="100, 100" d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <text x="18" y="19" class="percentage" id="progress-text">100%</text>
+              <text x="18" y="24" class="percentage-label">Complete</text>
+            </svg>
+            <div class="cc-status-pill" id="progress-badge"
+              style="margin-top:12px; font-weight:600; padding:6px 12px; font-size:12px;">Completed <svg
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"
+                style="display:inline-block; margin-left:4px;">
+                <polyline points="20 6 9 17 4 12" />
+              </svg></div>
+          </div>
+
+          <div class="progress-details">
+            <div class="pd-row">
+              <span class="pd-label">Completed On</span>
+              <span class="pd-val">May 22, 2024 10:24 AM</span>
+            </div>
+            <div class="pd-row">
+              <span class="pd-label">Duration</span>
+              <span class="pd-val" id="duration-val">00:04:38</span>
+            </div>
+            <div class="pd-row">
+              <span class="pd-label">Run By</span>
+              <span class="pd-val">Alicia Demo</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Exceptions -->
+        <div class="cc-card">
+          <div class="cc-card-header">
+            <div class="cc-card-title">
+              <div class="cc-card-icon icon-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                  <line x1="12" y1="9" x2="12" y2="13" />
+                  <line x1="12" y1="17" x2="12.01" y2="17" />
+                </svg></div>
+              Exceptions
+            </div>
+          </div>
+
+          <div class="exc-big-num">28</div>
+          <div class="exc-label">Total Exceptions</div>
+
+          <div class="exc-list">
+            <div class="exc-item"><span class="exc-item-label">Formula Errors</span><span class="exc-item-val">8</span>
+            </div>
+            <div class="exc-item"><span class="exc-item-label">Data Issues</span><span class="exc-item-val">12</span>
+            </div>
+            <div class="exc-item"><span class="exc-item-label">Missing Information</span><span
+                class="exc-item-val">5</span></div>
+            <div class="exc-item"><span class="exc-item-label">Approval Blocks</span><span class="exc-item-val">3</span>
+            </div>
+          </div>
+
+          <a href="#" class="cc-card-link" style="color: #12B9C3;" onclick="openDetailModal('Exceptions', '8 Formula Errors, 12 Data Issues, 5 Missing Information, 3 Approval Blocks.')">View
+            Exceptions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14"
+              height="14">
+              <polyline points="9 18 15 12 9 6" />
+            </svg></a>
+        </div>
+
+      </div>
+
+      <!-- Bottom Grid: 2 Cards -->
+      <div class="cc-grid-bottom">
+
+        <!-- Results Summary -->
+        <div class="cc-card results-summary">
+          <div class="rs-header">Results Summary</div>
+          <div class="rs-boxes">
+            <!-- Box 1 -->
+            <div class="rs-box">
+              <div class="rs-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="8" x2="12" y2="16" />
+                  <line x1="8" y1="12" x2="16" y2="12" />
+                </svg></div>
+              <div class="rs-content">
+                <span class="rs-label">Total Commission</span>
+                <span class="rs-val">$2,845,726.38</span>
+                <span class="rs-sub">USD</span>
+              </div>
+            </div>
+            <!-- Box 2 -->
+            <div class="rs-box">
+              <div class="rs-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg></div>
+              <div class="rs-content">
+                <span class="rs-label">Total Agents</span>
+                <span class="rs-val">1,245</span>
+              </div>
+            </div>
+            <!-- Box 3 -->
+            <div class="rs-box">
+              <div class="rs-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                  <line x1="16" y1="13" x2="8" y2="13" />
+                  <line x1="16" y1="17" x2="8" y2="17" />
+                  <polyline points="10 9 9 9 8 9" />
+                </svg></div>
+              <div class="rs-content">
+                <span class="rs-label">Total Policies</span>
+                <span class="rs-val">18,732</span>
+              </div>
+            </div>
+            <!-- Box 4 -->
+            <div class="rs-box">
+              <div class="rs-icon orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                  <line x1="12" y1="9" x2="12" y2="13" />
+                  <line x1="12" y1="17" x2="12.01" y2="17" />
+                </svg></div>
+              <div class="rs-content">
+                <span class="rs-label">Exceptions</span>
+                <span class="rs-val" style="color: #1E293B;">28</span>
+                <a href="#" style="font-size:11px; color:#F59E0B; text-decoration:none; margin-top:2px;" onclick="openDetailModal('Exceptions', '8 Formula Errors, 12 Data Issues, 5 Missing Information, 3 Approval Blocks.')">View
+                  Exceptions</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Calculation Output -->
+        <div class="cc-card">
+          <div class="cc-card-header" style="margin-bottom: 16px;">
+            <div class="cc-card-title">
+              <div class="cc-card-icon icon-teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <ellipse cx="12" cy="5" rx="9" ry="3" />
+                  <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+                  <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+                </svg></div>
+              Calculation Output
+            </div>
+          </div>
+
+          <div class="cc-data-list">
+            <div class="cc-data-item wide-label"><span class="cc-data-label">Output Name</span><span
+                class="cc-data-val">Commission_Run_2024_05_22_1024</span></div>
+            <div class="cc-data-item wide-label"><span class="cc-data-label">Output Type</span><span
+                class="cc-data-val">Benefit & Compensation</span></div>
+            <div class="cc-data-item wide-label"><span class="cc-data-label">Records Processed</span><span
+                class="cc-data-val">18,732</span></div>
+            <div class="cc-data-item wide-label"><span class="cc-data-label">Regenerated From</span><span
+                class="cc-data-val">N/A</span></div>
+          </div>
+
+          <a href="#" class="cc-card-link" onclick="openDetailModal('Output Details', 'Commission_Run_2024_05_22_1024 processed 18,732 records.')">View Output Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polyline points="9 18 15 12 9 6"/></svg></a>
+        </div>
+
+      </div>
+
+      <!-- Footer Actions -->
+      <div class="cc-footer">
+        <button class="cc-btn btn-back" onclick="history.back()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+          Back
+        </button>
+        <div class="footer-right">
+          <button class="cc-btn btn-regen" id="btn-regenerate">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="1 4 1 10 7 10" />
+              <polyline points="23 20 23 14 17 14" />
+              <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15" />
+            </svg>
+            Regenerate
+          </button>
+          <button class="cc-btn btn-run" id="btn-run-calc">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+              <polygon points="5 3 19 12 5 21 5 3" />
+            </svg>
+            Run Calculation
+          </button>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Modal Component -->
+  <div class="modal-overlay" id="detail-modal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.5); z-index: 1000; align-items: center; justify-content: center;">
+    <div class="modal-content" style="background: white; padding: 24px; border-radius: 12px; min-width: 400px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+        <h3 id="modal-title" style="margin: 0; font-size: 18px; color: #0F172A;">Details</h3>
+        <button onclick="closeDetailModal()" style="background: none; border: none; cursor: pointer; color: #64748B;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      </div>
+      <p id="modal-body" style="font-size: 14px; color: #334155; line-height: 1.5; margin-bottom: 24px;">Content goes here...</p>
+      <div style="display: flex; justify-content: flex-end;">
+        <button onclick="closeDetailModal()" style="padding: 8px 16px; background: #F1F5F9; border: none; border-radius: 6px; font-weight: 500; cursor: pointer; color: #334155;">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openDetailModal(title, body) {
+      document.getElementById('modal-title').textContent = title;
+      document.getElementById('modal-body').textContent = body;
+      document.getElementById('detail-modal').style.display = 'flex';
+    }
+    function closeDetailModal() {
+      document.getElementById('detail-modal').style.display = 'none';
+    }
+  </script>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/commission-calculation.js"></script>
+</body>
+
+</html>
