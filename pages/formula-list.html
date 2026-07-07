@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formula List</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M24 3 42 13.5v21L24 45 6 34.5v-21L24 3Z' fill='%2312B9C3'/%3E%3Cpath d='M24 12.2 34.5 18.3v12.2L24 36.7l-10.5-6.2V18.3L24 12.2Z' fill='%23F8FBFD'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+  <aside class="sidebar" aria-label="Navigasi utama">
+    <a class="brand" href="modules.html" aria-label="COMBEN Home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg class="logo-cube" viewBox="0 0 48 48" fill="none">
+          <path d="M24 3 42 13.5v21L24 45 6 34.5v-21L24 3Z" fill="#12B9C3"/>
+          <path d="M24 12.2 34.5 18.3v12.2L24 36.7l-10.5-6.2V18.3L24 12.2Z" fill="#F8FBFD"/>
+          <path d="M24 12.2 34.5 18.3 24 24.3 13.5 18.3 24 12.2Z" fill="#D9F8F8"/>
+        </svg>
+      </span>
+      <span class="brand-copy">
+        <span class="brand-title">COMBEN</span>
+        <span class="brand-subtitle">Commission Benefit System</span>
+      </span>
+    </a>
+
+    <nav class="nav-list">
+      <a class="nav-link" href="dashboard.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 13h6V4H4v9Z"/><path d="M14 20h6V4h-6v16Z"/><path d="M4 20h6v-3H4v3Z"/></svg>
+        <span class="nav-text">Dashboard Management</span><span></span>
+      </a>
+      <a class="nav-link" href="modules.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/><circle cx="7" cy="5" r="1.5"/><circle cx="7" cy="12" r="1.5"/><circle cx="7" cy="19" r="1.5"/></svg>
+        <span class="nav-text">Daftar Modul COMBEN</span><span></span>
+      </a>
+      <a class="nav-link active" href="formula-list.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 6h16M4 12h16M4 18h7"/><path d="m15 15 2 2 4-4"/></svg>
+        <span class="nav-text">Formula List</span><span></span>
+      </a>
+      <a class="nav-link" href="data-integration.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 16V4"/><path d="m7 9 5-5 5 5"/><path d="M20 16.5A4.5 4.5 0 0 1 15.5 21h-7A4.5 4.5 0 0 1 4 16.5"/></svg>
+        <span class="nav-text">Data Integration</span><span></span>
+      </a>
+      <a class="nav-link" href="data-preparation.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7Z"/><path d="M14 2v5h5"/><path d="m9 15 2 2 4-4"/></svg>
+        <span class="nav-text">Data Preparation</span><span></span>
+      </a>
+      <a class="nav-link" href="rule-builder.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7h16M7 7v10a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V7"/><path d="M9 11h6M9 15h4"/></svg>
+        <span class="nav-text">Rule Builder</span><span></span>
+      </a>
+      <a class="nav-link" href="commission-calculation.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19V5"/><path d="M4 19h16"/><path d="m7 15 4-4 3 3 5-7"/></svg>
+        <span class="nav-text">Commission Calculation</span><span></span>
+      </a>
+      <a class="nav-link" href="commission-approval.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></svg>
+        <span class="nav-text">Commission Approval</span><span></span>
+      </a>
+      <a class="nav-link" href="adjustment-management.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7h16M4 12h16M4 17h16"/><circle cx="8" cy="7" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="10" cy="17" r="2"/></svg>
+        <span class="nav-text">Adjustment Management</span><span></span>
+      </a>
+      <a class="nav-link" href="payout-file.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg>
+        <span class="nav-text">Pay Order / Payout File</span><span></span>
+      </a>
+      <a class="nav-link" href="e-slip-agent.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h6"/></svg>
+        <span class="nav-text">e-Slip Agent</span><span class="nav-external">&nearr;</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="system-card">
+        <div class="system-card-head">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#12B9C3" aria-hidden="true"><path d="M12 2 20 5.6v6.1c0 5-3.4 8.8-8 10.3-4.6-1.5-8-5.3-8-10.3V5.6L12 2Z"/></svg>
+          <span>Sistem Informasi</span>
+        </div>
+        <span class="system-version">COMBEN v2.0.0</span>
+        <span class="environment">Production <i class="environment-dot"></i></span>
+      </div>
+      <p class="copyright">&copy; 2025 COMBEN. All rights reserved.</p>
+    </div>
+  </aside>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="icon-button" type="button" data-sidebar-toggle aria-label="Tutup atau buka sidebar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+        <div class="breadcrumb" aria-label="Breadcrumb">
+          <span>Compensation</span><span>&rsaquo;</span><span>Formula Management</span><span>&rsaquo;</span><span>Formula List</span>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <label class="field topbar-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <input class="input" type="search" data-formula-search placeholder="Search anything..." aria-label="Search anything">
+          <span class="shortcut">&#8984; K</span>
+        </label>
+        <button class="icon-button" type="button" aria-label="Notifikasi">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 7h18s-3 0-3-7"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="badge">8</span>
+        </button>
+        <button class="icon-button" type="button" aria-label="Bantuan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 1 1 5.8 1c-.7 1.1-1.8 1.4-2.4 2.3-.3.4-.5.9-.5 1.7"/><path d="M12 17h.01"/></svg>
+        </button>
+        <div class="profile">
+          <span class="avatar">AD</span>
+          <span class="profile-copy">
+            <span class="profile-name">Admin User</span>
+            <span class="profile-role">Administrator</span>
+          </span>
+          <button class="icon-button" type="button" aria-label="Menu profil">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-main">
+      <section class="formula-page" aria-labelledby="formula-title">
+        <div class="content-header page-heading-row">
+          <div>
+            <h1 class="content-title" id="formula-title">Formula List</h1>
+            <p class="content-subtitle">Create, manage, and monitor all formulas used for benefit and compensation calculations.</p>
+          </div>
+          <div class="split-button">
+            <button class="primary-button" type="button" data-new-formula>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 5v14M5 12h14"/></svg>
+              New Formula
+            </button>
+            <button class="primary-button" type="button" data-show-toast="Template formula siap dipilih." aria-label="Formula template menu">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="filter-panel">
+          <div class="filter-grid">
+            <label class="control-label">Product
+              <select class="select" data-formula-filter="product">
+                <option value="all">All Products</option>
+                <option value="Premier Life">Premier Life</option>
+                <option value="Health Guard">Health Guard</option>
+                <option value="Invest Prime">Invest Prime</option>
+              </select>
+            </label>
+            <label class="control-label">Position
+              <select class="select" data-formula-filter="position">
+                <option value="all">All Positions</option>
+                <option value="Agent">Agent</option>
+                <option value="Agency Manager">Agency Manager</option>
+              </select>
+            </label>
+            <label class="control-label">Channel
+              <select class="select" data-formula-filter="channel">
+                <option value="all">All Channels</option>
+                <option value="Agency">Agency</option>
+                <option value="Bancassurance">Bancassurance</option>
+                <option value="Direct">Direct</option>
+              </select>
+            </label>
+            <label class="control-label">Branch
+              <select class="select" data-formula-filter="branch">
+                <option value="all">All Branches</option>
+                <option value="Head Office">Head Office</option>
+                <option value="North Region">North Region</option>
+                <option value="South Region">South Region</option>
+                <option value="West Region">West Region</option>
+                <option value="East Region">East Region</option>
+              </select>
+            </label>
+            <label class="control-label">Status
+              <select class="select" data-formula-filter="status">
+                <option value="all">All Statuses</option>
+                <option value="Active">Active</option>
+                <option value="Draft">Draft</option>
+                <option value="Inactive">Inactive</option>
+              </select>
+            </label>
+            <label class="control-label">Effective Period
+              <button class="period-field" type="button" data-open-calendar>
+                <span>01/01/2024</span><span>&rarr;</span><span>12/31/2024</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              </button>
+              <div class="period-popover" data-period-popover>
+                <label>Start Date
+                  <input class="input drawer-input" type="date" value="2024-01-01" data-period-start>
+                </label>
+                <label>End Date
+                  <input class="input drawer-input" type="date" value="2024-12-31" data-period-end>
+                </label>
+                <button class="primary-button" type="button" data-apply-period>Apply Period</button>
+              </div>
+            </label>
+          </div>
+          <div class="filter-actions">
+            <div class="filter-left">
+              <button class="mini-button" type="button" data-open-filter-drawer>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 5h18l-7 8v5l-4 2v-7Z"/></svg>
+                Filters
+              </button>
+              <button class="link-button" type="button" data-formula-clear>Clear All</button>
+            </div>
+            <div class="filter-right">
+              <span class="result-count">Saved Views</span>
+              <select class="select" aria-label="Select saved view">
+                <option>Select Saved View</option>
+                <option>Active Formula Monitoring</option>
+                <option>Draft Review Queue</option>
+              </select>
+              <button class="mini-button save-view" type="button" data-show-toast="Saved view berhasil disimpan.">Save View</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card">
+            <span class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h2"/></svg></span>
+            <div><span class="stat-label">Total Active Formulas</span><strong class="stat-value" data-active-count data-locked="true">128</strong><span class="stat-caption">Across all products and positions</span></div>
+            <button class="card-arrow" type="button" aria-label="Open active formulas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m9 5 7 7-7 7"/></svg></button>
+          </article>
+          <article class="stat-card orange">
+            <span class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg></span>
+            <div><span class="stat-label">Draft Formulas</span><strong class="stat-value" data-draft-count data-locked="true">16</strong><span class="stat-caption">Pending review and approval</span></div>
+            <button class="card-arrow" type="button" aria-label="Open draft formulas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m9 5 7 7-7 7"/></svg></button>
+          </article>
+          <article class="stat-card blue">
+            <span class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+            <div><span class="stat-label">Recently Updated</span><strong class="stat-value">14</strong><span class="stat-caption">In the last 7 days</span></div>
+            <button class="card-arrow" type="button" aria-label="Open recent formulas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m9 5 7 7-7 7"/></svg></button>
+          </article>
+        </div>
+
+        <div class="table-panel">
+          <div class="table-toolbar">
+            <span class="result-count" data-formula-result>Showing 1 to 10 of 128 results</span>
+            <div class="table-actions">
+              <button class="mini-button" type="button" data-refresh-formula aria-label="Refresh">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg>
+              </button>
+              <div class="columns-control">
+                <button class="mini-button" type="button" data-columns-toggle>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 20v-8M12 8V4M6 20V10M6 6V4M18 20v-4M18 12V4"/><path d="M4 10h4M10 8h4M16 16h4"/></svg>
+                Columns
+                </button>
+                <div class="columns-popover" data-columns-popover>
+                  <label><input type="checkbox" data-column-toggle="product" checked> Product</label>
+                  <label><input type="checkbox" data-column-toggle="position" checked> Position</label>
+                  <label><input type="checkbox" data-column-toggle="channel" checked> Channel</label>
+                  <label><input type="checkbox" data-column-toggle="branch" checked> Branch</label>
+                  <label><input type="checkbox" data-column-toggle="updated" checked> Last Updated</label>
+                </div>
+              </div>
+              <select class="select" data-page-size aria-label="Rows per page">
+                <option value="10">10 per page</option>
+                <option value="5">5 per page</option>
+                <option value="20">20 per page</option>
+              </select>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th><button class="sort-button" type="button" data-sort-key="code">Formula Code <span data-sort-icon="code">&#8597;</span></button></th>
+                  <th><button class="sort-button" type="button" data-sort-key="name">Formula Name <span data-sort-icon="name">&#8597;</span></button></th>
+                  <th data-column="product"><button class="sort-button" type="button" data-sort-key="product">Product <span data-sort-icon="product">&#8597;</span></button></th>
+                  <th data-column="position"><button class="sort-button" type="button" data-sort-key="position">Position <span data-sort-icon="position">&#8597;</span></button></th>
+                  <th data-column="channel"><button class="sort-button" type="button" data-sort-key="channel">Channel <span data-sort-icon="channel">&#8597;</span></button></th>
+                  <th data-column="branch"><button class="sort-button" type="button" data-sort-key="branch">Branch <span data-sort-icon="branch">&#8597;</span></button></th>
+                  <th><button class="sort-button" type="button" data-sort-key="date">Effective Date <span data-sort-icon="date">&#8597;</span></button></th>
+                  <th><button class="sort-button" type="button" data-sort-key="status">Status <span data-sort-icon="status">&#8597;</span></button></th>
+                  <th data-column="updated"><button class="sort-button" type="button" data-sort-key="updated">Last Updated <span data-sort-icon="updated">&#8597;</span></button></th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody data-formula-table>
+                <tr data-formula-row data-code="FML-PRM-001" data-name="Base Commission %" data-product="Premier Life" data-position="Agent" data-channel="Agency" data-branch="Head Office" data-status="Active" data-available="true"><td><span class="code-link">FML-PRM-001</span></td><td>Base Commission %</td><td data-column="product">Premier Life</td><td data-column="position">Agent</td><td data-column="channel">Agency</td><td data-column="branch">Head Office</td><td>01/01/2024</td><td><span class="status-pill">Active</span></td><td data-column="updated">05/24/2024 10:15 AM<span class="updated-by">Admin User</span></td><td><span class="row-actions"><button class="action-icon availability-on" aria-label="Toggle availability"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button><button class="action-icon" aria-label="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m12 20 9-9-4-4-9 9-1 5Z"/><path d="m15 6 4 4"/></svg></button><button class="action-icon" aria-label="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="8" y="8" width="12" height="12" rx="2"/><rect x="4" y="4" width="12" height="12" rx="2"/></svg></button></span></td></tr>
+                <tr data-formula-row data-code="FML-PRM-002" data-name="Override Commission" data-product="Premier Life" data-position="Agency Manager" data-channel="Agency" data-branch="Head Office" data-status="Active" data-available="true"><td><span class="code-link">FML-PRM-002</span></td><td>Override Commission</td><td data-column="product">Premier Life</td><td data-column="position">Agency Manager</td><td data-column="channel">Agency</td><td data-column="branch">Head Office</td><td>01/01/2024</td><td><span class="status-pill">Active</span></td><td data-column="updated">05/22/2024 03:42 PM<span class="updated-by">Admin User</span></td><td><span class="row-actions"><button class="action-icon availability-on" aria-label="Toggle availability"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button><button class="action-icon" aria-label="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m12 20 9-9-4-4-9 9-1 5Z"/><path d="m15 6 4 4"/></svg></button><button class="action-icon" aria-label="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="8" y="8" width="12" height="12" rx="2"/><rect x="4" y="4" width="12" height="12" rx="2"/></svg></button></span></td></tr>
+                <tr data-formula-row data-code="FML-HLT-001" data-name="Health Bonus Formula" data-product="Health Guard" data-position="Agent" data-channel="Bancassurance" data-branch="North Region" data-status="Active" data-available="true"><td><span class="code-link">FML-HLT-001</span></td><td>Health Bonus Formula</td><td data-column="product">Health Guard</td><td data-column="position">Agent</td><td data-column="channel">Bancassurance</td><td data-column="branch">North Region</td><td>02/01/2024</td><td><span class="status-pill">Active</span></td><td data-column="updated">05/20/2024 11:30 AM<span class="updated-by">Jane Smith</span></td><td><span class="row-actions"><button class="action-icon availability-on" aria-label="Toggle availability"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button><button class="action-icon" aria-label="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m12 20 9-9-4-4-9 9-1 5Z"/><path d="m15 6 4 4"/></svg></button><button class="action-icon" aria-label="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="8" y="8" width="12" height="12" rx="2"/><rect x="4" y="4" width="12" height="12" rx="2"/></svg></button></span></td></tr>
+                <tr data-formula-row data-code="FML-PRM-003" data-name="Persistency Bonus" data-product="Premier Life" data-position="Agent" data-channel="Agency" data-branch="South Region" data-status="Draft" data-available="true"><td><span class="code-link">FML-PRM-003</span></td><td>Persistency Bonus</td><td data-column="product">Premier Life</td><td data-column="position">Agent</td><td data-column="channel">Agency</td><td data-column="branch">South Region</td><td>01/15/2024</td><td><span class="status-pill draft">Draft</span></td><td data-column="updated">05/23/2024 09:18 AM<span class="updated-by">Michael Lee</span></td><td><span class="row-actions"><button class="action-icon availability-on" aria-label="Toggle availability"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button><button class="action-icon" aria-label="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m12 20 9-9-4-4-9 9-1 5Z"/><path d="m15 6 4 4"/></svg></button><button class="action-icon" aria-label="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="8" y="8" width="12" height="12" rx="2"/><rect x="4" y="4" width="12" height="12" rx="2"/></svg></button></span></td></tr>
+                <tr data-formula-row data-code="FML-INV-001" data-name="Installment Loan Incentive" data-product="Invest Prime" data-position="Agent" data-channel="Direct" data-branch="Head Office" data-status="Active" data-available="true"><td><span class="code-link">FML-INV-001</span></td><td>Installment Loan Incentive</td><td data-column="product">Invest Prime</td><td data-column="position">Agent</td><td data-column="channel">Direct</td><td data-column="branch">Head Office</td><td>03/01/2024</td><td><span class="status-pill">Active</span></td><td data-column="updated">05/21/2024 02:05 PM<span class="updated-by">Admin User</span></td><td><span class="row-actions"><button class="action-icon availability-on" aria-label="Toggle availability"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button><button class="action-icon" aria-label="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m12 20 9-9-4-4-9 9-1 5Z"/><path d="m15 6 4 4"/></svg></button><button class="action-icon" aria-label="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="8" y="8" width="12" height="12" rx="2"/><rect x="4" y="4" width="12" height="12" rx="2"/></svg></button></span></td></tr>
+                <tr data-formula-row data-code="FML-PRM-004" data-name="Top Producer Bonus" data-product="Premier Life" data-position="Agent" data-channel="Agency" data-branch="West Region" data-status="Draft" data-available="true"><td><span class="code-link">FML-PRM-004</span></td><td>Top Producer Bonus</td><td data-column="product">Premier Life</td><td data-column="position">Agent</td><td data-column="channel">Agency</td><td data-column="branch">West Region</td><td>01/01/2024</td><td><span class="status-pill draft">Draft</span></td><td data-column="updated">05/24/2024 08:47 AM<span class="updated-by">Sarah Johnson</span></td><td><span class="row-actions"><button class="action-icon availability-on" aria-label="Toggle availability"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button><button class="action-icon" aria-label="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m12 20 9-9-4-4-9 9-1 5Z"/><path d="m15 6 4 4"/></svg></button><button class="action-icon" aria-label="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="8" y="8" width="12" height="12" rx="2"/><rect x="4" y="4" width="12" height="12" rx="2"/></svg></button></span></td></tr>
+                <tr data-formula-row data-code="FML-HLT-002" data-name="Health Renewal Bonus" data-product="Health Guard" data-position="Agent" data-channel="Bancassurance" data-branch="East Region" data-status="Inactive" data-available="false"><td><span class="code-link">FML-HLT-002</span></td><td>Health Renewal Bonus</td><td data-column="product">Health Guard</td><td data-column="position">Agent</td><td data-column="channel">Bancassurance</td><td data-column="branch">East Region</td><td>02/01/2024</td><td><span class="status-pill inactive">Inactive</span></td><td data-column="updated">05/19/2024 04:22 PM<span class="updated-by">David Brown</span></td><td><span class="row-actions"><button class="action-icon availability-on" aria-label="Toggle availability"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button><button class="action-icon" aria-label="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m12 20 9-9-4-4-9 9-1 5Z"/><path d="m15 6 4 4"/></svg></button><button class="action-icon" aria-label="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="8" y="8" width="12" height="12" rx="2"/><rect x="4" y="4" width="12" height="12" rx="2"/></svg></button></span></td></tr>
+                <tr data-formula-row data-code="FML-PRM-005" data-name="Special Campaign Bonus" data-product="Premier Life" data-position="Agent" data-channel="Direct" data-branch="Head Office" data-status="Active" data-available="true"><td><span class="code-link">FML-PRM-005</span></td><td>Special Campaign Bonus</td><td data-column="product">Premier Life</td><td data-column="position">Agent</td><td data-column="channel">Direct</td><td data-column="branch">Head Office</td><td>04/01/2024</td><td><span class="status-pill">Active</span></td><td data-column="updated">05/18/2024 01:11 PM<span class="updated-by">Admin User</span></td><td><span class="row-actions"><button class="action-icon availability-on" aria-label="Toggle availability"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button><button class="action-icon" aria-label="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m12 20 9-9-4-4-9 9-1 5Z"/><path d="m15 6 4 4"/></svg></button><button class="action-icon" aria-label="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="8" y="8" width="12" height="12" rx="2"/><rect x="4" y="4" width="12" height="12" rx="2"/></svg></button></span></td></tr>
+                <tr data-formula-row data-code="FML-PRM-006" data-name="Advance Commission" data-product="Premier Life" data-position="Agent" data-channel="Agency" data-branch="North Region" data-status="Active" data-available="true"><td><span class="code-link">FML-PRM-006</span></td><td>Advance Commission</td><td data-column="product">Premier Life</td><td data-column="position">Agent</td><td data-column="channel">Agency</td><td data-column="branch">North Region</td><td>03/15/2024</td><td><span class="status-pill">Active</span></td><td data-column="updated">05/17/2024 10:50 AM<span class="updated-by">Lisa Wong</span></td><td><span class="row-actions"><button class="action-icon availability-on" aria-label="Toggle availability"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button><button class="action-icon" aria-label="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m12 20 9-9-4-4-9 9-1 5Z"/><path d="m15 6 4 4"/></svg></button><button class="action-icon" aria-label="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="8" y="8" width="12" height="12" rx="2"/><rect x="4" y="4" width="12" height="12" rx="2"/></svg></button></span></td></tr>
+                <tr data-formula-row data-code="FML-PRM-007" data-name="Cancellation Penalty" data-product="Premier Life" data-position="Agent" data-channel="Agency" data-branch="Head Office" data-status="Active" data-available="true"><td><span class="code-link">FML-PRM-007</span></td><td>Cancellation Penalty</td><td data-column="product">Premier Life</td><td data-column="position">Agent</td><td data-column="channel">Agency</td><td data-column="branch">Head Office</td><td>01/01/2024</td><td><span class="status-pill">Active</span></td><td data-column="updated">05/16/2024 05:33 PM<span class="updated-by">Admin User</span></td><td><span class="row-actions"><button class="action-icon availability-on" aria-label="Toggle availability"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></button><button class="action-icon" aria-label="Edit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m12 20 9-9-4-4-9 9-1 5Z"/><path d="m15 6 4 4"/></svg></button><button class="action-icon" aria-label="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="8" y="8" width="12" height="12" rx="2"/><rect x="4" y="4" width="12" height="12" rx="2"/></svg></button></span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="formula-empty" data-formula-empty>Tidak ada formula yang cocok dengan filter.</div>
+          <div class="table-footer">
+            <div class="pagination">
+              <button class="page-button" type="button">&lsaquo;</button>
+              <button class="page-button active" type="button">1</button>
+              <button class="page-button" type="button">2</button>
+              <button class="page-button" type="button">3</button>
+              <button class="page-button" type="button">...</button>
+              <button class="page-button" type="button">13</button>
+              <button class="page-button" type="button">&rsaquo;</button>
+            </div>
+            <span data-formula-footer>Showing 1 to 10 of 128 results</span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="drawer-backdrop" data-drawer-backdrop></div>
+  <aside class="filter-drawer" aria-label="Advanced filters" data-filter-drawer>
+    <div class="drawer-head">
+      <div>
+        <strong>Advanced Filters</strong>
+        <span>Refine formula monitoring data</span>
+      </div>
+      <button class="icon-button" type="button" data-close-filter-drawer aria-label="Close advanced filters">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="drawer-body">
+      <div class="drawer-section-title">Table Column Filters</div>
+      <label class="control-label">Formula Code
+        <input class="input drawer-input" data-advanced-column-filter="code" type="search" placeholder="FML-PRM">
+      </label>
+      <label class="control-label">Formula Name
+        <input class="input drawer-input" data-advanced-column-filter="name" type="search" placeholder="Base Commission">
+      </label>
+      <label class="control-label">Product
+        <select class="select" data-advanced-column-filter="product">
+          <option value="all">All Products</option>
+          <option value="Premier Life">Premier Life</option>
+          <option value="Health Guard">Health Guard</option>
+          <option value="Invest Prime">Invest Prime</option>
+        </select>
+      </label>
+      <label class="control-label">Position
+        <select class="select" data-advanced-column-filter="position">
+          <option value="all">All Positions</option>
+          <option value="Agent">Agent</option>
+          <option value="Agency Manager">Agency Manager</option>
+        </select>
+      </label>
+      <label class="control-label">Channel
+        <select class="select" data-advanced-column-filter="channel">
+          <option value="all">All Channels</option>
+          <option value="Agency">Agency</option>
+          <option value="Bancassurance">Bancassurance</option>
+          <option value="Direct">Direct</option>
+        </select>
+      </label>
+      <label class="control-label">Branch
+        <select class="select" data-advanced-column-filter="branch">
+          <option value="all">All Branches</option>
+          <option value="Head Office">Head Office</option>
+          <option value="North Region">North Region</option>
+          <option value="South Region">South Region</option>
+          <option value="West Region">West Region</option>
+          <option value="East Region">East Region</option>
+        </select>
+      </label>
+      <label class="control-label">Effective Date
+        <input class="input drawer-input" data-advanced-column-filter="date" type="date">
+      </label>
+      <label class="control-label">Status
+        <select class="select" data-advanced-column-filter="status">
+          <option value="all">All Statuses</option>
+          <option value="Active">Active</option>
+          <option value="Draft">Draft</option>
+          <option value="Inactive">Inactive</option>
+        </select>
+      </label>
+      <label class="control-label">Last Updated By
+        <input class="input drawer-input" data-advanced-column-filter="updatedBy" type="search" placeholder="Admin User">
+      </label>
+      <label class="control-label">Last Updated Date
+        <input class="input drawer-input" data-advanced-column-filter="updatedDate" type="date">
+      </label>
+      <div class="drawer-section-title">Ordering</div>
+      <label class="control-label">Ordered By
+        <select class="select" data-order-by>
+          <option value="code">Formula Code</option>
+          <option value="name">Formula Name</option>
+          <option value="product">Product</option>
+          <option value="position">Position</option>
+          <option value="channel">Channel</option>
+          <option value="branch">Branch</option>
+          <option value="date">Effective Date</option>
+          <option value="status">Status</option>
+          <option value="updated">Last Updated</option>
+        </select>
+      </label>
+      <label class="control-label">Order Direction
+        <select class="select" data-order-direction>
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
+      </label>
+      <div class="drawer-section-title">Additional Criteria</div>
+      <label class="control-label">Formula Category
+        <select class="select" data-advanced-filter>
+          <option>All Categories</option>
+          <option>Base Commission</option>
+          <option>Bonus</option>
+          <option>Penalty</option>
+        </select>
+      </label>
+      <label class="control-label">Approval Stage
+        <select class="select" data-advanced-filter>
+          <option>All Stages</option>
+          <option>Draft Review</option>
+          <option>Manager Approval</option>
+          <option>Published</option>
+        </select>
+      </label>
+      <label class="control-label">Minimum Premium
+        <input class="input drawer-input" data-advanced-filter type="number" value="1000000">
+      </label>
+      <label class="check-row">
+        <input type="checkbox" data-advanced-filter checked>
+        <span>Only formulas with recent activity</span>
+      </label>
+      <label class="check-row">
+        <input type="checkbox" data-advanced-filter>
+        <span>Include archived formulas</span>
+      </label>
+    </div>
+    <div class="drawer-foot">
+      <button class="mini-button" type="button" data-reset-advanced>Reset</button>
+      <button class="primary-button" type="button" data-apply-advanced>Apply Filters</button>
+    </div>
+  </aside>
+
+  <div class="modal-backdrop" data-modal-backdrop></div>
+  <section class="formula-modal" role="dialog" aria-modal="true" aria-labelledby="formula-modal-title" data-formula-modal>
+    <div class="modal-head">
+      <div>
+        <strong id="formula-modal-title" data-modal-title>Formula Detail</strong>
+        <span data-modal-subtitle>Preview formula configuration</span>
+      </div>
+      <button class="icon-button" type="button" data-close-modal aria-label="Close formula modal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <form class="modal-form" data-formula-form>
+      <label class="control-label">Formula Code
+        <input class="input drawer-input" name="code" required>
+      </label>
+      <label class="control-label">Formula Name
+        <input class="input drawer-input" name="name" required>
+      </label>
+      <label class="control-label">Product
+        <select class="select" name="product">
+          <option>Premier Life</option>
+          <option>Health Guard</option>
+          <option>Invest Prime</option>
+        </select>
+      </label>
+      <label class="control-label">Position
+        <select class="select" name="position">
+          <option>Agent</option>
+          <option>Agency Manager</option>
+        </select>
+      </label>
+      <label class="control-label">Channel
+        <select class="select" name="channel">
+          <option>Agency</option>
+          <option>Bancassurance</option>
+          <option>Direct</option>
+        </select>
+      </label>
+      <label class="control-label">Branch
+        <select class="select" name="branch">
+          <option>Head Office</option>
+          <option>North Region</option>
+          <option>South Region</option>
+          <option>West Region</option>
+          <option>East Region</option>
+        </select>
+      </label>
+      <label class="control-label">Status
+        <select class="select" name="status">
+          <option>Active</option>
+          <option>Draft</option>
+          <option>Inactive</option>
+        </select>
+      </label>
+      <label class="control-label">Effective Date
+        <input class="input drawer-input" name="date" type="date" value="2024-01-01">
+      </label>
+      <label class="control-label modal-wide">Formula Expression
+        <textarea class="input formula-expression" name="expression">commission = premium * rate + bonus</textarea>
+      </label>
+    </form>
+    <div class="modal-foot">
+      <button class="mini-button" type="button" data-close-modal>Cancel</button>
+      <button class="primary-button" type="button" data-save-formula>Save Formula</button>
+    </div>
+  </section>
+
+  <div class="toast" data-toast></div>
+  <script src="../js/main.js"></script>
+</body>
+</html>
