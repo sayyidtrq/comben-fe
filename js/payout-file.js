@@ -97,18 +97,57 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // --- 3. Filter and Pagination Interaction ---
-  document.querySelectorAll('.page-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const btnEl = e.target.closest('.page-btn');
-      if(btnEl.innerHTML.includes('svg')) {
-        alert('Navigating to ' + (btnEl.innerHTML.includes('15 18 9 12') ? 'Previous' : 'Next') + ' page...');
-      } else {
-        document.querySelectorAll('.page-btn').forEach(b => {
-          if(!b.innerHTML.includes('svg')) b.classList.remove('active');
-        });
-        btnEl.classList.add('active');
-        alert('Loading page ' + btnEl.textContent.trim() + '...');
-      }
+  document.querySelectorAll('.pagination').forEach(paginationEl => {
+    paginationEl.querySelectorAll('.page-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const btnEl = e.target.closest('.page-btn');
+        
+        if(!btnEl.innerHTML.includes('svg')) {
+          paginationEl.querySelectorAll('.page-btn').forEach(b => {
+            if(!b.innerHTML.includes('svg')) b.classList.remove('active');
+          });
+          btnEl.classList.add('active');
+        }
+        
+        // Find the corresponding table to update
+        const container = paginationEl.closest('.pf-card');
+        const tbody = container ? container.querySelector('.pf-table tbody') : null;
+        
+        if (tbody) {
+          const rows = Array.from(tbody.querySelectorAll('tr'));
+          // Shuffle rows to simulate data loading
+          rows.sort(() => Math.random() - 0.5);
+          tbody.innerHTML = '';
+          
+          rows.forEach(r => {
+            const cells = r.querySelectorAll('td');
+            // Randomize amounts slightly
+            cells.forEach(cell => {
+              if (cell.textContent.includes('₱')) {
+                let amountStr = cell.textContent.replace(/[^0-9.-]+/g,"");
+                if (amountStr) {
+                  let amount = parseFloat(amountStr);
+                  amount = amount * (0.8 + (Math.random() * 0.4));
+                  cell.innerHTML = '₱ ' + amount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                }
+              }
+            });
+            tbody.appendChild(r);
+            r.classList.remove('selected');
+          });
+          
+          // Reset summary if this is the batch table
+          if (container.querySelector('thead').innerHTML.includes('Total Agents')) {
+            sumBatch.textContent = "-";
+            sumAmount.textContent = "-";
+            sumAgents.textContent = "-";
+            sumFStatus.innerHTML = "";
+            sumPStatus.innerHTML = "";
+            sumCreated.textContent = "-";
+            sumNet.textContent = "-";
+          }
+        }
+      });
     });
   });
 

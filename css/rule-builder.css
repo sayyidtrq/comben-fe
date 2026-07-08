@@ -37,10 +37,12 @@
 }
 
 .rb-title {
-  font-size: 24px;
-  font-weight: 700;
-  color: #0F172A;
   margin: 0;
+  color: #092852;
+  font-size: 37px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.15;
 }
 .rb-subtitle {
   font-size: 14px;
