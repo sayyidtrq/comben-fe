@@ -238,12 +238,21 @@
             </select>
           </div>
 
-          <div class="filter-group date-group">
+          <div class="filter-group date-group" style="position: relative;">
             <label class="filter-label">Date Range</label>
-            <div class="dp-date-wrap">
+            <div class="dp-date-wrap" id="date-range-btn" style="cursor: pointer;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              05/13/2024 - 05/20/2024
+              <span id="date-range-text">05/13/2024 - 05/20/2024</span>
             </div>
+            <!-- Custom dropdown for date range -->
+            <div id="date-range-dropdown" style="display: none; position: absolute; top: 100%; left: 0; background: white; border: 1px solid #E2E8F0; border-radius: 6px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); width: 100%; z-index: 10; margin-top: 4px; overflow: hidden;">
+              <div class="date-option" data-range="All Time" style="padding: 8px 12px; cursor: pointer; border-bottom: 1px solid #F1F5F9; font-size: 14px; color: #334155;">All Time</div>
+              <div class="date-option" data-range="05/13/2024 - 05/20/2024" style="padding: 8px 12px; cursor: pointer; border-bottom: 1px solid #F1F5F9; font-size: 14px; color: #334155;">05/13/2024 - 05/20/2024</div>
+              <div class="date-option" data-range="Last 30 Days" style="padding: 8px 12px; cursor: pointer; font-size: 14px; color: #334155;">Last 30 Days</div>
+            </div>
+            <style>
+              .date-option:hover { background-color: #F8FAFC; color: #12B9C3; }
+            </style>
           </div>
 
           <div class="filter-group large">
@@ -323,6 +332,6 @@
   </div>
 
   <script src="../js/main.js"></script>
-  <script src="../js/data-preparation.js"></script>
+  <script src="../js/data-preparation.js?v=2"></script>
 </body>
 </html>

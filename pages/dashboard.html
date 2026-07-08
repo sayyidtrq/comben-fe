@@ -222,7 +222,7 @@
         <div class="dashboard-panel chart-panel-large">
           <div class="panel-header">
             <div class="panel-title">Monthly Commission Trend <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="info-icon"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
-            <select class="panel-filter" aria-label="Pilih rentang waktu">
+            <select class="panel-filter" id="monthlyTrendFilter" aria-label="Pilih rentang waktu">
               <option>This Year</option>
               <option>Last Year</option>
             </select>
@@ -236,7 +236,7 @@
         <div class="dashboard-panel chart-panel">
           <div class="panel-header">
             <div class="panel-title">Top Agents by Commission <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="info-icon"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
-            <select class="panel-filter" aria-label="Pilih rentang waktu">
+            <select class="panel-filter" id="topAgentsFilter" aria-label="Pilih rentang waktu">
               <option>This Month</option>
               <option>Last Month</option>
             </select>
@@ -250,7 +250,7 @@
         <div class="dashboard-panel chart-panel">
           <div class="panel-header">
             <div class="panel-title">Top Products by Sales <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="info-icon"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
-            <select class="panel-filter" aria-label="Pilih rentang waktu">
+            <select class="panel-filter" id="topProductsFilter" aria-label="Pilih rentang waktu">
               <option>This Month</option>
               <option>Last Month</option>
             </select>
@@ -283,7 +283,7 @@
               <div class="legend-row"><span class="legend-dot" style="background: #3B82F6;"></span><span class="legend-label">Returned</span><span class="legend-val">364 (18.6%)</span></div>
             </div>
           </div>
-          <a href="#" class="view-all-link">View all approvals &gt;</a>
+          <a href="commission-approval.html" class="view-all-link">View all approvals &gt;</a>
         </div>
 
         <!-- Table -->
@@ -291,11 +291,11 @@
           <div class="panel-header">
             <div class="panel-title">Low Performance Area / Branch <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="info-icon"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
             <div class="panel-actions">
-              <select class="panel-filter" aria-label="Pilih rentang waktu">
+              <select class="panel-filter" id="lowPerfFilter" aria-label="Pilih rentang waktu">
                 <option>This Month</option>
                 <option>Last Month</option>
               </select>
-              <a href="#" class="view-all-link">View All</a>
+              <a href="#" class="view-all-link" id="lowPerfViewAll">View All</a>
             </div>
           </div>
           
@@ -385,6 +385,6 @@
   </div>
 
   <script src="../js/main.js"></script>
-  <script src="../js/dashboard.js"></script>
+  <script src="../js/dashboard.js?v=3"></script>
 </body>
 </html>

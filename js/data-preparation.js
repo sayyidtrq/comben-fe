@@ -3,21 +3,21 @@
 document.addEventListener('DOMContentLoaded', () => {
   // --- 1. Dummy Data ---
   const dummyData = [
-    { id: 'AGT-00012345', source: 'Agent Upload', sourceIcon: 'X', sourceClass: 'icon-excel', issueType: 'Missing Agent Code', issueClass: 'pill-orange', desc: "Agent code is missing for Agent Name 'John Smith'.", status: 'New', statusClass: 'status-new' },
-    { id: 'POL-00067890', source: 'Policy Upload', sourceIcon: 'C', sourceClass: 'icon-csv', issueType: 'Missing Product Code', issueClass: 'pill-orange', desc: "Product code is missing for Policy 'POL-00067890'.", status: 'New', statusClass: 'status-new' },
-    { id: 'PRM-00123456', source: 'Premium Upload', sourceIcon: 'X', sourceClass: 'icon-excel', issueType: 'Invalid Date Format', issueClass: 'pill-blue', desc: "Premium date format is invalid. Expected MM/DD/YYYY.", status: 'In Progress', statusClass: 'status-progress' },
-    { id: 'AGT-00023456', source: 'Agent Upload', sourceIcon: 'C', sourceClass: 'icon-csv', issueType: 'Duplicate Record', issueClass: 'pill-blue', desc: "Duplicate record found for Agent Code 'AGT-00023456'.", status: 'New', statusClass: 'status-new' },
-    { id: 'POL-00034567', source: 'Policy Upload', sourceIcon: 'X', sourceClass: 'icon-excel', issueType: 'Invalid Product Code', issueClass: 'pill-blue', desc: "Product code 'PRD-9999' is not valid.", status: 'In Progress', statusClass: 'status-progress' },
-    { id: 'PRM-00134567', source: 'Premium Upload', sourceIcon: 'C', sourceClass: 'icon-csv', issueType: 'Missing Agent Code', issueClass: 'pill-orange', desc: "Agent code is missing for premium record.", status: 'Resolved', statusClass: 'status-resolved' },
-    { id: 'POL-00045678', source: 'Policy Upload', sourceIcon: 'X', sourceClass: 'icon-excel', issueType: 'Missing Effective Date', issueClass: 'pill-orange', desc: "Policy effective date is missing.", status: 'New', statusClass: 'status-new' },
-    { id: 'AGT-00056789', source: 'Agent Upload', sourceIcon: 'C', sourceClass: 'icon-csv', issueType: 'Data Type Mismatch', issueClass: 'pill-blue', desc: "Agent age has non-numeric value 'N/A'.", status: 'In Progress', statusClass: 'status-progress' },
-    { id: 'PRM-00145678', source: 'Premium Upload', sourceIcon: 'X', sourceClass: 'icon-excel', issueType: 'Duplicate Record', issueClass: 'pill-blue', desc: "Duplicate premium payment detected.", status: 'Resolved', statusClass: 'status-resolved' },
-    { id: 'POL-00056789', source: 'Policy Upload', sourceIcon: 'C', sourceClass: 'icon-csv', issueType: 'Missing Product Code', issueClass: 'pill-orange', desc: "Product code is missing for Policy 'POL-00056789'.", status: 'New', statusClass: 'status-new' },
-    { id: 'AGT-00067890', source: 'Agent Upload', sourceIcon: 'X', sourceClass: 'icon-excel', issueType: 'Missing Agent Code', issueClass: 'pill-orange', desc: "Agent code is missing for Agent Name 'Jane Doe'.", status: 'In Progress', statusClass: 'status-progress' },
-    { id: 'PRM-00156789', source: 'Premium Upload', sourceIcon: 'C', sourceClass: 'icon-csv', issueType: 'Invalid Date Format', issueClass: 'pill-blue', desc: "Invalid effective date '31/02/2024'.", status: 'New', statusClass: 'status-new' },
-    { id: 'POL-00067891', source: 'Policy Upload', sourceIcon: 'X', sourceClass: 'icon-excel', issueType: 'Data Type Mismatch', issueClass: 'pill-blue', desc: "Premium amount is not a number.", status: 'Resolved', statusClass: 'status-resolved' },
-    { id: 'AGT-00078901', source: 'Agent Upload', sourceIcon: 'C', sourceClass: 'icon-csv', issueType: 'Missing Agent Code', issueClass: 'pill-orange', desc: "Agent code missing for 'Michael Smith'.", status: 'New', statusClass: 'status-new' },
-    { id: 'PRM-00167890', source: 'Premium Upload', sourceIcon: 'X', sourceClass: 'icon-excel', issueType: 'Duplicate Record', issueClass: 'pill-blue', desc: "Exact duplicate record on line 450.", status: 'In Progress', statusClass: 'status-progress' }
+    { id: 'AGT-00012345', date: '05/15/2024', source: 'Agent Upload', sourceIcon: 'X', sourceClass: 'icon-excel', issueType: 'Missing Agent Code', issueClass: 'pill-orange', desc: "Agent code is missing for Agent Name 'John Smith'.", status: 'New', statusClass: 'status-new' },
+    { id: 'POL-00067890', date: '05/14/2024', source: 'Policy Upload', sourceIcon: 'C', sourceClass: 'icon-csv', issueType: 'Missing Product Code', issueClass: 'pill-orange', desc: "Product code is missing for Policy 'POL-00067890'.", status: 'New', statusClass: 'status-new' },
+    { id: 'PRM-00123456', date: '05/13/2024', source: 'Premium Upload', sourceIcon: 'X', sourceClass: 'icon-excel', issueType: 'Invalid Date Format', issueClass: 'pill-blue', desc: "Premium date format is invalid. Expected MM/DD/YYYY.", status: 'In Progress', statusClass: 'status-progress' },
+    { id: 'AGT-00023456', date: '05/12/2024', source: 'Agent Upload', sourceIcon: 'C', sourceClass: 'icon-csv', issueType: 'Duplicate Record', issueClass: 'pill-blue', desc: "Duplicate record found for Agent Code 'AGT-00023456'.", status: 'New', statusClass: 'status-new' },
+    { id: 'POL-00034567', date: '05/10/2024', source: 'Policy Upload', sourceIcon: 'X', sourceClass: 'icon-excel', issueType: 'Invalid Product Code', issueClass: 'pill-blue', desc: "Product code 'PRD-9999' is not valid.", status: 'In Progress', statusClass: 'status-progress' },
+    { id: 'PRM-00134567', date: '05/01/2024', source: 'Premium Upload', sourceIcon: 'C', sourceClass: 'icon-csv', issueType: 'Missing Agent Code', issueClass: 'pill-orange', desc: "Agent code is missing for premium record.", status: 'Resolved', statusClass: 'status-resolved' },
+    { id: 'POL-00045678', date: '04/29/2024', source: 'Policy Upload', sourceIcon: 'X', sourceClass: 'icon-excel', issueType: 'Missing Effective Date', issueClass: 'pill-orange', desc: "Policy effective date is missing.", status: 'New', statusClass: 'status-new' },
+    { id: 'AGT-00056789', date: '04/28/2024', source: 'Agent Upload', sourceIcon: 'C', sourceClass: 'icon-csv', issueType: 'Data Type Mismatch', issueClass: 'pill-blue', desc: "Agent age has non-numeric value 'N/A'.", status: 'In Progress', statusClass: 'status-progress' },
+    { id: 'PRM-00145678', date: '04/25/2024', source: 'Premium Upload', sourceIcon: 'X', sourceClass: 'icon-excel', issueType: 'Duplicate Record', issueClass: 'pill-blue', desc: "Duplicate premium payment detected.", status: 'Resolved', statusClass: 'status-resolved' },
+    { id: 'POL-00056789', date: '04/20/2024', source: 'Policy Upload', sourceIcon: 'C', sourceClass: 'icon-csv', issueType: 'Missing Product Code', issueClass: 'pill-orange', desc: "Product code is missing for Policy 'POL-00056789'.", status: 'New', statusClass: 'status-new' },
+    { id: 'AGT-00067890', date: '04/15/2024', source: 'Agent Upload', sourceIcon: 'X', sourceClass: 'icon-excel', issueType: 'Missing Agent Code', issueClass: 'pill-orange', desc: "Agent code is missing for Agent Name 'Jane Doe'.", status: 'In Progress', statusClass: 'status-progress' },
+    { id: 'PRM-00156789', date: '04/10/2024', source: 'Premium Upload', sourceIcon: 'C', sourceClass: 'icon-csv', issueType: 'Invalid Date Format', issueClass: 'pill-blue', desc: "Invalid effective date '31/02/2024'.", status: 'New', statusClass: 'status-new' },
+    { id: 'POL-00067891', date: '04/05/2024', source: 'Policy Upload', sourceIcon: 'X', sourceClass: 'icon-excel', issueType: 'Data Type Mismatch', issueClass: 'pill-blue', desc: "Premium amount is not a number.", status: 'Resolved', statusClass: 'status-resolved' },
+    { id: 'AGT-00078901', date: '04/01/2024', source: 'Agent Upload', sourceIcon: 'C', sourceClass: 'icon-csv', issueType: 'Missing Agent Code', issueClass: 'pill-orange', desc: "Agent code missing for 'Michael Smith'.", status: 'New', statusClass: 'status-new' },
+    { id: 'PRM-00167890', date: '03/25/2024', source: 'Premium Upload', sourceIcon: 'X', sourceClass: 'icon-excel', issueType: 'Duplicate Record', issueClass: 'pill-blue', desc: "Exact duplicate record on line 450.", status: 'In Progress', statusClass: 'status-progress' }
   ];
 
   // --- 2. State Variables ---
@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     issueType: '',
     status: '',
     search: '',
+    dateRange: '05/13/2024 - 05/20/2024',
     currentPage: 1,
     perPage: 10,
     filteredData: []
@@ -55,7 +56,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         item.id.toLowerCase().includes(searchLower) || 
                         item.desc.toLowerCase().includes(searchLower);
 
-      return matchSource && matchIssue && matchStatus && matchSearch;
+      let matchDate = true;
+      if (currentState.dateRange === '05/13/2024 - 05/20/2024') {
+        // e.g. dates matching May 13 to May 20
+        matchDate = item.date.startsWith('05/13') || item.date.startsWith('05/14') || item.date.startsWith('05/15');
+      } else if (currentState.dateRange === 'Last 30 Days') {
+        // e.g. dates matching April and May
+        matchDate = item.date.startsWith('05/') || item.date.startsWith('04/');
+      }
+
+      return matchSource && matchIssue && matchStatus && matchSearch && matchDate;
     });
 
     currentState.filteredData = filtered;
@@ -237,4 +247,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Initialization ---
   applyFilters(); // Initial render
+
+  // --- 9. Date Range Dropdown Interactivity ---
+  const dateRangeBtn = document.getElementById('date-range-btn');
+  const dateRangeDropdown = document.getElementById('date-range-dropdown');
+  const dateRangeText = document.getElementById('date-range-text');
+  
+  if (dateRangeBtn && dateRangeDropdown && dateRangeText) {
+    // Toggle dropdown
+    dateRangeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isVisible = dateRangeDropdown.style.display === 'block';
+      dateRangeDropdown.style.display = isVisible ? 'none' : 'block';
+    });
+    
+    // Select option
+    const options = dateRangeDropdown.querySelectorAll('.date-option');
+    options.forEach(opt => {
+      opt.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const selectedRange = opt.getAttribute('data-range');
+        dateRangeText.textContent = selectedRange;
+        dateRangeDropdown.style.display = 'none';
+        
+        currentState.dateRange = selectedRange;
+        applyFilters();
+      });
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', () => {
+      dateRangeDropdown.style.display = 'none';
+    });
+  }
+
 });
