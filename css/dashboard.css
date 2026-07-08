@@ -71,10 +71,13 @@
 }
 
 .dashboard-title {
-  font-size: 24px;
+  margin: 0;
+  color: #092852;
+  font-size: 37px;
   font-weight: 700;
-  color: #1E293B;
-  margin: 0 0 8px 0;
+  letter-spacing: 0;
+  line-height: 1.15;
+  margin-bottom: 8px;
 }
 
 .title-underline {
