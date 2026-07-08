@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Profile Detail - COMBEN</title>
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M24 3 42 13.5v21L24 45 6 34.5v-21L24 3Z' fill='%2312B9C3'/%3E%3Cpath d='M24 12.2 34.5 18.3v12.2L24 36.7l-10.5-6.2V18.3L24 12.2Z' fill='%23F8FBFD'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css?v=4">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/agent-profile.css">
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <aside class="sidebar" aria-label="Navigasi utama">
+    <a class="brand" href="modules.html" aria-label="COMBEN Home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg class="logo-cube" viewBox="0 0 48 48" fill="none">
+          <path d="M24 3 42 13.5v21L24 45 6 34.5v-21L24 3Z" fill="#12B9C3" />
+          <path d="M24 12.2 34.5 18.3v12.2L24 36.7l-10.5-6.2V18.3L24 12.2Z" fill="#F8FBFD" />
+          <path d="M24 12.2 34.5 18.3 24 24.3 13.5 18.3 24 12.2Z" fill="#D9F8F8" />
+        </svg>
+      </span>
+      <span class="brand-copy">
+        <span class="brand-title">COMBEN</span>
+        <span class="brand-subtitle">Commission Benefit System</span>
+      </span>
+    </a>
+
+        <nav class="nav-list">
+<!-- 1. Dashboards -->
+<div class="nav-section-title">Dashboards</div>
+<a class="nav-link" href="dashboard-agent-lifecycle.html"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg><span class="nav-text">Dashboard Agent Lifecycle</span><span></span></a>
+<a class="nav-link" href="dashboard.html"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 13h6V4H4v9Z"></path><path d="M14 20h6V4h-6v16Z"></path><path d="M4 20h6v-3H4v3Z"></path></svg><span class="nav-text">Dashboard Commission</span><span></span></a>
+<!-- 2. Agent Lifecycle -->
+<div class="nav-section-title">Agent Lifecycle</div>
+<div class="nav-group collapsed">
+<a class="nav-group-head" href="#"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg><span class="nav-text">Recruitment &amp; Onboarding</span><span class="nav-chevron">⌃</span></a>
+<div class="nav-submenu">
+<a class="nav-sub-link" href="#">Recruitment Pipeline</a>
+<a class="nav-sub-link" href="#">Candidates List</a>
+<a class="nav-sub-link" href="#">Recruitment Approval</a>
+<a class="nav-sub-link" href="#">Document Verification</a>
+<a class="nav-sub-link" href="#">Agent Onboarding</a>
+</div>
+</div>
+<div class="nav-group nav-group-active">
+<a class="nav-group-head" href="#"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg><span class="nav-text">Agent Management</span><span class="nav-chevron">⌃</span></a>
+<div class="nav-submenu">
+<a class="nav-sub-link active" href="agent-master-list.html">Agent Master List</a>
+<a class="nav-sub-link" href="#">Agent Hierarchy Tree</a>
+<a class="nav-sub-link" href="#">Agent Status &amp; License</a>
+<a class="nav-sub-link" href="#">Agent Mutation Request</a>
+</div>
+</div>
+<!-- 3. Data & Master -->
+<div class="nav-section-title">Data &amp; Master</div>
+<a class="nav-link" href="modules.html"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path><circle cx="7" cy="5" r="1.5"></circle><circle cx="7" cy="12" r="1.5"></circle><circle cx="7" cy="19" r="1.5"></circle></svg><span class="nav-text">Master Data</span><span></span></a>
+<div class="nav-group collapsed">
+<a class="nav-group-head" href="#"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 7a8 3 0 1 0 16 0A8 3 0 1 0 4 7"></path><path d="M4 7v10a8 3 0 0 0 16 0V7"></path><path d="M4 12a8 3 0 0 0 16 0"></path></svg><span class="nav-text">Data Management</span><span class="nav-chevron">⌃</span></a>
+<div class="nav-submenu">
+<a class="nav-sub-link" href="data-integration.html">Import Data</a>
+<a class="nav-sub-link" href="data-mapping.html">Data Mapping</a>
+<a class="nav-sub-link" href="integration-logs.html">Integration Logs</a>
+<a class="nav-sub-link" href="data-quality.html">Data Quality</a>
+<a class="nav-sub-link" href="data-preparation.html">Data Preparation</a>
+</div>
+</div>
+<!-- 4. Commission & Benefit -->
+<div class="nav-section-title">Commission &amp; Benefit</div>
+<div class="nav-group collapsed">
+<a class="nav-group-head" href="#"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h7"></path><path d="m15 15 2 2 4-4"></path></svg><span class="nav-text">Formula &amp; Rules</span><span class="nav-chevron">⌃</span></a>
+<div class="nav-submenu">
+<a class="nav-sub-link" href="formula-list.html">Formula List</a>
+<a class="nav-sub-link" href="rule-builder.html">Rule Builder</a>
+</div>
+</div>
+<div class="nav-group collapsed">
+<a class="nav-group-head" href="#"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 19V5"></path><path d="M4 19h16"></path><path d="m7 15 4-4 3 3 5-7"></path></svg><span class="nav-text">Commission Processing</span><span class="nav-chevron">⌃</span></a>
+<div class="nav-submenu">
+<a class="nav-sub-link" href="commission-calculation.html">Commission Calculation</a>
+<a class="nav-sub-link" href="adjustment-management.html">Adjustment Management</a>
+<a class="nav-sub-link" href="commission-approval.html">Commission Approval</a>
+</div>
+</div>
+<div class="nav-group collapsed">
+<a class="nav-group-head" href="#"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><rect height="14" rx="2" width="18" x="3" y="5"></rect><path d="M3 10h18M7 15h4"></path></svg><span class="nav-text">Reports &amp; Payout</span><span class="nav-chevron">⌃</span></a>
+<div class="nav-submenu">
+<a class="nav-sub-link" href="payout-file.html">Pay Order / Payout File</a>
+<a class="nav-sub-link" href="e-slip-agent.html">e-Slip Agent</a>
+</div>
+</div>
+</nav>
+
+    <div class="sidebar-footer">
+      <div class="system-card">
+        <div class="system-card-head">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#12B9C3" aria-hidden="true">
+            <path d="M12 2 20 5.6v6.1c0 5-3.4 8.8-8 10.3-4.6-1.5-8-5.3-8-10.3V5.6L12 2Z" />
+          </svg>
+          <span>Sistem Informasi</span>
+        </div>
+        <span class="system-version">COMBEN v2.0.0</span>
+        <span class="environment">Production <i class="environment-dot"></i></span>
+      </div>
+      <p class="copyright">&copy; 2025 COMBEN. All rights reserved.</p>
+    </div>
+  </aside>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="icon-button" type="button" data-sidebar-toggle aria-label="Tutup atau buka sidebar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="topbar-actions">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="16" height="16">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+          <input type="text" placeholder="Search anything...">
+          <span class="search-shortcut">⌘ K</span>
+        </div>
+        <button class="icon-button" type="button" aria-label="Notifikasi">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 7h18s-3 0-3-7" />
+            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+          </svg>
+          <span class="badge" style="background-color: #F59E0B; color: white;">8</span>
+        </button>
+        <button class="icon-button" type="button" aria-label="Bantuan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M9.1 9a3 3 0 1 1 5.8 1c-.7 1.1-1.8 1.4-2.4 2.3-.3.4-.5.9-.5 1.7" />
+            <path d="M12 17h.01" />
+          </svg>
+        </button>
+        <div class="profile">
+          <span class="avatar" style="background-color: #12B9C3; color: white; background-image: none;">AD</span>
+          <span class="profile-copy">
+            <span class="profile-name">Admin User</span>
+            <span class="profile-role">Administrator</span>
+          </span>
+          <button class="icon-button" type="button" aria-label="Menu profil">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+                    <main class="page-main">
+      <div class="content-header" style="display: flex; justify-content: space-between; align-items: flex-start;">
+        <div class="page-title-group">
+          <a href="agent-master-list.html" style="display: flex; align-items: center; gap: 6px; font-size: 13px; color: #2563EB; font-weight: 500; text-decoration: none; margin-bottom: 12px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Kembali ke Daftar Agen
+          </a>
+          <h1 id="agent-profile-title" class="page-title" style="margin-bottom: 4px;">Agent Profile Detail</h1>
+          <p class="page-subtitle">Informasi lengkap dan riwayat aktivitas agen</p>
+        </div>
+        <div class="page-actions" style="display: flex; gap: 12px; margin-top: 28px;">
+          <button class="button button-outline" style="background: white; border: 1px solid #E5E7EB; color: #374151; display: flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 6px; font-size: 14px; font-weight: 500; cursor: pointer;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            Unduh Profil (PDF)
+          </button>
+          <button class="button button-primary" style="background: #12B9C3; border: 1px solid #12B9C3; color: white; display: flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 6px; font-size: 14px; font-weight: 500; cursor: pointer;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            Ubah Data
+          </button>
+        </div>
+      </div>
+
+      <div class="profile-layout">
+        <!-- Left Column -->
+        <div class="profile-left">
+          
+          <!-- Hero Card -->
+          <div class="profile-hero" style="display: flex; padding: 24px; gap: 32px; align-items: center; background: white; border: 1px solid #E5E7EB; border-radius: 8px; margin-bottom: 24px;">
+            
+            <div class="avatar-container" style="position: relative; flex-shrink: 0;">
+              <div class="avatar-large" style="width: 100px; height: 100px; border-radius: 50%; overflow: hidden; border: 2px solid #E5E7EB;">
+                <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="Andi Hermawan" style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+              <div class="status-indicator" style="position: absolute; bottom: 4px; right: 8px; width: 14px; height: 14px; background: #10B981; border: 2px solid white; border-radius: 50%;"></div>
+            </div>
+            
+            <div class="hero-info" style="flex: 1; display: flex; flex-direction: column;">
+              <div class="hero-top-row" style="display: flex; align-items: center; gap: 12px; margin-bottom: 4px;">
+                <h2 class="hero-name" style="font-size: 20px; font-weight: 600; color: #111827; margin: 0;">Andi Hermawan</h2>
+                <span class="status-pill active" style="background: #D1FAE5; color: #065F46; border: none; font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 500;">Aktif</span>
+              </div>
+              <div class="hero-id" style="font-size: 13px; color: #6B7280; display: flex; align-items: center; gap: 8px; font-weight: 500; margin-bottom: 12px;">
+                AGT-000123
+                <button class="copy-btn" aria-label="Copy ID" style="background: none; border: none; color: #9CA3AF; cursor: pointer; padding: 2px; display: inline-flex;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+              </div>
+              
+              <div class="hero-badges" style="display: flex; align-items: center; border-top: none;">
+                
+                <div class="badge-item" style="display: flex; align-items: flex-start; gap: 10px; padding: 0 32px 0 0; border-right: 1px solid #E5E7EB; flex: none;">
+                  <div class="badge-icon" style="color: #2563EB; margin-top: 2px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                  <div class="badge-content" style="display: flex; flex-direction: column;">
+                    <span class="badge-label" style="font-size: 12px; color: #6B7280; margin-bottom: 2px;">Cabang</span>
+                    <span class="badge-val" style="font-size: 14px; font-weight: 600; color: #111827;">Jakarta Selatan</span>
+                  </div>
+                </div>
+                
+                <div class="badge-item" style="display: flex; align-items: flex-start; gap: 10px; padding: 0 32px; border-right: 1px solid #E5E7EB; flex: none;">
+                  <div class="badge-icon" style="color: #2563EB; margin-top: 2px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></div>
+                  <div class="badge-content" style="display: flex; flex-direction: column;">
+                    <span class="badge-label" style="font-size: 12px; color: #6B7280; margin-bottom: 2px;">Channel</span>
+                    <span class="badge-val" style="font-size: 14px; font-weight: 600; color: #111827;">Agency</span>
+                  </div>
+                </div>
+
+                <div class="badge-item" style="display: flex; align-items: flex-start; gap: 10px; padding: 0 32px; border-right: 1px solid #E5E7EB; flex: none;">
+                  <div class="badge-icon" style="color: #2563EB; margin-top: 2px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg></div>
+                  <div class="badge-content" style="display: flex; flex-direction: column;">
+                    <span class="badge-label" style="font-size: 12px; color: #6B7280; margin-bottom: 2px;">Posisi</span>
+                    <span class="badge-val" style="font-size: 14px; font-weight: 600; color: #111827;">Agen Asuransi</span>
+                  </div>
+                </div>
+
+                <div class="badge-item" style="display: flex; align-items: flex-start; gap: 10px; padding-left: 32px; border-right: none; flex: none;">
+                  <div class="badge-icon" style="color: #2563EB; margin-top: 2px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                  <div class="badge-content" style="display: flex; flex-direction: column;">
+                    <span class="badge-label" style="font-size: 12px; color: #6B7280; margin-bottom: 2px;">Supervisor</span>
+                    <span class="badge-val" style="font-size: 14px; font-weight: 600; color: #111827;">Dedi Kurniawan</span>
+                    <span style="color: #9CA3AF; font-size: 12px; margin-top: 2px;">AGT-002346</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabs & Content Card -->
+          <div class="tabs-and-content-card" style="background: white; border: 1px solid #E5E7EB; border-radius: 8px;">
+            <!-- Tabs -->
+            <div class="profile-tabs-wrapper" style="margin-bottom: 0;">
+              <div class="profile-tabs" style="border: none; border-bottom: 1px solid #E5E7EB; border-radius: 0;">
+                <button class="profile-tab active" style="color: #12B9C3; border-bottom-color: #12B9C3;">Profil Pribadi</button>
+              <button class="profile-tab">Kontak</button>
+              <button class="profile-tab">Data Bank</button>
+              <button class="profile-tab">Dokumen & Lisensi</button>
+              <button class="profile-tab">Assignment</button>
+              <button class="profile-tab">Riwayat Mutasi</button>
+              <button class="profile-tab">Catatan</button>
+            </div>
+            </div>
+
+            <!-- Tab Content Grid -->
+            <div class="tab-content-grid" style="padding: 24px; gap: 24px;">
+              
+              <!-- Col 1 -->
+              <div class="tab-col" style="border: 1px solid #E5E7EB; border-radius: 8px; padding: 20px;">
+              <h3 class="tab-col-title">Informasi Pribadi</h3>
+              <div class="info-list">
+                <div class="info-row"><span class="info-key">Nama Lengkap</span><span class="info-val">Andi Hermawan</span></div>
+                <div class="info-row"><span class="info-key">Nama Panggilan</span><span class="info-val">Andi</span></div>
+                <div class="info-row"><span class="info-key">Tempat, Tanggal Lahir</span><span class="info-val">Jakarta, 12 Maret 1990</span></div>
+                <div class="info-row"><span class="info-key">Jenis Kelamin</span><span class="info-val">Laki-laki</span></div>
+                <div class="info-row"><span class="info-key">Status Pernikahan</span><span class="info-val">Menikah</span></div>
+                <div class="info-row"><span class="info-key">Kewarganegaraan</span><span class="info-val">WNI</span></div>
+                <div class="info-row"><span class="info-key">No. KTP</span><span class="info-val">3174091203900001</span></div>
+                <div class="info-row"><span class="info-key">NPWP</span><span class="info-val">31.740.912.0-123.000</span></div>
+                <div class="info-row"><span class="info-key">Agama</span><span class="info-val">Islam</span></div>
+                <div class="info-row"><span class="info-key">Pendidikan Terakhir</span><span class="info-val">S1 Manajemen</span></div>
+                <div class="info-row"><span class="info-key">Tanggal Bergabung</span><span class="info-val">15 Juni 2022</span></div>
+                <div class="info-row"><span class="info-key">Sumber Rekrutmen</span><span class="info-val">Referral</span></div>
+              </div>
+            </div>
+
+            <!-- Col 2 -->
+            <div class="tab-col" style="border: 1px solid #E5E7EB; border-radius: 8px; padding: 20px;">
+              <div class="tab-col-header">
+                <h3 class="tab-col-title">Ringkasan Kinerja</h3>
+                <div class="dropdown-mini">
+                  Mei 2025 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="m6 9 6 6 6-6"/></svg>
+                </div>
+              </div>
+              <div class="info-list">
+                <div class="info-row"><span class="info-key"><svg viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" width="14" height="14" style="margin-right: 6px;"><path d="m12 2 10 6.5v7L12 22 2 15.5v-7L12 2z"/><path d="m12 22v-6.5"/></svg>Total Premi (YTD)</span><span class="info-val" style="font-weight: 600;">Rp 1.245.680.000</span></div>
+                <div class="info-row"><span class="info-key"><svg viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" width="14" height="14" style="margin-right: 6px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>Polis Issued (YTD)</span><span class="info-val" style="font-weight: 600;">132 Polis</span></div>
+                <div class="info-row"><span class="info-key"><svg viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" width="14" height="14" style="margin-right: 6px;"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Persistensi 13M</span><span class="info-val" style="font-weight: 600;">84.6%</span></div>
+                <div class="info-row"><span class="info-key"><svg viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" width="14" height="14" style="margin-right: 6px;"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/><path d="M12 2a14.5 14.5 0 0 0 0 20"/></svg>Persistensi 25M</span><span class="info-val" style="font-weight: 600;">72.3%</span></div>
+                <div class="info-row"><span class="info-key"><svg viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" width="14" height="14" style="margin-right: 6px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg>New Business (YTD)</span><span class="info-val" style="font-weight: 600;">96 Polis</span></div>
+                <div class="info-row"><span class="info-key"><svg viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" width="14" height="14" style="margin-right: 6px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M2 12h10"/><path d="m9 9 3 3-3 3"/></svg>Renewal (YTD)</span><span class="info-val" style="font-weight: 600;">36 Polis</span></div>
+              </div>
+              <div style="margin-top: 24px; text-align: center;">
+                <a href="#" class="button-outline" style="display: flex; justify-content: center; align-items: center; width: 100%; padding: 10px; border: 1px solid #E5E7EB; border-radius: 8px; color: #2563EB; font-size: 13px; font-weight: 600; text-decoration: none; gap: 8px; transition: all 0.2s ease;">
+                  Lihat Detail Kinerja
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="m9 18 6-6-6-6"/></svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Col 3 -->
+            <div class="tab-col" style="border: 1px solid #E5E7EB; border-radius: 8px; padding: 20px;">
+              <h3 class="tab-col-title">Informasi Penugasan</h3>
+              <div class="info-list">
+                <div class="info-row"><span class="info-key">Cabang</span><span class="info-val">Jakarta Selatan</span></div>
+                <div class="info-row"><span class="info-key">Channel</span><span class="info-val">Agency</span></div>
+                <div class="info-row"><span class="info-key">Unit / Divisi</span><span class="info-val">Agency Sales</span></div>
+                <div class="info-row"><span class="info-key">Wilayah Kerja</span><span class="info-val">Jakarta Selatan</span></div>
+                <div class="info-row"><span class="info-key">Tanggal Penugasan</span><span class="info-val">15 Juni 2022</span></div>
+                <div class="info-row"><span class="info-key">Status Keagenan</span><span class="info-val" style="color: #059669; font-weight: 500;">Aktif</span></div>
+                <div class="info-row"><span class="info-key">Tipe Agen</span><span class="info-val">Full Time</span></div>
+              </div>
+            </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="profile-right">
+          
+          <div class="metric-list-card">
+            
+            <div class="metric-item">
+              <div class="metric-icon" style="color: #14B8A6; background: #CCFBF1;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+              <div class="metric-details">
+                <div class="metric-label">Masa Aktif</div>
+                <div class="metric-value">2 Tahun 11 Bulan</div>
+                <div class="metric-sub">Sejak 15 Juni 2022</div>
+              </div>
+            </div>
+
+            <div class="metric-item">
+              <div class="metric-icon" style="color: #3B82F6; background: #DBEAFE;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+              <div class="metric-details">
+                <div class="metric-label">Pencapaian Target (YTD)</div>
+                <div class="metric-value">104.2% <span class="metric-tag tag-green">Di Atas Target</span></div>
+                <div class="metric-sub">Target: Rp 1.195.000.000</div>
+              </div>
+            </div>
+
+            <div class="metric-item">
+              <div class="metric-icon" style="color: #F59E0B; background: #FEF3C7;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg></div>
+              <div class="metric-details">
+                <div class="metric-label">Dokumen Lengkap</div>
+                <div class="metric-value">12 / 14 <span class="metric-tag tag-orange">Perlu Dilengkapi</span></div>
+                <div class="metric-sub">85.7%</div>
+              </div>
+            </div>
+
+            <div class="metric-item">
+              <div class="metric-icon" style="color: #8B5CF6; background: #EDE9FE;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+              <div class="metric-details">
+                <div class="metric-label">Lisensi Berakhir</div>
+                <div class="metric-value">15 Ags 2025 <span class="metric-tag tag-orange">60 hari lagi</span></div>
+                <div class="metric-sub">AGT-001234 (AAJI)</div>
+              </div>
+            </div>
+
+            <div class="metric-item">
+              <div class="metric-icon" style="color: #10B981; background: #D1FAE5;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+              <div class="metric-details">
+                <div class="metric-label">Status Portal Agen</div>
+                <div class="metric-value">Aktif <span class="metric-tag tag-green">Aman</span></div>
+                <div class="metric-sub">Terakhir login: 22 Mei 2025 09:24</div>
+              </div>
+            </div>
+
+            <div class="metric-action-bottom" style="border-top: none; padding-top: 8px;">
+              <a href="#" class="button-outline" style="display: flex; justify-content: center; align-items: center; width: 100%; padding: 12px; border: 1px solid #E5E7EB; border-radius: 8px; color: #2563EB; font-size: 13px; font-weight: 600; text-decoration: none; gap: 8px; transition: all 0.2s ease;">
+                Lihat Ringkasan Lengkap
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="m9 18 6-6-6-6"/></svg>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Timeline Section -->
+      <div class="timeline-section-card">
+        <div class="timeline-header">
+          <h3 class="timeline-title">Aktivitas Terbaru</h3>
+          <a href="#" style="color: #2563EB; font-size: 13px; font-weight: 500; text-decoration: none; display: flex; align-items: center; gap: 4px;">Lihat semua aktivitas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="m9 18 6-6-6-6"/></svg></a>
+        </div>
+        
+        <div class="timeline-track">
+          <!-- Item 1 -->
+          <div class="timeline-item">
+            <div class="tl-icon" style="background: #D1FAE5; color: #10B981;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+            </div>
+            <div class="tl-content">
+              <div class="tl-title">Onboarding Selesai</div>
+              <div class="tl-desc">Proses onboarding agen selesai dan akun portal diaktifkan.</div>
+              <div class="tl-meta">22 Mei 2025 09:24<br>oleh: Maya Lestari</div>
+            </div>
+            <svg class="tl-arrow" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" width="16" height="16"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="timeline-item">
+            <div class="tl-icon" style="background: #DBEAFE; color: #3B82F6;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
+            </div>
+            <div class="tl-content">
+              <div class="tl-title">Dokumen Diperbarui</div>
+              <div class="tl-desc">Dokumen KTP berhasil diperbarui dan terverifikasi.</div>
+              <div class="tl-meta">20 Mei 2025 14:18<br>oleh: Sistem</div>
+            </div>
+            <svg class="tl-arrow" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" width="16" height="16"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="timeline-item">
+            <div class="tl-icon" style="background: #FFEDD5; color: #F97316;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+            </div>
+            <div class="tl-content">
+              <div class="tl-title">Mutasi Wilayah</div>
+              <div class="tl-desc">Agen dimutasi dari Cabang Jakarta Utara ke Jakarta Selatan.</div>
+              <div class="tl-meta">15 Mar 2025 10:32<br>oleh: Budi Santoso</div>
+            </div>
+            <svg class="tl-arrow" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" width="16" height="16"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="timeline-item">
+            <div class="tl-icon" style="background: #F3E8FF; color: #A855F7;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <div class="tl-content">
+              <div class="tl-title">Lisensi Diperbarui</div>
+              <div class="tl-desc">Lisensi AAJI diperbarui dan berlaku hingga 15 Ags 2025.</div>
+              <div class="tl-meta">15 Agu 2024 11:05<br>oleh: Dedi Kurniawan</div>
+            </div>
+            <svg class="tl-arrow" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" width="16" height="16"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="timeline-item">
+            <div class="tl-icon" style="background: #CCFBF1; color: #14B8A6;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="tl-content">
+              <div class="tl-title">Target Tercapai</div>
+              <div class="tl-desc">Target bulanan April 2025 berhasil dicapai 110%.</div>
+              <div class="tl-meta">5 Mei 2025 16:40<br>oleh: Sistem</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/agent-master.js?v=1"></script>
+</body>
+
+</html>

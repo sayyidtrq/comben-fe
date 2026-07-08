@@ -417,3 +417,235 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
   }
+
+  // Dashboard Agent Lifecycle Specific Scripts
+  document.addEventListener('DOMContentLoaded', () => {
+    // 6. Active Agents by Branch / Channel (Horizontal Bar Chart)
+    const activeAgentsCtx = document.getElementById('activeAgentsChart');
+    if (activeAgentsCtx) {
+      new Chart(activeAgentsCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Jakarta Selatan', 'Surabaya', 'Bandung', 'Medan', 'Makassar', 'Balikpapan', 'Semarang', 'Palembang', 'Denpasar', 'Banjarmasin'],
+          datasets: [{
+            data: [812, 678, 512, 421, 389, 312, 298, 287, 256, 217],
+            backgroundColor: '#12B9C3',
+            borderRadius: 4,
+            barThickness: 12
+          }]
+        },
+        options: {
+          indexAxis: 'y', // Horizontal
+          responsive: true,
+          maintainAspectRatio: false,
+          layout: {
+            padding: { right: 40 }
+          },
+          plugins: {
+            legend: { display: false }
+          },
+          scales: {
+            x: {
+              beginAtZero: true,
+              ticks: {
+                maxTicksLimit: 6,
+                callback: function(value) {
+                  if (value === 0) return '0';
+                  if (value >= 1000) return (value / 1000) + 'K';
+                  return value;
+                }
+              },
+              border: { display: false }
+            },
+            y: {
+              grid: { display: false },
+              border: { display: false }
+            }
+          }
+        },
+        plugins: [{
+          afterDraw: function(chart) {
+            var ctx = chart.ctx;
+            chart.data.datasets.forEach(function(dataset, i) {
+              var meta = chart.getDatasetMeta(i);
+              if (!meta.hidden) {
+                meta.data.forEach(function(element, index) {
+                  ctx.fillStyle = '#64748B';
+                  var fontSize = 12;
+                  var fontFamily = 'Inter, sans-serif';
+                  ctx.font = fontSize + "px " + fontFamily;
+                  ctx.textAlign = 'left';
+                  ctx.textBaseline = 'middle';
+                  var dataString = dataset.data[index];
+                  var position = element.tooltipPosition();
+                  ctx.fillText(dataString, position.x + 8, position.y);
+                });
+              }
+            });
+          }
+        }]
+      });
+    }
+
+    // 7. Distribusi Status Agen (Doughnut Chart)
+    const agentStatusCtx = document.getElementById('agentStatusChart');
+    if (agentStatusCtx) {
+      const statusData = [4028, 412, 182, 160];
+      const statusLabels = ['Active', 'Inactive', 'Suspend', 'Resign'];
+      const statusColors = ['#12B9C3', '#3B82F6', '#F59E0B', '#8B5CF6']; 
+      
+      new Chart(agentStatusCtx, {
+        type: 'doughnut',
+        data: {
+          labels: statusLabels,
+          datasets: [{
+            data: statusData,
+            backgroundColor: statusColors,
+            borderWidth: 0,
+            hoverOffset: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutout: '75%',
+          plugins: {
+            legend: { display: false }
+          }
+        },
+        plugins: [{
+          beforeDraw: function(chart) {
+            const width = chart.width, height = chart.height, ctx = chart.ctx;
+            ctx.restore();
+            const fontSize = (height / 8).toFixed(2);
+            ctx.font = "bold " + fontSize + "px Inter, sans-serif";
+            ctx.textBaseline = "middle";
+            ctx.fillStyle = "#111827";
+            const text = "4.782", textX = Math.round((width - ctx.measureText(text).width) / 2), textY = height / 2 - 8;
+            ctx.fillText(text, textX, textY);
+            
+            ctx.font = "500 " + (fontSize / 2.2).toFixed(2) + "px Inter, sans-serif";
+            ctx.fillStyle = "#6B7280";
+            const subText = "Total", subTextX = Math.round((width - ctx.measureText(subText).width) / 2), subTextY = height / 2 + 12;
+            ctx.fillText(subText, subTextX, subTextY);
+            ctx.save();
+          }
+        }]
+      });
+
+      // Populate Custom Legend
+      const legendContainer = document.getElementById('donutLegend');
+      if (legendContainer) {
+        const percentages = ['84.2%', '8.6%', '3.8%', '3.4%'];
+        let legendHTML = '';
+        statusLabels.forEach((label, i) => {
+          legendHTML += `
+            <div class="legend-item">
+              <div class="legend-dot" style="background-color: ${statusColors[i]}"></div>
+              <div class="legend-name">${label}</div>
+              <div class="legend-value">${statusData[i]}</div>
+              <div class="legend-perc">${percentages[i]}</div>
+            </div>
+          `;
+        });
+        legendContainer.innerHTML = legendHTML;
+      }
+    }
+
+    // 8. Dummy Data injection for Lists
+    // Licenses Expiring Soon
+    const licensesList = document.getElementById('licensesList');
+    if (licensesList) {
+      const licenses = [
+        { name: 'Andi Hermawan', id: 'AGT-000123', date: '15 Jun 2025', days: '15 hari lagi', initials: 'AH' },
+        { name: 'Dewi Sartika', id: 'AGT-000456', date: '20 Jun 2025', days: '20 hari lagi', initials: 'DS' },
+        { name: 'Rudi Pratama', id: 'AGT-000789', date: '27 Jun 2025', days: '27 hari lagi', initials: 'RP' },
+        { name: 'Yuliana Lestari', id: 'AGT-001234', date: '05 Jul 2025', days: '35 hari lagi', initials: 'YL' },
+        { name: 'Bambang Setiawan', id: 'AGT-001567', date: '12 Jul 2025', days: '42 hari lagi', initials: 'BS' }
+      ];
+      let html = '';
+      licenses.forEach(l => {
+        html += `
+          <div class="al-list-item">
+            <div class="al-list-avatar" style="background-color: #E3F2FD; color: #1E88E5;">${l.initials}</div>
+            <div class="al-list-content">
+              <div class="al-list-title">${l.name}</div>
+              <div class="al-list-subtitle">${l.id}</div>
+            </div>
+            <div class="al-list-meta">
+              <div class="al-list-meta-title">${l.date}</div>
+              <div class="al-list-meta-subtitle">${l.days}</div>
+            </div>
+          </div>
+        `;
+      });
+      licensesList.innerHTML = html;
+    }
+
+    // Latest Approvals
+    const approvalsList = document.getElementById('approvalsList');
+    if (approvalsList) {
+      const approvals = [
+        { name: 'Siti Nurhaliza', id: 'AGT-002345', role: 'Agen', branch: 'Jakarta Selatan', date: '22 Mei 2025', by: 'Oleh: Rina Setiawati' },
+        { name: 'Fajar Ramadhan', id: 'AGT-002346', role: 'Agen', branch: 'Bandung', date: '21 Mei 2025', by: 'Oleh: Dedi Kurniawan' },
+        { name: 'Nanda Pratama', id: 'AGT-002347', role: 'Unit Manager', branch: 'Surabaya', date: '20 Mei 2025', by: 'Oleh: Budi Santoso' },
+        { name: 'Maya Lestari', id: 'AGT-002348', role: 'Agen', branch: 'Medan', date: '19 Mei 2025', by: 'Oleh: Rina Setiawati' },
+        { name: 'Ahmad Fauzi', id: 'AGT-002349', role: 'Agen', branch: 'Makassar', date: '18 Mei 2025', by: 'Oleh: Dedi Kurniawan' }
+      ];
+      let html = '';
+      approvals.forEach(a => {
+        html += `
+          <div class="al-list-item">
+            <div class="al-list-avatar" style="background-color: transparent; color: #10B981; border: 1px solid #E5E7EB;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="20" height="20" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div class="al-list-content">
+              <div class="al-list-title">${a.name}</div>
+              <div class="al-list-subtitle">${a.id}</div>
+            </div>
+            <div class="al-list-content" style="flex: 0.8;">
+              <div class="al-list-title" style="font-weight: 500; font-size: 12px; color: #4B5563;">${a.role}</div>
+            </div>
+            <div class="al-list-content" style="flex: 1;">
+              <div class="al-list-title" style="font-weight: 500; font-size: 12px; color: #4B5563;">${a.branch}</div>
+            </div>
+            <div class="al-list-meta">
+              <div class="al-list-meta-title" style="font-weight: 500; color: #6B7280; font-size: 12px;">${a.date}</div>
+              <div class="al-list-meta-subtitle" style="color: #6B7280; font-weight: normal; margin-top: 4px;">${a.by}</div>
+            </div>
+          </div>
+        `;
+      });
+      approvalsList.innerHTML = html;
+    }
+
+    // Aktivitas Terbaru
+    const activitiesList = document.getElementById('activitiesList');
+    if (activitiesList) {
+      const activities = [
+        { text: 'Onboarding dimulai untuk Dinda Ayu Lestari', sub: 'AGT-002567 • Jakarta Selatan', time: '10:24', iconColor: '#10B981', bgColor: '#D1FAE5', icon: '<path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><circle cx="20" cy="11" r="2"/>' },
+        { text: 'Dokumen berhasil diverifikasi untuk Riko Ananda', sub: 'AGT-002566 • Bandung', time: '09:47', iconColor: '#3B82F6', bgColor: '#DBEAFE', icon: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/>' },
+        { text: 'Pengajuan mutasi untuk Budi Setiawan', sub: 'AGT-002134 • Surabaya ke Jakarta Selatan', time: 'Kemarin 16:32', iconColor: '#F59E0B', bgColor: '#FEF3C7', icon: '<polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/>' },
+        { text: 'Persetujuan rekrutmen untuk 3 kandidat', sub: 'Oleh: Rina Setiawati', time: 'Kemarin 14:10', iconColor: '#8B5CF6', bgColor: '#EDE9FE', icon: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>' },
+        { text: 'Lisensi akan kadaluarsa untuk 12 agen', sub: 'Dalam 30 hari ke depan', time: 'Kemarin 09:15', iconColor: '#12B9C3', bgColor: '#E0F2F1', icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>' }
+      ];
+      let html = '';
+      activities.forEach(a => {
+        html += `
+          <div class="activity-item">
+            <div class="activity-icon" style="background-color: ${a.bgColor}; color: ${a.iconColor};">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${a.icon}</svg>
+            </div>
+            <div class="activity-content">
+              <div class="activity-title">${a.text}</div>
+              <div class="activity-time">${a.sub}</div>
+            </div>
+            <div class="activity-meta">
+              <div class="activity-time" style="margin-top: 0;">${a.time}</div>
+            </div>
+          </div>
+        `;
+      });
+      activitiesList.innerHTML = html;
+    }
+  });

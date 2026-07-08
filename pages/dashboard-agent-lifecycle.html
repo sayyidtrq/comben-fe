@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Agent Lifecycle - COMBEN</title>
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M24 3 42 13.5v21L24 45 6 34.5v-21L24 3Z' fill='%2312B9C3'/%3E%3Cpath d='M24 12.2 34.5 18.3v12.2L24 36.7l-10.5-6.2V18.3L24 12.2Z' fill='%23F8FBFD'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css?v=4">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/dashboard-agent-lifecycle.css?v=4">
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <aside class="sidebar" aria-label="Navigasi utama">
+    <a class="brand" href="modules.html" aria-label="COMBEN Home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg class="logo-cube" viewBox="0 0 48 48" fill="none">
+          <path d="M24 3 42 13.5v21L24 45 6 34.5v-21L24 3Z" fill="#12B9C3" />
+          <path d="M24 12.2 34.5 18.3v12.2L24 36.7l-10.5-6.2V18.3L24 12.2Z" fill="#F8FBFD" />
+          <path d="M24 12.2 34.5 18.3 24 24.3 13.5 18.3 24 12.2Z" fill="#D9F8F8" />
+        </svg>
+      </span>
+      <span class="brand-copy">
+        <span class="brand-title">COMBEN</span>
+        <span class="brand-subtitle">Commission Benefit System</span>
+      </span>
+    </a>
+
+        <nav class="nav-list">
+<!-- 1. Dashboards -->
+<div class="nav-section-title">Dashboards</div>
+<a class="nav-link active" href="dashboard-agent-lifecycle.html"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg><span class="nav-text">Dashboard Agent Lifecycle</span><span></span></a>
+<a class="nav-link" href="dashboard.html"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 13h6V4H4v9Z"></path><path d="M14 20h6V4h-6v16Z"></path><path d="M4 20h6v-3H4v3Z"></path></svg><span class="nav-text">Dashboard Commission</span><span></span></a>
+<!-- 2. Agent Lifecycle -->
+<div class="nav-section-title">Agent Lifecycle</div>
+<div class="nav-group collapsed">
+<a class="nav-group-head" href="#"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg><span class="nav-text">Recruitment &amp; Onboarding</span><span class="nav-chevron">⌃</span></a>
+<div class="nav-submenu">
+<a class="nav-sub-link" href="#">Recruitment Pipeline</a>
+<a class="nav-sub-link" href="#">Candidates List</a>
+<a class="nav-sub-link" href="#">Recruitment Approval</a>
+<a class="nav-sub-link" href="#">Document Verification</a>
+<a class="nav-sub-link" href="#">Agent Onboarding</a>
+</div>
+</div>
+<div class="nav-group collapsed">
+<a class="nav-group-head" href="#"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg><span class="nav-text">Agent Management</span><span class="nav-chevron">⌃</span></a>
+<div class="nav-submenu">
+<a class="nav-sub-link" href="agent-master-list.html">Agent Master List</a>
+<a class="nav-sub-link" href="#">Agent Hierarchy Tree</a>
+<a class="nav-sub-link" href="#">Agent Status &amp; License</a>
+<a class="nav-sub-link" href="#">Agent Mutation Request</a>
+</div>
+</div>
+<!-- 3. Data & Master -->
+<div class="nav-section-title">Data &amp; Master</div>
+<a class="nav-link" href="modules.html"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path><circle cx="7" cy="5" r="1.5"></circle><circle cx="7" cy="12" r="1.5"></circle><circle cx="7" cy="19" r="1.5"></circle></svg><span class="nav-text">Master Data</span><span></span></a>
+<div class="nav-group collapsed">
+<a class="nav-group-head" href="#"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 7a8 3 0 1 0 16 0A8 3 0 1 0 4 7"></path><path d="M4 7v10a8 3 0 0 0 16 0V7"></path><path d="M4 12a8 3 0 0 0 16 0"></path></svg><span class="nav-text">Data Management</span><span class="nav-chevron">⌃</span></a>
+<div class="nav-submenu">
+<a class="nav-sub-link" href="data-integration.html">Import Data</a>
+<a class="nav-sub-link" href="data-mapping.html">Data Mapping</a>
+<a class="nav-sub-link" href="integration-logs.html">Integration Logs</a>
+<a class="nav-sub-link" href="data-quality.html">Data Quality</a>
+<a class="nav-sub-link" href="data-preparation.html">Data Preparation</a>
+</div>
+</div>
+<!-- 4. Commission & Benefit -->
+<div class="nav-section-title">Commission &amp; Benefit</div>
+<div class="nav-group collapsed">
+<a class="nav-group-head" href="#"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h7"></path><path d="m15 15 2 2 4-4"></path></svg><span class="nav-text">Formula &amp; Rules</span><span class="nav-chevron">⌃</span></a>
+<div class="nav-submenu">
+<a class="nav-sub-link" href="formula-list.html">Formula List</a>
+<a class="nav-sub-link" href="rule-builder.html">Rule Builder</a>
+</div>
+</div>
+<div class="nav-group collapsed">
+<a class="nav-group-head" href="#"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 19V5"></path><path d="M4 19h16"></path><path d="m7 15 4-4 3 3 5-7"></path></svg><span class="nav-text">Commission Processing</span><span class="nav-chevron">⌃</span></a>
+<div class="nav-submenu">
+<a class="nav-sub-link" href="commission-calculation.html">Commission Calculation</a>
+<a class="nav-sub-link" href="adjustment-management.html">Adjustment Management</a>
+<a class="nav-sub-link" href="commission-approval.html">Commission Approval</a>
+</div>
+</div>
+<div class="nav-group collapsed">
+<a class="nav-group-head" href="#"><svg fill="none" stroke="currentColor" viewbox="0 0 24 24"><rect height="14" rx="2" width="18" x="3" y="5"></rect><path d="M3 10h18M7 15h4"></path></svg><span class="nav-text">Reports &amp; Payout</span><span class="nav-chevron">⌃</span></a>
+<div class="nav-submenu">
+<a class="nav-sub-link" href="payout-file.html">Pay Order / Payout File</a>
+<a class="nav-sub-link" href="e-slip-agent.html">e-Slip Agent</a>
+</div>
+</div>
+</nav>
+
+    <div class="sidebar-footer">
+      <div class="system-card">
+        <div class="system-card-head">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#12B9C3" aria-hidden="true">
+            <path d="M12 2 20 5.6v6.1c0 5-3.4 8.8-8 10.3-4.6-1.5-8-5.3-8-10.3V5.6L12 2Z" />
+          </svg>
+          <span>Sistem Informasi</span>
+        </div>
+        <span class="system-version">COMBEN v2.0.0</span>
+        <span class="environment">Production <i class="environment-dot"></i></span>
+      </div>
+      <p class="copyright">&copy; 2025 COMBEN. All rights reserved.</p>
+    </div>
+  </aside>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="icon-button" type="button" data-sidebar-toggle aria-label="Tutup atau buka sidebar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="topbar-actions">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="16" height="16">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+          <input type="text" placeholder="Search anything...">
+          <span class="search-shortcut">⌘ K</span>
+        </div>
+        <button class="icon-button" type="button" aria-label="Notifikasi">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 7h18s-3 0-3-7" />
+            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+          </svg>
+          <span class="badge" style="background-color: #F59E0B; color: white;">8</span>
+        </button>
+        <button class="icon-button" type="button" aria-label="Bantuan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M9.1 9a3 3 0 1 1 5.8 1c-.7 1.1-1.8 1.4-2.4 2.3-.3.4-.5.9-.5 1.7" />
+            <path d="M12 17h.01" />
+          </svg>
+        </button>
+        <div class="profile">
+          <span class="avatar" style="background-color: #12B9C3; color: white; background-image: none;">AD</span>
+          <span class="profile-copy">
+            <span class="profile-name">Admin User</span>
+            <span class="profile-role">Administrator</span>
+          </span>
+          <button class="icon-button" type="button" aria-label="Menu profil">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+            <main class="page-main">
+      <section class="dashboard-page" aria-labelledby="dashboard-title">
+        <!-- Dashboard Header -->
+        <div class="content-header page-heading-row">
+          <div>
+            <h1 class="content-title" id="dashboard-title">Dashboard Agent Lifecycle</h1>
+            <p class="content-subtitle">Ringkasan kinerja rekrutmen dan lifecycle agen</p>
+          </div>
+          <div class="filter-row">
+            <div class="filter-dropdown" id="monthFilter">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <select id="monthSelect">
+                <option value="Mei 2025">Mei 2025</option>
+                <option value="Apr 2025">Apr 2025</option>
+                <option value="Mar 2025">Mar 2025</option>
+              </select>
+            </div>
+            <div class="filter-dropdown" id="branchFilter">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+              <select id="branchSelect">
+                <option value="Semua Cabang">Semua Cabang</option>
+                <option value="Jakarta Selatan">Jakarta Selatan</option>
+                <option value="Surabaya">Surabaya</option>
+                <option value="Bandung">Bandung</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metrics Row (Horizontal Layout) -->
+        <div class="al-metrics-row">
+          <div class="al-metric-card">
+            <div class="al-metric-icon icon-teal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="17" y1="11" x2="23" y2="11"/></svg>
+            </div>
+            <div class="al-metric-content">
+              <div class="al-metric-title">Total Applicants</div>
+              <div class="al-metric-value" id="val-applicants">2.458</div>
+              <div class="al-metric-trend positive" id="trend-applicants">
+                <span>↑ 12.4%</span> dari Apr 2025
+              </div>
+            </div>
+          </div>
+
+          <div class="al-metric-card">
+            <div class="al-metric-icon icon-blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><circle cx="20" cy="11" r="2"/></svg>
+            </div>
+            <div class="al-metric-content">
+              <div class="al-metric-title">Onboarding in Progress</div>
+              <div class="al-metric-value" id="val-onboarding">318</div>
+              <div class="al-metric-trend positive" id="trend-onboarding">
+                <span>↑ 8.7%</span> dari Apr 2025
+              </div>
+            </div>
+          </div>
+
+          <div class="al-metric-card">
+            <div class="al-metric-icon icon-green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="al-metric-content">
+              <div class="al-metric-title">Active Agents</div>
+              <div class="al-metric-value" id="val-active">4.782</div>
+              <div class="al-metric-trend positive" id="trend-active">
+                <span>↑ 5.6%</span> dari Apr 2025
+              </div>
+            </div>
+          </div>
+
+          <div class="al-metric-card">
+            <div class="al-metric-icon icon-orange">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+            </div>
+            <div class="al-metric-content">
+              <div class="al-metric-title">Pending Mutation</div>
+              <div class="al-metric-value" id="val-mutation">126</div>
+              <div class="al-metric-trend negative" id="trend-mutation">
+                <span>↓ -3.1%</span> dari Apr 2025
+              </div>
+            </div>
+          </div>
+
+          <div class="al-metric-card">
+            <div class="al-metric-icon icon-yellow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="al-metric-content">
+              <div class="al-metric-title">Licenses Expiring (≤ 60 hari)</div>
+              <div class="al-metric-value" id="val-licenses">243</div>
+              <div class="al-metric-trend positive" id="trend-licenses">
+                <span>↑ 7.2%</span> dari Apr 2025
+              </div>
+            </div>
+          </div>
+
+          <div class="al-metric-card">
+            <div class="al-metric-icon icon-purple">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
+            </div>
+            <div class="al-metric-content">
+              <div class="al-metric-title">Pending Approvals</div>
+              <div class="al-metric-value" id="val-approvals">89</div>
+              <div class="al-metric-trend negative" id="trend-approvals">
+                <span>↓ -11.2%</span> dari Apr 2025
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-al-grid">
+          <!-- Pipeline Rekrutmen (Chevron Layout) -->
+          <article class="al-card col-span-6">
+            <div class="al-card-header">
+              <h2 class="al-card-title">Pipeline Rekrutmen <svg viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></h2>
+              <div class="filter-dropdown">
+                <select id="funnelMonthSelect">
+                  <option>Mei 2025</option>
+                  <option>Apr 2025</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="pipeline-container">
+              <div class="pipeline-stage stage-new">
+                <div class="stage-header">New Applicant</div>
+                <div class="stage-chevron">
+                  <div class="stage-icon-row">
+                    <div class="stage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="17" y1="11" x2="23" y2="11"/></svg></div>
+                    <span class="stage-arrow">→</span>
+                  </div>
+                  <div class="stage-value">1.126</div>
+                  <div class="stage-rate">45.8%</div>
+                </div>
+              </div>
+              <div class="pipeline-stage stage-screen">
+                <div class="stage-header">Screening</div>
+                <div class="stage-chevron">
+                  <div class="stage-icon-row">
+                    <div class="stage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><circle cx="10" cy="12" r="2"/><path d="m14 16-2-2"/></svg></div>
+                    <span class="stage-arrow">→</span>
+                  </div>
+                  <div class="stage-value">684</div>
+                  <div class="stage-rate">27.8%</div>
+                </div>
+              </div>
+              <div class="pipeline-stage stage-interview">
+                <div class="stage-header">Interview</div>
+                <div class="stage-chevron">
+                  <div class="stage-icon-row">
+                    <div class="stage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+                    <span class="stage-arrow">→</span>
+                  </div>
+                  <div class="stage-value">352</div>
+                  <div class="stage-rate">14.3%</div>
+                </div>
+              </div>
+              <div class="pipeline-stage stage-verify">
+                <div class="stage-header">Verification</div>
+                <div class="stage-chevron">
+                  <div class="stage-icon-row">
+                    <div class="stage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+                    <span class="stage-arrow">→</span>
+                  </div>
+                  <div class="stage-value">196</div>
+                  <div class="stage-rate">8.0%</div>
+                </div>
+              </div>
+              <div class="pipeline-stage stage-approved">
+                <div class="stage-header">Approved</div>
+                <div class="stage-chevron">
+                  <div class="stage-icon-row">
+                    <div class="stage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+                    <span class="stage-arrow">→</span>
+                  </div>
+                  <div class="stage-value">142</div>
+                  <div class="stage-rate">8.0%</div>
+                </div>
+              </div>
+              <div class="pipeline-stage stage-rejected">
+                <div class="stage-header">Rejected</div>
+                <div class="stage-chevron">
+                  <div class="stage-icon-row">
+                    <div class="stage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
+                    <span class="stage-arrow">→</span>
+                  </div>
+                  <div class="stage-value">184</div>
+                  <div class="stage-rate">7.5%</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="funnel-conversion">
+              Conversion Rate (Approved/Applicant): <span id="funnel-overall">5.8%</span>
+            </div>
+          </article>
+
+          <!-- Active Agents by Branch -->
+          <article class="al-card col-span-3">
+            <div class="al-card-header">
+              <h2 class="al-card-title">Active Agents by Branch / Channel <svg viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></h2>
+              <div class="filter-dropdown">
+                <select id="topBranchSelect">
+                  <option>Top 10</option>
+                  <option>Top 5</option>
+                </select>
+              </div>
+            </div>
+            <div class="chart-container">
+              <canvas id="activeAgentsChart"></canvas>
+            </div>
+          </article>
+
+          <!-- Licenses Expiring Soon -->
+          <article class="al-card col-span-3">
+            <div class="al-card-header">
+              <h2 class="al-card-title">Licenses Expiring Soon <svg viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></h2>
+              <button class="al-card-action" onclick="loadNextLicenses()">Lihat semua</button>
+            </div>
+            <div class="al-list" id="licensesList">
+              <!-- JS injected -->
+            </div>
+            <button class="action-btn btn-outline" style="margin-top: 16px; width: 100%; justify-content: center;" onclick="loadNextLicenses()">
+              Lihat semua (243) <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="16" height="16"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </article>
+
+          <!-- Distribusi Status Agen (With Custom Legend) -->
+          <article class="al-card col-span-4">
+            <div class="al-card-header">
+              <h2 class="al-card-title">Distribusi Status Agen <svg viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></h2>
+            </div>
+            <div class="donut-layout">
+              <div class="donut-chart-box">
+                <canvas id="agentStatusChart"></canvas>
+              </div>
+              <div class="custom-legend" id="donutLegend">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+            <div style="font-size: 11px; color: #6B7280; margin-top: 10px;">Periode: Mei 2025</div>
+          </article>
+
+          <!-- Latest Approvals -->
+          <article class="al-card col-span-4">
+            <div class="al-card-header">
+              <h2 class="al-card-title">Latest Approvals <svg viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></h2>
+              <button class="al-card-action" onclick="loadNextApprovals()">Lihat semua</button>
+            </div>
+            <div class="al-list" id="approvalsList">
+              <!-- JS Injected -->
+            </div>
+          </article>
+
+          <!-- Aktivitas Terbaru -->
+          <article class="al-card col-span-4">
+            <div class="al-card-header">
+              <h2 class="al-card-title">Aktivitas Terbaru <svg viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></h2>
+              <button class="al-card-action" onclick="loadNextActivities()">Lihat semua</button>
+            </div>
+            <div class="al-list" id="activitiesList" style="gap: 12px;">
+              <!-- JS Injected -->
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/dashboard.js?v=4"></script>
+</body>
+
+</html>
