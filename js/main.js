@@ -9,6 +9,32 @@ function setSidebarState() {
 
 setSidebarState();
 
+function syncNavigationState() {
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+  document.querySelectorAll(".nav-link.active, .nav-sub-link.active").forEach((item) => {
+    item.classList.remove("active");
+  });
+
+  document.querySelectorAll(".nav-group").forEach((group) => {
+    group.classList.remove("nav-group-active");
+  });
+
+  document.querySelectorAll(".nav-link[href], .nav-sub-link[href]").forEach((item) => {
+    const hrefPage = item.getAttribute("href")?.split("/").pop();
+    if (hrefPage !== currentPage) return;
+
+    item.classList.add("active");
+    const group = item.closest(".nav-group");
+    if (group) {
+      group.classList.add("nav-group-active");
+      group.classList.remove("collapsed");
+    }
+  });
+}
+
+syncNavigationState();
+
 sidebarToggle?.addEventListener("click", () => {
   if (window.matchMedia("(max-width: 980px)").matches) {
     root.classList.toggle("sidebar-open");
@@ -850,10 +876,756 @@ document.addEventListener("click", (event) => {
   popover.classList.remove("show");
 });
 
+const adjustmentTable = document.querySelector("[data-adjustment-table]");
+const adjustmentSearch = document.querySelector("[data-adjustment-search]");
+const adjustmentRows = adjustmentTable ? Array.from(adjustmentTable.querySelectorAll("[data-adjustment-row]")) : [];
+const adjustmentForm = document.querySelector("[data-adjustment-form]");
+const reasonCount = document.querySelector("[data-reason-count]");
+const adjustmentResult = document.querySelector("[data-adjustment-result]");
+const adjustmentColumnFilters = Array.from(document.querySelectorAll("[data-adjustment-column-filter]"));
+const createdSortButton = document.querySelector("[data-sort-created]");
+const createdSortIcon = document.querySelector("[data-sort-created-icon]");
+let activeAdjustmentRow = null;
+let adjustmentCreatedSort = "desc";
+
+function formatIdr(value) {
+  return Number(value || 0).toLocaleString("en-US");
+}
+
+function adjustmentStatusPill(status) {
+  if (status === "Pending Approval" || status === "Draft") return "status-pill draft";
+  if (status === "Rejected") return "status-pill inactive";
+  return "status-pill";
+}
+
+function adjustmentTypeClass(type) {
+  const key = normalize(type).replace(/\s+/g, "-");
+  if (key.includes("allowance")) return "type-pill type-allowance";
+  if (key.includes("deduction")) return "type-pill type-deduction";
+  if (key.includes("medical")) return "type-pill type-medical";
+  if (key.includes("cancellation")) return "type-pill type-cancel";
+  if (key.includes("advance")) return "type-pill type-advance";
+  if (key.includes("loan")) return "type-pill type-loan";
+  return "type-pill type-manual";
+}
+
+function updateAdjustmentCounter() {
+  if (!adjustmentForm || !reasonCount) return;
+  reasonCount.textContent = `${adjustmentForm.elements.reason.value.length} / 500`;
+}
+
+function adjustmentFilterValue(name) {
+  return document.querySelector(`[data-adjustment-filter="${name}"]`)?.value || "";
+}
+
+function parseAdjustmentCreated(row) {
+  const value = row.dataset.created || row.querySelector("td:nth-child(9)")?.textContent || "";
+  if (normalize(value) === "just now") return Date.now();
+  const [day, month, year] = value.trim().split(/\s+/);
+  const months = {
+    jan: 0, january: 0,
+    feb: 1, february: 1,
+    mar: 2, march: 2,
+    apr: 3, april: 3,
+    may: 4,
+    jun: 5, june: 5,
+    jul: 6, july: 6,
+    aug: 7, august: 7,
+    sep: 8, september: 8,
+    oct: 9, october: 9,
+    nov: 10, november: 10,
+    dec: 11, december: 11
+  };
+  return new Date(Number(year), months[normalize(month)] ?? 0, Number(day)).getTime() || 0;
+}
+
+function updateAdjustmentList() {
+  if (!adjustmentTable) return;
+  const query = normalize(adjustmentSearch?.value);
+  const status = adjustmentFilterValue("status") || "all";
+  const type = adjustmentFilterValue("type") || "all";
+  const minimum = Number(adjustmentFilterValue("minimum") || 0);
+  const columnFilters = Object.fromEntries(adjustmentColumnFilters.map((control) => [
+    control.dataset.adjustmentColumnFilter,
+    normalize(control.value)
+  ]));
+  let visible = 0;
+
+  adjustmentRows.forEach((row) => {
+    const amount = Math.abs(Number(row.dataset.amount || 0));
+    const amountFilter = Number(columnFilters.amount || 0);
+    const reason = row.querySelector("td:nth-child(7)")?.textContent || "";
+    const created = row.dataset.created || row.querySelector("td:nth-child(9)")?.textContent || "";
+    const matchesQuery = !query || normalize(row.textContent).includes(query);
+    const matchesStatus = status === "all" || row.dataset.status === status;
+    const matchesType = type === "all" || row.dataset.type === type;
+    const matchesAmount = !minimum || amount >= minimum;
+    const matchesColumnFilters = (
+      (!columnFilters.id || normalize(row.dataset.id).includes(columnFilters.id)) &&
+      (!columnFilters.agent || normalize(row.dataset.agent).includes(columnFilters.agent)) &&
+      (!columnFilters.period || normalize(row.dataset.period) === columnFilters.period) &&
+      (!columnFilters.type || normalize(row.dataset.type) === columnFilters.type) &&
+      (!columnFilters.amount || amount >= amountFilter) &&
+      (!columnFilters.reason || normalize(reason).includes(columnFilters.reason)) &&
+      (!columnFilters.status || normalize(row.dataset.status) === columnFilters.status) &&
+      (!columnFilters.created || normalize(created).includes(columnFilters.created))
+    );
+    const show = matchesQuery && matchesStatus && matchesType && matchesAmount && matchesColumnFilters;
+    row.hidden = !show;
+    if (show) visible += 1;
+  });
+
+  adjustmentRows
+    .slice()
+    .sort((a, b) => {
+      const diff = parseAdjustmentCreated(a) - parseAdjustmentCreated(b);
+      return adjustmentCreatedSort === "asc" ? diff : -diff;
+    })
+    .forEach((row) => adjustmentTable.appendChild(row));
+
+  if (adjustmentResult) {
+    adjustmentResult.textContent = visible
+      ? `Showing 1 to ${visible} of 178 adjustments`
+      : "Showing 0 adjustments";
+  }
+}
+
+function fillAdjustmentForm(row) {
+  if (!adjustmentForm || !row) return;
+  activeAdjustmentRow = row;
+  adjustmentForm.elements.agent.value = row.dataset.agent;
+  adjustmentForm.elements.period.value = row.dataset.period;
+  adjustmentForm.elements.type.value = row.dataset.type;
+  adjustmentForm.elements.amount.value = Math.abs(Number(row.dataset.amount || 0));
+  adjustmentForm.elements.reason.value = row.querySelector("td:nth-child(7)")?.textContent.trim() || "";
+  adjustmentForm.elements.status.value = row.dataset.status;
+  updateAdjustmentCounter();
+  showToast(`${row.dataset.id} dimuat ke form edit.`);
+}
+
+function resetAdjustmentForm() {
+  adjustmentForm?.reset();
+  activeAdjustmentRow = null;
+  updateAdjustmentCounter();
+}
+
+function upsertAdjustment(status) {
+  if (!adjustmentForm || !adjustmentTable) return;
+  const data = {
+    id: activeAdjustmentRow?.dataset.id || `ADJ-2025-${String(568 + adjustmentRows.length).padStart(5, "0")}`,
+    agent: adjustmentForm.elements.agent.value,
+    period: adjustmentForm.elements.period.value,
+    type: adjustmentForm.elements.type.value,
+    amount: Number(adjustmentForm.elements.amount.value || 0),
+    reason: adjustmentForm.elements.reason.value.trim(),
+    status
+  };
+
+  if (!data.agent || !data.type || !data.amount || !data.reason) {
+    showToast("Agent, type, amount, dan reason wajib diisi.");
+    return;
+  }
+
+  const signedAmount = ["Deduction", "Medical Cost", "Cancellation", "Advance Commission", "Loan"].includes(data.type)
+    ? -Math.abs(data.amount)
+    : Math.abs(data.amount);
+  const row = activeAdjustmentRow || adjustmentRows[0].cloneNode(true);
+  row.dataset.id = data.id;
+  row.dataset.agent = data.agent;
+  row.dataset.period = data.period;
+  row.dataset.type = data.type;
+  row.dataset.status = data.status;
+  row.dataset.amount = String(signedAmount);
+  row.dataset.created = "Just now";
+  row.innerHTML = `<td><input type="checkbox"></td><td><strong>${data.id}</strong></td><td>${data.agent}</td><td>${data.period}</td><td><span class="${adjustmentTypeClass(data.type)}">${data.type}</span></td><td class="${signedAmount < 0 ? "negative" : ""}">${signedAmount < 0 ? "-" : ""}${formatIdr(Math.abs(signedAmount))}</td><td>${data.reason}</td><td><span class="${adjustmentStatusPill(data.status)}">${data.status}</span></td><td>Just now</td><td><button class="action-icon adjustment-action-dot" type="button" data-adjustment-menu aria-label="Open actions">...</button></td>`;
+  if (!activeAdjustmentRow) {
+    adjustmentTable.prepend(row);
+    adjustmentRows.unshift(row);
+  }
+  updateAdjustmentList();
+  showToast(`${data.id} ${status === "Draft" ? "disimpan sebagai draft" : "dikirim untuk approval"}.`);
+  resetAdjustmentForm();
+}
+
+adjustmentSearch?.addEventListener("input", updateAdjustmentList);
+document.querySelectorAll("[data-adjustment-filter]").forEach((control) => {
+  control.addEventListener("input", updateAdjustmentList);
+  control.addEventListener("change", updateAdjustmentList);
+});
+
+adjustmentColumnFilters.forEach((control) => {
+  control.addEventListener("input", updateAdjustmentList);
+  control.addEventListener("change", updateAdjustmentList);
+});
+
+document.querySelector("[data-clear-adjustment-columns]")?.addEventListener("click", () => {
+  adjustmentColumnFilters.forEach((control) => {
+    control.value = "";
+  });
+  updateAdjustmentList();
+});
+
+createdSortButton?.addEventListener("click", () => {
+  adjustmentCreatedSort = adjustmentCreatedSort === "desc" ? "asc" : "desc";
+  if (createdSortIcon) createdSortIcon.innerHTML = adjustmentCreatedSort === "desc" ? "&darr;" : "&uarr;";
+  updateAdjustmentList();
+});
+
+document.querySelectorAll("[data-adjustment-filter-card]").forEach((card) => {
+  card.addEventListener("click", () => {
+    const status = card.dataset.adjustmentFilterCard;
+    const statusFilter = document.querySelector('[data-adjustment-column-filter="status"]');
+    if (statusFilter) statusFilter.value = status === "all" ? "" : status;
+    updateAdjustmentList();
+    showToast(status === "all" ? "Menampilkan semua adjustment." : `Filter ${status} diterapkan.`);
+  });
+});
+
+const agentCombobox = document.querySelector("[data-agent-combobox]");
+const agentInput = document.querySelector("[data-agent-input]");
+const agentMenu = document.querySelector("[data-agent-menu]");
+
+function setAgentMenu(open) {
+  agentCombobox?.classList.toggle("is-open", open);
+}
+
+function filterAgentOptions() {
+  if (!agentMenu || !agentInput) return;
+  const query = normalize(agentInput.value);
+  agentMenu.querySelectorAll("[data-agent-option]").forEach((option) => {
+    option.hidden = query && !normalize(option.textContent).includes(query);
+  });
+}
+
+agentInput?.addEventListener("focus", () => {
+  filterAgentOptions();
+  setAgentMenu(true);
+});
+
+agentInput?.addEventListener("input", () => {
+  filterAgentOptions();
+  setAgentMenu(true);
+});
+
+document.querySelector("[data-agent-toggle]")?.addEventListener("click", () => {
+  filterAgentOptions();
+  setAgentMenu(!agentCombobox?.classList.contains("is-open"));
+  agentInput?.focus();
+});
+
+agentMenu?.addEventListener("click", (event) => {
+  const option = event.target.closest("[data-agent-option]");
+  if (!option || !agentInput) return;
+  agentInput.value = option.dataset.agentOption;
+  setAgentMenu(false);
+});
+
+adjustmentForm?.elements.reason?.addEventListener("input", updateAdjustmentCounter);
+document.querySelector("[data-save-adjustment]")?.addEventListener("click", () => upsertAdjustment("Draft"));
+document.querySelector("[data-submit-adjustment]")?.addEventListener("click", () => upsertAdjustment("Pending Approval"));
+document.querySelector("[data-reset-adjustment]")?.addEventListener("click", resetAdjustmentForm);
+
+document.querySelector("[data-adjustment-attachment]")?.addEventListener("click", () => {
+  const label = document.querySelector("[data-attachment-label]");
+  if (label) label.textContent = "adjustment-supporting-doc.pdf attached";
+  document.querySelector("[data-adjustment-attachment]")?.classList.add("is-ready");
+  showToast("Attachment dummy berhasil ditambahkan.");
+});
+
+document.querySelector("[data-bulk-adjustment]")?.addEventListener("click", () => {
+  if (adjustmentForm) {
+    adjustmentForm.elements.agent.value = "Agen Makmur Jaya";
+    adjustmentForm.elements.period.value = "May 2025";
+    adjustmentForm.elements.type.value = "Allowance";
+    adjustmentForm.elements.amount.value = "10000000";
+    adjustmentForm.elements.reason.value = "Bulk upload adjustment";
+  }
+  upsertAdjustment("Pending Approval");
+  showToast("Bulk upload template diproses sebagai dummy adjustment.");
+});
+
+document.querySelector("[data-select-all-adjustments]")?.addEventListener("change", (event) => {
+  adjustmentRows.forEach((row) => {
+    if (!row.hidden) row.querySelector('input[type="checkbox"]').checked = event.target.checked;
+  });
+});
+
+function closeAdjustmentMenu() {
+  document.querySelector("[data-adjustment-action-menu]")?.remove();
+}
+
+adjustmentTable?.addEventListener("click", (event) => {
+  const menuButton = event.target.closest("[data-adjustment-menu]");
+  if (!menuButton) return;
+  const row = menuButton.closest("[data-adjustment-row]");
+  closeAdjustmentMenu();
+  const rect = menuButton.getBoundingClientRect();
+  const menu = document.createElement("div");
+  menu.className = "adjustment-menu-popover show";
+  menu.dataset.adjustmentActionMenu = "";
+  menu.style.top = `${rect.bottom + 8}px`;
+  menu.style.left = `${Math.max(16, rect.right - 170)}px`;
+  menu.innerHTML = `<button type="button" data-adj-action="edit">Edit Adjustment</button><button type="button" data-adj-action="approve">Approve</button><button type="button" data-adj-action="reject">Reject</button><button type="button" data-adj-action="duplicate">Duplicate</button>`;
+  document.body.appendChild(menu);
+  menu.addEventListener("click", (menuEvent) => {
+    const action = menuEvent.target.dataset.adjAction;
+    if (!action || !row) return;
+    if (action === "edit") fillAdjustmentForm(row);
+    if (action === "approve" || action === "reject") {
+      const status = action === "approve" ? "Approved" : "Rejected";
+      row.dataset.status = status;
+      row.querySelector("td:nth-child(8)").innerHTML = `<span class="${adjustmentStatusPill(status)}">${status}</span>`;
+      showToast(`${row.dataset.id} ${status.toLowerCase()}.`);
+    }
+    if (action === "duplicate") {
+      fillAdjustmentForm(row);
+      activeAdjustmentRow = null;
+      showToast(`${row.dataset.id} disalin ke form.`);
+    }
+    closeAdjustmentMenu();
+    updateAdjustmentList();
+  });
+});
+
+document.querySelector("[data-open-adjustment-filter]")?.addEventListener("click", () => {
+  root.classList.add("adjustment-drawer-open");
+});
+document.querySelector("[data-close-adjustment-filter]")?.addEventListener("click", () => {
+  root.classList.remove("adjustment-drawer-open");
+});
+document.querySelector("[data-adjustment-drawer-backdrop]")?.addEventListener("click", () => {
+  root.classList.remove("adjustment-drawer-open");
+});
+document.querySelector("[data-apply-adjustment-filter]")?.addEventListener("click", () => {
+  updateAdjustmentList();
+  root.classList.remove("adjustment-drawer-open");
+  showToast("Adjustment filter diterapkan.");
+});
+document.querySelector("[data-reset-adjustment-filter]")?.addEventListener("click", () => {
+  document.querySelectorAll("[data-adjustment-filter]").forEach((control) => {
+    if (control.tagName === "SELECT") control.value = "all";
+    if (control.tagName === "INPUT") control.value = "";
+  });
+  adjustmentColumnFilters.forEach((control) => {
+    control.value = "";
+  });
+  updateAdjustmentList();
+});
+
+document.addEventListener("click", (event) => {
+  if (event.target.closest("[data-adjustment-menu]") || event.target.closest("[data-adjustment-action-menu]")) return;
+  if (event.target.closest("[data-agent-combobox]")) return;
+  setAgentMenu(false);
+  closeAdjustmentMenu();
+});
+
+updateAdjustmentCounter();
+updateAdjustmentList();
+
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     setDrawer(false);
     closeFormulaModal();
     document.querySelector("[data-schedule-popover]")?.classList.remove("show");
+    root.classList.remove("adjustment-drawer-open");
+    setAgentMenu(false);
+    closeAdjustmentMenu();
   }
 });
+
+
+
+(() => {
+  const PRODUCTS = ["Bright Life Protect", "Bright Health Plus", "Bright Future Plan", "Bright Secure"];
+
+  function peso(value) {
+    const sign = value < 0 ? "-" : "";
+    const abs = Math.abs(value).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    return `${sign}\u20B1 ${abs}`;
+  }
+
+  function buildPolicies(seedId, count, startYear, startMonth, startDay) {
+    const rows = [];
+    let day = startDay;
+    let month = startMonth;
+    for (let i = 0; i < count; i += 1) {
+      const product = PRODUCTS[i % PRODUCTS.length];
+      const premium = 12000 + ((i * 733) % 20000);
+      const roundedPremium = Math.round(premium / 500) * 500;
+      const commission = Math.round(roundedPremium * 0.2);
+      const code = `POL-${startYear}-${String(seedId + i).padStart(6, "0")}`;
+      const dateStr = new Date(startYear, month - 1, day).toLocaleDateString("en-US", {
+        month: "short",
+        day: "2-digit",
+        year: "numeric"
+      });
+      rows.push({ code, product, date: dateStr, premium: roundedPremium, commission });
+      day += 1;
+      if (day > 28) {
+        day = 1;
+        month += 1;
+      }
+    }
+    return rows;
+  }
+
+  const AGENTS = {
+    "AGT-0001": {
+      code: "AGT-0001",
+      initials: "JD",
+      name: "Juan Dela Cruz",
+      role: "Senior Agent",
+      branch: "Manila Main Branch",
+      period: "May 01 - May 31, 2024",
+      account: "**** **** **** 1234",
+      payoutDate: "May 10, 2024",
+      bank: "BDO Unibank, Inc.",
+      breakdown: [
+        { desc: "1. Basic Commission", details: "From 45 policies", amount: 520450 },
+        { desc: "2. Bonus", details: "Performance Bonus", amount: 65250 },
+        { desc: "3. Override", details: "Override Commission", amount: 22100 },
+        { desc: "4. Incentive", details: "Sales Incentive", amount: 9850 },
+        { desc: "5. Adjustment", details: "Manual Adjustment", amount: 8260 },
+        { desc: "6. Deduction", details: "Chargebacks / Reversals", amount: -12540 },
+        { desc: "7. Tax", details: "Withholding Tax (10%)", amount: -6510 }
+      ],
+      netPayable: 455200,
+      kpi: {
+        gross: 520450,
+        grossTrend: "\u25B2 12.45%",
+        grossUp: true,
+        deduction: 65250,
+        deductionTrend: "\u25BC 4.32%",
+        deductionUp: false,
+        net: 455200,
+        netTrend: "\u25B2 15.21%",
+        netUp: true,
+        policyCount: 45,
+        policyTrend: "\u25B2 8.32%",
+        policyUp: true,
+        payoutStatus: "Paid",
+        payoutDate: "May 10, 2024"
+      },
+      summary: {
+        totalGross: 617650,
+        totalDeductions: 65250,
+        netPayable: 455200,
+        paymentStatus: "Paid",
+        approvalStatus: "Approved",
+        approvedBy: "Maria Santos",
+        approvedDate: "May 08, 2024 03:45 PM",
+        referenceNo: "ES-2024-05-0001"
+      },
+      policyCount: 45,
+      policies: [
+        { code: "POL-2024-000123", product: "Bright Life Protect", date: "May 05, 2024", premium: 25000, commission: 5000 },
+        { code: "POL-2024-000124", product: "Bright Health Plus", date: "May 06, 2024", premium: 18500, commission: 3700 },
+        { code: "POL-2024-000125", product: "Bright Future Plan", date: "May 07, 2024", premium: 30000, commission: 6000 },
+        { code: "POL-2024-000126", product: "Bright Secure", date: "May 08, 2024", premium: 22000, commission: 4400 },
+        { code: "POL-2024-000127", product: "Bright Life Protect", date: "May 09, 2024", premium: 15000, commission: 3000 },
+        ...buildPolicies(128, 40, 2024, 5, 10)
+      ]
+    },
+    "AGT-0002": {
+      code: "AGT-0002",
+      initials: "MS",
+      name: "Maria Santos",
+      role: "Agency Manager",
+      branch: "Quezon City Branch",
+      period: "May 01 - May 31, 2024",
+      account: "**** **** **** 5678",
+      payoutDate: "May 10, 2024",
+      bank: "BPI Family Savings Bank",
+      breakdown: [
+        { desc: "1. Basic Commission", details: "From 32 policies", amount: 380200 },
+        { desc: "2. Bonus", details: "Performance Bonus", amount: 41000 },
+        { desc: "3. Override", details: "Override Commission", amount: 15300 },
+        { desc: "4. Incentive", details: "Sales Incentive", amount: 6200 },
+        { desc: "5. Adjustment", details: "Manual Adjustment", amount: 2100 },
+        { desc: "6. Deduction", details: "Chargebacks / Reversals", amount: -9800 },
+        { desc: "7. Tax", details: "Withholding Tax (10%)", amount: -4010 }
+      ],
+      netPayable: 430990,
+      kpi: {
+        gross: 380200,
+        grossTrend: "\u25B2 9.10%",
+        grossUp: true,
+        deduction: 13810,
+        deductionTrend: "\u25BC 2.15%",
+        deductionUp: false,
+        net: 430990,
+        netTrend: "\u25B2 11.40%",
+        netUp: true,
+        policyCount: 32,
+        policyTrend: "\u25B2 5.60%",
+        policyUp: true,
+        payoutStatus: "Paid",
+        payoutDate: "May 10, 2024"
+      },
+      summary: {
+        totalGross: 444800,
+        totalDeductions: 13810,
+        netPayable: 430990,
+        paymentStatus: "Paid",
+        approvalStatus: "Approved",
+        approvedBy: "Juan Dela Cruz",
+        approvedDate: "May 08, 2024 02:10 PM",
+        referenceNo: "ES-2024-05-0002"
+      },
+      policyCount: 32,
+      policies: [
+        { code: "POL-2024-000201", product: "Bright Health Plus", date: "May 04, 2024", premium: 19500, commission: 3900 },
+        { code: "POL-2024-000202", product: "Bright Secure", date: "May 05, 2024", premium: 26000, commission: 5200 },
+        { code: "POL-2024-000203", product: "Bright Life Protect", date: "May 06, 2024", premium: 21000, commission: 4200 },
+        { code: "POL-2024-000204", product: "Bright Future Plan", date: "May 07, 2024", premium: 28500, commission: 5700 },
+        { code: "POL-2024-000205", product: "Bright Health Plus", date: "May 08, 2024", premium: 16000, commission: 3200 },
+        ...buildPolicies(206, 27, 2024, 5, 9)
+      ]
+    }
+  };
+
+  const els = {
+    agentSelect: document.querySelector("[data-eslip-agent]"),
+    productFilter: document.querySelector('[data-eslip-filter="product"]'),
+    branchFilter: document.querySelector('[data-eslip-filter="branch"]'),
+    channelFilter: document.querySelector('[data-eslip-filter="channel"]'),
+    resetBtn: document.querySelector("[data-eslip-reset]"),
+    applyBtn: document.querySelector("[data-eslip-apply]"),
+    search: document.querySelector("[data-eslip-search]"),
+    breakdownBody: document.querySelector("[data-eslip-breakdown]"),
+    policyBody: document.querySelector("[data-policy-rows]"),
+    policyEmpty: document.querySelector("[data-policy-empty]"),
+    policyInfo: document.querySelector("[data-policy-info]"),
+    policyPagination: document.querySelector("[data-policy-pagination]"),
+    qrGrid: document.querySelector("[data-qr-grid]"),
+    toast: document.querySelector("[data-toast]")
+  };
+
+  const state = {
+    agentCode: "AGT-0001",
+    page: 1,
+    perPage: 5
+  };
+
+  function showToast(message) {
+    if (!els.toast) return;
+    els.toast.textContent = message;
+    els.toast.classList.add("show");
+    window.clearTimeout(showToast.timer);
+    showToast.timer = window.setTimeout(() => els.toast.classList.remove("show"), 2600);
+  }
+
+  function setText(selector, value) {
+    document.querySelectorAll(selector).forEach((el) => {
+      el.textContent = value;
+    });
+  }
+
+  function renderDetail(agent) {
+    setText('[data-detail="initials"]', agent.initials);
+    setText('[data-detail="name"]', agent.name);
+    setText('[data-detail="code"]', agent.code);
+    setText('[data-detail="role"]', agent.role);
+    setText('[data-detail="branch"]', agent.branch);
+    setText('[data-detail="period"]', agent.period);
+    setText('[data-detail="account"]', agent.account);
+    setText('[data-detail="payoutDate"]', agent.payoutDate);
+    setText('[data-detail="bank"]', agent.bank);
+    setText('[data-detail="netPayable"]', peso(agent.netPayable));
+
+    if (els.breakdownBody) {
+      els.breakdownBody.innerHTML = agent.breakdown.map((row) => `
+        <tr>
+          <td>${row.desc}</td>
+          <td>${row.details}</td>
+          <td class="amount${row.amount < 0 ? " negative" : ""}">${row.amount < 0 ? `(${peso(Math.abs(row.amount))})` : peso(row.amount)}</td>
+        </tr>
+      `).join("");
+    }
+  }
+
+  function renderKpi(agent) {
+    const kpi = agent.kpi;
+    setText('[data-kpi="gross"]', peso(kpi.gross));
+    setText('[data-kpi="deduction"]', peso(kpi.deduction));
+    setText('[data-kpi="net"]', peso(kpi.net));
+    setText('[data-kpi="policyCount"]', String(kpi.policyCount));
+    setText('[data-kpi="payoutStatus"]', kpi.payoutStatus);
+    setText('[data-kpi="payoutDate"]', kpi.payoutDate);
+
+    const grossTrendEl = document.querySelector('[data-kpi="grossTrend"]');
+    const deductionTrendEl = document.querySelector('[data-kpi="deductionTrend"]');
+    const netTrendEl = document.querySelector('[data-kpi="netTrend"]');
+    const policyTrendEl = document.querySelector('[data-kpi="policyTrend"]');
+
+    [
+      [grossTrendEl, kpi.grossTrend, kpi.grossUp],
+      [deductionTrendEl, kpi.deductionTrend, kpi.deductionUp],
+      [netTrendEl, kpi.netTrend, kpi.netUp],
+      [policyTrendEl, kpi.policyTrend, kpi.policyUp]
+    ].forEach(([el, text, up]) => {
+      if (!el) return;
+      el.textContent = text;
+      el.classList.toggle("up", !!up);
+      el.classList.toggle("down", !up);
+    });
+  }
+
+  function renderSummary(agent) {
+    const summary = agent.summary;
+    setText('[data-summary="totalGross"]', peso(summary.totalGross));
+    setText('[data-summary="totalDeductions"]', peso(summary.totalDeductions));
+    setText('[data-summary="netPayable"]', peso(summary.netPayable));
+    setText('[data-summary="paymentStatus"]', summary.paymentStatus);
+    setText('[data-summary="approvalStatus"]', summary.approvalStatus);
+    setText('[data-summary="approvedBy"]', summary.approvedBy);
+    setText('[data-summary="approvedDate"]', summary.approvedDate);
+    setText('[data-summary="referenceNo"]', summary.referenceNo);
+    setText('[data-summary="referenceNoQr"]', summary.referenceNo);
+    renderQr(summary.referenceNo);
+  }
+
+  function renderQr(reference) {
+    if (!els.qrGrid) return;
+    const size = 9;
+    const seed = Array.from(reference).reduce((acc, ch) => acc + ch.charCodeAt(0), 0);
+    const isFinder = (r, c) => (r < 3 && c < 3) || (r < 3 && c >= size - 3) || (r >= size - 3 && c < 3);
+    let html = "";
+    for (let r = 0; r < size; r += 1) {
+      for (let c = 0; c < size; c += 1) {
+        let on = isFinder(r, c);
+        if (!on) {
+          const value = (seed + r * 13 + c * 7 + r * c) % 5;
+          on = value === 0 || value === 2;
+        }
+        html += `<span${on ? ' class="on"' : ""}></span>`;
+      }
+    }
+    els.qrGrid.innerHTML = html;
+  }
+
+  function getFilteredPolicies(agent) {
+    const product = els.productFilter?.value || "all";
+    const branch = els.branchFilter?.value || "all";
+    const query = (els.search?.value || "").trim().toLowerCase();
+
+    return agent.policies.filter((row) => {
+      const matchesProduct = product === "all" || row.product === product;
+      const matchesBranch = branch === "all" || branch === agent.branch;
+      const matchesQuery = !query || row.code.toLowerCase().includes(query) || row.product.toLowerCase().includes(query);
+      return matchesProduct && matchesBranch && matchesQuery;
+    });
+  }
+
+  function renderPolicyTable(agent) {
+    const filtered = getFilteredPolicies(agent);
+    const totalPages = Math.max(1, Math.ceil(filtered.length / state.perPage));
+    state.page = Math.min(state.page, totalPages);
+
+    const start = (state.page - 1) * state.perPage;
+    const pageRows = filtered.slice(start, start + state.perPage);
+
+    if (els.policyBody) {
+      els.policyBody.innerHTML = pageRows.map((row) => `
+        <tr>
+          <td class="policy-code">${row.code}</td>
+          <td>${row.product}</td>
+          <td>${row.date}</td>
+          <td class="num">${row.premium.toLocaleString("en-US")}</td>
+          <td class="num">${row.commission.toLocaleString("en-US")}</td>
+        </tr>
+      `).join("");
+    }
+
+    els.policyEmpty?.classList.toggle("show", filtered.length === 0);
+
+    if (els.policyInfo) {
+      if (filtered.length === 0) {
+        els.policyInfo.textContent = "No policies match this filter.";
+      } else {
+        const to = Math.min(start + state.perPage, filtered.length);
+        els.policyInfo.textContent = `Showing ${start + 1} to ${to} of ${filtered.length} policies`;
+      }
+    }
+
+    renderPagination(totalPages);
+  }
+
+  function renderPagination(totalPages) {
+    if (!els.policyPagination) return;
+    const maxButtons = 5;
+    let startPage = Math.max(1, state.page - Math.floor(maxButtons / 2));
+    const endPage = Math.min(totalPages, startPage + maxButtons - 1);
+    startPage = Math.max(1, endPage - maxButtons + 1);
+
+    let html = `<button class="page-button" type="button" data-policy-prev ${state.page === 1 ? "disabled" : ""}>&lt;</button>`;
+    for (let p = startPage; p <= endPage; p += 1) {
+      html += `<button class="page-button${p === state.page ? " active" : ""}" type="button" data-policy-page="${p}">${p}</button>`;
+    }
+    html += `<button class="page-button" type="button" data-policy-next ${state.page === totalPages ? "disabled" : ""}>&gt;</button>`;
+    els.policyPagination.innerHTML = html;
+
+    els.policyPagination.querySelectorAll("[data-policy-page]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        state.page = Number(btn.dataset.policyPage);
+        renderPolicyTable(AGENTS[state.agentCode]);
+      });
+    });
+    els.policyPagination.querySelector("[data-policy-prev]")?.addEventListener("click", () => {
+      if (state.page > 1) {
+        state.page -= 1;
+        renderPolicyTable(AGENTS[state.agentCode]);
+      }
+    });
+    els.policyPagination.querySelector("[data-policy-next]")?.addEventListener("click", () => {
+      state.page += 1;
+      renderPolicyTable(AGENTS[state.agentCode]);
+    });
+  }
+
+  function renderAll() {
+    const agent = AGENTS[state.agentCode];
+    if (!agent) return;
+    renderDetail(agent);
+    renderKpi(agent);
+    renderSummary(agent);
+    renderPolicyTable(agent);
+  }
+
+  els.agentSelect?.addEventListener("change", () => {
+    state.agentCode = els.agentSelect.value;
+    state.page = 1;
+    renderAll();
+    showToast(`Menampilkan e-Slip untuk ${AGENTS[state.agentCode].name}.`);
+  });
+
+  els.applyBtn?.addEventListener("click", () => {
+    state.page = 1;
+    renderPolicyTable(AGENTS[state.agentCode]);
+    showToast("Filter e-Slip berhasil diterapkan.");
+  });
+
+  els.resetBtn?.addEventListener("click", () => {
+    if (els.productFilter) els.productFilter.value = "all";
+    if (els.branchFilter) els.branchFilter.value = "all";
+    if (els.channelFilter) els.channelFilter.value = "all";
+    if (els.search) els.search.value = "";
+    state.page = 1;
+    renderPolicyTable(AGENTS[state.agentCode]);
+    showToast("Filter e-Slip di-reset.");
+  });
+
+  [els.productFilter, els.branchFilter, els.channelFilter].forEach((control) => {
+    control?.addEventListener("change", () => {
+      state.page = 1;
+      renderPolicyTable(AGENTS[state.agentCode]);
+    });
+  });
+
+  els.search?.addEventListener("input", () => {
+    state.page = 1;
+    renderPolicyTable(AGENTS[state.agentCode]);
+  });
+
+  renderAll();
+})();
