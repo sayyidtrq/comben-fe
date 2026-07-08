@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adjustment Management - COMBEN</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M24 3 42 13.5v21L24 45 6 34.5v-21L24 3Z' fill='%2312B9C3'/%3E%3Cpath d='M24 12.2 34.5 18.3v12.2L24 36.7l-10.5-6.2V18.3L24 12.2Z' fill='%23F8FBFD'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body class="adjustment-body">
+  <aside class="sidebar" aria-label="Navigasi utama">
+    <a class="brand" href="modules.html" aria-label="COMBEN Home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg class="logo-cube" viewBox="0 0 48 48" fill="none">
+          <path d="M24 3 42 13.5v21L24 45 6 34.5v-21L24 3Z" fill="#12B9C3"/>
+          <path d="M24 12.2 34.5 18.3v12.2L24 36.7l-10.5-6.2V18.3L24 12.2Z" fill="#F8FBFD"/>
+          <path d="M24 12.2 34.5 18.3 24 24.3 13.5 18.3 24 12.2Z" fill="#D9F8F8"/>
+        </svg>
+      </span>
+      <span class="brand-copy">
+        <span class="brand-title">COMBEN</span>
+        <span class="brand-subtitle">Commission Benefit System</span>
+      </span>
+    </a>
+
+    <nav class="nav-list">
+      <a class="nav-link" href="dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 13h6V4H4v9Z"/><path d="M14 20h6V4h-6v16Z"/><path d="M4 20h6v-3H4v3Z"/></svg><span class="nav-text">Dashboard Management</span><span></span></a>
+      <a class="nav-link" href="modules.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/><circle cx="7" cy="5" r="1.5"/><circle cx="7" cy="12" r="1.5"/><circle cx="7" cy="19" r="1.5"/></svg><span class="nav-text">Daftar Modul COMBEN</span><span></span></a>
+      <a class="nav-link" href="formula-list.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 6h16M4 12h16M4 18h7"/><path d="m15 15 2 2 4-4"/></svg><span class="nav-text">Formula List</span><span></span></a>
+      <div class="nav-group collapsed">
+        <a class="nav-group-head" href="data-integration.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7a8 3 0 1 0 16 0A8 3 0 1 0 4 7"/><path d="M4 7v10a8 3 0 0 0 16 0V7"/><path d="M4 12a8 3 0 0 0 16 0"/></svg><span class="nav-text">Data Integration</span><span class="nav-chevron">⌃</span></a>
+        <div class="nav-submenu"><a class="nav-sub-link" href="data-integration.html">Import Data</a><a class="nav-sub-link" href="data-mapping.html">Data Mapping</a><a class="nav-sub-link" href="integration-logs.html">Integration Logs</a><a class="nav-sub-link" href="data-quality.html">Data Quality</a></div>
+      </div>
+      <a class="nav-link" href="data-preparation.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7Z"/><path d="M14 2v5h5"/><path d="m9 15 2 2 4-4"/></svg><span class="nav-text">Data Preparation</span><span></span></a>
+      <a class="nav-link" href="rule-builder.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7h16M7 7v10a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V7"/><path d="M9 11h6M9 15h4"/></svg><span class="nav-text">Rule Builder</span><span></span></a>
+      <a class="nav-link" href="commission-calculation.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19V5"/><path d="M4 19h16"/><path d="m7 15 4-4 3 3 5-7"/></svg><span class="nav-text">Commission Calculation</span><span></span></a>
+      <a class="nav-link" href="commission-approval.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></svg><span class="nav-text">Commission Approval</span><span></span></a>
+      <div class="nav-group collapsed">
+        <a class="nav-group-head" href="adjustment-management.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7h16M4 12h16M4 17h16"/><circle cx="8" cy="7" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="10" cy="17" r="2"/></svg><span class="nav-text">Operations</span><span class="nav-chevron">⌃</span></a>
+        <div class="nav-submenu"><a class="nav-sub-link" href="adjustment-management.html">Adjustments</a></div>
+      </div>
+      <a class="nav-link" href="payout-file.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg><span class="nav-text">Pay Order / Payout File</span><span></span></a>
+      <div class="nav-group collapsed">
+        <a class="nav-group-head" href="e-slip-agent.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h6"/></svg><span class="nav-text">Commission</span><span class="nav-chevron">⌃</span></a>
+        <div class="nav-submenu"><a class="nav-sub-link" href="e-slip-agent.html">e-Slip Agent</a></div>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="system-card">
+        <div class="system-card-head">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#12B9C3" aria-hidden="true"><path d="M12 2 20 5.6v6.1c0 5-3.4 8.8-8 10.3-4.6-1.5-8-5.3-8-10.3V5.6L12 2Z"/></svg>
+          <span>Sistem Informasi</span>
+        </div>
+        <span class="system-version">COMBEN v2.0.0</span>
+        <span class="environment">Production <i class="environment-dot"></i></span>
+      </div>
+      <p class="copyright">&copy; 2025 COMBEN. All rights reserved.</p>
+    </div>
+  </aside>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="icon-button" type="button" data-sidebar-toggle aria-label="Tutup atau buka sidebar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+        <div class="breadcrumb" aria-label="Breadcrumb">
+          <span>Operations</span><span>&rsaquo;</span><span>Adjustments</span><span>&rsaquo;</span><span>Adjustment Management</span>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <label class="field topbar-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <input class="input" type="search" data-adjustment-search placeholder="Search agents, policies, accounts..." aria-label="Search adjustment">
+          <span class="shortcut">&#8984; K</span>
+        </label>
+        <button class="icon-button" type="button" aria-label="Notifikasi">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 7h18s-3 0-3-7"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="badge">12</span>
+        </button>
+        <div class="profile">
+          <span class="avatar">AP</span>
+          <span class="profile-copy"><span class="profile-name">Aisyah Putri</span><span class="profile-role">Operations</span></span>
+          <button class="icon-button" type="button" aria-label="Menu profil"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg></button>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-main adjustment-main">
+      <section class="adjustment-page" aria-labelledby="adjustment-title">
+        <div class="content-header adjustment-heading">
+          <h1 class="content-title" id="adjustment-title">Adjustment Management</h1>
+        </div>
+
+        <div class="adjustment-summary">
+          <button class="stat-card adjustment-total" type="button" data-adjustment-filter-card="all">
+            <span class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+            <span class="stat-copy"><span class="stat-label">Total Adjustment Amount</span><strong class="stat-value">IDR 2,345,678,900</strong><span class="stat-caption">This Period</span></span>
+          </button>
+          <button class="stat-card orange" type="button" data-adjustment-filter-card="Pending Approval">
+            <span class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+            <span class="stat-copy"><span class="stat-label">Pending Approval</span><strong class="stat-value">IDR 456,789,000</strong><span class="stat-caption">24 Adjustments</span></span>
+          </button>
+          <button class="stat-card green" type="button" data-adjustment-filter-card="Approved">
+            <span class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></span>
+            <span class="stat-copy"><span class="stat-label">Approved</span><strong class="stat-value">IDR 1,789,456,000</strong><span class="stat-caption">143 Adjustments</span></span>
+          </button>
+          <button class="stat-card adjustment-rejected" type="button" data-adjustment-filter-card="Rejected">
+            <span class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6 6 18M6 6l12 12"/></svg></span>
+            <span class="stat-copy"><span class="stat-label">Rejected</span><strong class="stat-value">IDR 99,433,900</strong><span class="stat-caption">9 Adjustments</span></span>
+          </button>
+        </div>
+
+        <div class="adjustment-workspace">
+          <article class="adjustment-form-card">
+            <div class="panel-title-row"><h2>Create / Edit Adjustment</h2></div>
+            <form class="adjustment-form" data-adjustment-form>
+              <label class="control-label">Agent *
+                <div class="agent-combobox" data-agent-combobox>
+                  <input class="input drawer-input agent-combobox-input" name="agent" type="search" autocomplete="off" placeholder="Search / select agent" required data-agent-input>
+                  <button class="agent-combobox-toggle" type="button" aria-label="Open agent list" data-agent-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
+                  </button>
+                  <div class="agent-combobox-menu" data-agent-menu>
+                    <button type="button" data-agent-option="Agen Makmur Jaya">Agen Makmur Jaya<span>AG-001</span></button>
+                    <button type="button" data-agent-option="Agen Sejahtera">Agen Sejahtera<span>AG-002</span></button>
+                    <button type="button" data-agent-option="Agen Cemerlang">Agen Cemerlang<span>AG-003</span></button>
+                    <button type="button" data-agent-option="Agen Prima">Agen Prima<span>AG-004</span></button>
+                    <button type="button" data-agent-option="Agen Mandiri">Agen Mandiri<span>AG-005</span></button>
+                    <button type="button" data-agent-option="Agen Maju Bersama">Agen Maju Bersama<span>AG-006</span></button>
+                    <button type="button" data-agent-option="Agen Berkah">Agen Berkah<span>AG-007</span></button>
+                    <button type="button" data-agent-option="Agen Sentosa">Agen Sentosa<span>AG-008</span></button>
+                  </div>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+                </div>
+              </label>
+              <label class="control-label">Period *
+                <select class="select" name="period" required>
+                  <option>May 2025</option>
+                  <option>June 2025</option>
+                  <option>April 2025</option>
+                </select>
+              </label>
+              <label class="control-label">Adjustment Type *
+                <select class="select" name="type" required>
+                  <option value="">Select adjustment type</option>
+                  <option>Allowance</option>
+                  <option>Deduction</option>
+                  <option>Medical Cost</option>
+                  <option>Cancellation</option>
+                  <option>Advance Commission</option>
+                  <option>Loan</option>
+                  <option>Manual Correction</option>
+                </select>
+              </label>
+              <label class="control-label">Amount *
+                <div class="amount-field"><span>IDR</span><input class="input drawer-input" name="amount" type="number" min="0" step="500000" placeholder="Enter amount" required></div>
+              </label>
+              <label class="control-label">Reason *
+                <textarea class="input adjustment-reason" name="reason" maxlength="500" placeholder="Enter reason for adjustment" required></textarea>
+                <span class="char-count" data-reason-count>0 / 500</span>
+              </label>
+              <label class="control-label">Attachment
+                <button class="adj-dropzone" type="button" data-adjustment-attachment>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 16a4 4 0 0 1 .8-7.9A5 5 0 0 1 16 6a4 4 0 0 1 1 7.9"/><path d="M12 12v8M8 16l4-4 4 4"/></svg>
+                  <span data-attachment-label>Drag & drop files here or browse</span>
+                  <small>PDF, JPG, PNG (Max. 10MB)</small>
+                </button>
+              </label>
+              <label class="control-label">Status *
+                <select class="select" name="status"><option>Draft</option><option>Pending Approval</option><option>Approved</option><option>Rejected</option></select>
+              </label>
+              <div class="adjustment-form-actions">
+                <button class="mini-button" type="button" data-save-adjustment><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg>Save Draft</button>
+                <button class="primary-button" type="button" data-submit-adjustment><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>Submit for Approval</button>
+              </div>
+            </form>
+          </article>
+
+          <article class="adjustment-list-card">
+            <div class="panel-title-row">
+              <h2>Adjustment List</h2>
+              <div class="table-actions">
+                <button class="mini-button" type="button" data-bulk-adjustment><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 16V4"/><path d="m7 9 5-5 5 5"/><path d="M20 16.5A4.5 4.5 0 0 1 15.5 21h-7A4.5 4.5 0 0 1 4 16.5"/></svg>Bulk Upload</button>
+                <button class="mini-button" type="button" data-open-adjustment-filter><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 5h18l-7 8v5l-4 2v-7Z"/></svg>Filter</button>
+                <button class="mini-button icon-only" type="button" data-show-toast="More actions dibuka dalam mode demo." aria-label="More actions">...</button>
+              </div>
+            </div>
+            <div class="adj-table-wrap">
+              <table class="adjustment-table">
+                <thead>
+                  <tr><th><input type="checkbox" data-select-all-adjustments></th><th>Adjustment ID</th><th>Agent</th><th>Period</th><th>Type</th><th>Amount (IDR)</th><th>Reason</th><th>Status</th><th><button class="created-sort-button" type="button" data-sort-created>Created On <span data-sort-created-icon>&darr;</span></button></th><th>Action</th></tr>
+                </thead>
+                <tbody data-adjustment-table>
+                  <tr data-adjustment-row data-id="ADJ-2025-00567" data-agent="Agen Makmur Jaya" data-period="May 2025" data-type="Allowance" data-status="Pending Approval" data-amount="150000000" data-created="20 May 2025"><td><input type="checkbox"></td><td><strong>ADJ-2025-00567</strong></td><td>Agen Makmur Jaya</td><td>May 2025</td><td><span class="type-pill type-allowance">Allowance</span></td><td>150,000,000</td><td>Performance Allowance</td><td><span class="status-pill draft">Pending Approval</span></td><td>20 May 2025</td><td><button class="action-icon adjustment-action-dot" type="button" data-adjustment-menu aria-label="Open actions">...</button></td></tr>
+                  <tr data-adjustment-row data-id="ADJ-2025-00566" data-agent="Agen Sejahtera" data-period="May 2025" data-type="Deduction" data-status="Pending Approval" data-amount="-25000000" data-created="20 May 2025"><td><input type="checkbox"></td><td><strong>ADJ-2025-00566</strong></td><td>Agen Sejahtera</td><td>May 2025</td><td><span class="type-pill type-deduction">Deduction</span></td><td class="negative">-25,000,000</td><td>Policy Cancellation</td><td><span class="status-pill draft">Pending Approval</span></td><td>20 May 2025</td><td><button class="action-icon adjustment-action-dot" type="button" data-adjustment-menu aria-label="Open actions">...</button></td></tr>
+                  <tr data-adjustment-row data-id="ADJ-2025-00565" data-agent="Agen Cemerlang" data-period="May 2025" data-type="Medical Cost" data-status="Approved" data-amount="-12500000" data-created="19 May 2025"><td><input type="checkbox"></td><td><strong>ADJ-2025-00565</strong></td><td>Agen Cemerlang</td><td>May 2025</td><td><span class="type-pill type-medical">Medical Cost</span></td><td class="negative">-12,500,000</td><td>Medical Reimbursement</td><td><span class="status-pill">Approved</span></td><td>19 May 2025</td><td><button class="action-icon adjustment-action-dot" type="button" data-adjustment-menu aria-label="Open actions">...</button></td></tr>
+                  <tr data-adjustment-row data-id="ADJ-2025-00564" data-agent="Agen Prima" data-period="May 2025" data-type="Cancellation" data-status="Approved" data-amount="-40000000" data-created="19 May 2025"><td><input type="checkbox"></td><td><strong>ADJ-2025-00564</strong></td><td>Agen Prima</td><td>May 2025</td><td><span class="type-pill type-cancel">Cancellation</span></td><td class="negative">-40,000,000</td><td>Policy Cancellation</td><td><span class="status-pill">Approved</span></td><td>19 May 2025</td><td><button class="action-icon adjustment-action-dot" type="button" data-adjustment-menu aria-label="Open actions">...</button></td></tr>
+                  <tr data-adjustment-row data-id="ADJ-2025-00563" data-agent="Agen Maju Bersama" data-period="May 2025" data-type="Advance Commission" data-status="Pending Approval" data-amount="-75000000" data-created="18 May 2025"><td><input type="checkbox"></td><td><strong>ADJ-2025-00563</strong></td><td>Agen Maju Bersama</td><td>May 2025</td><td><span class="type-pill type-advance">Advance Commission</span></td><td class="negative">-75,000,000</td><td>Advance Commission Paid</td><td><span class="status-pill draft">Pending Approval</span></td><td>18 May 2025</td><td><button class="action-icon adjustment-action-dot" type="button" data-adjustment-menu aria-label="Open actions">...</button></td></tr>
+                  <tr data-adjustment-row data-id="ADJ-2025-00562" data-agent="Agen Mandiri" data-period="May 2025" data-type="Loan" data-status="Approved" data-amount="-30000000" data-created="18 May 2025"><td><input type="checkbox"></td><td><strong>ADJ-2025-00562</strong></td><td>Agen Mandiri</td><td>May 2025</td><td><span class="type-pill type-loan">Loan</span></td><td class="negative">-30,000,000</td><td>Installment Loan</td><td><span class="status-pill">Approved</span></td><td>18 May 2025</td><td><button class="action-icon adjustment-action-dot" type="button" data-adjustment-menu aria-label="Open actions">...</button></td></tr>
+                  <tr data-adjustment-row data-id="ADJ-2025-00561" data-agent="Agen Berkah" data-period="May 2025" data-type="Manual Correction" data-status="Rejected" data-amount="5000000" data-created="17 May 2025"><td><input type="checkbox"></td><td><strong>ADJ-2025-00561</strong></td><td>Agen Berkah</td><td>May 2025</td><td><span class="type-pill type-manual">Manual Correction</span></td><td>5,000,000</td><td>Data Correction</td><td><span class="status-pill inactive">Rejected</span></td><td>17 May 2025</td><td><button class="action-icon adjustment-action-dot" type="button" data-adjustment-menu aria-label="Open actions">...</button></td></tr>
+                  <tr data-adjustment-row data-id="ADJ-2025-00560" data-agent="Agen Sentosa" data-period="May 2025" data-type="Allowance" data-status="Approved" data-amount="25000000" data-created="17 May 2025"><td><input type="checkbox"></td><td><strong>ADJ-2025-00560</strong></td><td>Agen Sentosa</td><td>May 2025</td><td><span class="type-pill type-allowance">Allowance</span></td><td>25,000,000</td><td>Additional Incentive</td><td><span class="status-pill">Approved</span></td><td>17 May 2025</td><td><button class="action-icon adjustment-action-dot" type="button" data-adjustment-menu aria-label="Open actions">...</button></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="table-footer">
+              <span data-adjustment-result>Showing 1 to 8 of 178 adjustments</span>
+              <div class="pagination">
+                <select class="select compact-select"><option>10 per page</option><option>20 per page</option></select>
+                <button class="page-button" type="button">&lsaquo;</button><button class="page-button active" type="button">1</button><button class="page-button" type="button">2</button><button class="page-button" type="button">3</button><button class="page-button" type="button">...</button><button class="page-button" type="button">18</button><button class="page-button" type="button">&rsaquo;</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="drawer-backdrop" data-adjustment-drawer-backdrop></div>
+  <aside class="filter-drawer" aria-label="Adjustment filters" data-adjustment-filter-drawer>
+    <div class="drawer-head"><div><strong>Adjustment Filter</strong><span>Filter each Adjustment List column</span></div><button class="icon-button" type="button" data-close-adjustment-filter aria-label="Close adjustment filters"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+    <div class="drawer-body">
+      <label class="control-label">Adjustment ID<input class="input drawer-input" data-adjustment-column-filter="id" placeholder="ADJ-2025-00567"></label>
+      <label class="control-label">Agent<input class="input drawer-input" data-adjustment-column-filter="agent" placeholder="Agen Makmur"></label>
+      <label class="control-label">Period<select class="select" data-adjustment-column-filter="period"><option value="">All Periods</option><option>May 2025</option><option>June 2025</option><option>April 2025</option></select></label>
+      <label class="control-label">Type<select class="select" data-adjustment-column-filter="type"><option value="">All Types</option><option>Allowance</option><option>Deduction</option><option>Medical Cost</option><option>Cancellation</option><option>Advance Commission</option><option>Loan</option><option>Manual Correction</option></select></label>
+      <label class="control-label">Minimum Amount<input class="input drawer-input" type="number" data-adjustment-column-filter="amount" placeholder="0"></label>
+      <label class="control-label">Reason<input class="input drawer-input" data-adjustment-column-filter="reason" placeholder="Policy Cancellation"></label>
+      <label class="control-label">Status<select class="select" data-adjustment-column-filter="status"><option value="">All Status</option><option>Pending Approval</option><option>Approved</option><option>Rejected</option></select></label>
+      <label class="control-label">Created On<input class="input drawer-input" data-adjustment-column-filter="created" placeholder="20 May 2025"></label>
+    </div>
+    <div class="drawer-foot"><button class="mini-button" type="button" data-clear-adjustment-columns>Reset</button><button class="primary-button" type="button" data-apply-adjustment-filter>Apply Filter</button></div>
+  </aside>
+
+  <div class="toast" data-toast></div>
+  <script src="../js/main.js"></script>
+</body>
+</html>

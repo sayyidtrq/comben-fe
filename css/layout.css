@@ -102,10 +102,24 @@
   padding: 0 18px;
   border-radius: 8px;
   border: 0;
+  background: transparent;
+  color: #eef6ff;
+  font-weight: 600;
+  text-align: left;
+}
+
+.nav-group-head:hover,
+.nav-group.nav-group-active .nav-group-head,
+.nav-group:has(.nav-sub-link.active) .nav-group-head {
   background: linear-gradient(135deg, #22cfd2 0%, #18bec5 100%);
   color: #ffffff;
   font-weight: 700;
-  text-align: left;
+}
+
+.nav-group:not(.nav-group-active):not(:has(.nav-sub-link.active)) .nav-group-head:not(:hover) {
+  background: transparent;
+  color: #eef6ff;
+  font-weight: 600;
 }
 
 .nav-group-head svg {
