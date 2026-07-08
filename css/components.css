@@ -270,7 +270,17 @@
   font-weight: 600;
 }
 
-.breadcrumb span:last-child {
+.breadcrumb a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.breadcrumb a:hover {
+  color: var(--teal-dark);
+}
+
+.breadcrumb :is(a, span):last-child {
   color: var(--text);
 }
 
