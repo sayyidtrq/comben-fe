@@ -3,18 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Import Queue</title>
+  <title>Candidate List - COMBEN</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M24 3 42 13.5v21L24 45 6 34.5v-21L24 3Z' fill='%2312B9C3'/%3E%3Cpath d='M24 12.2 34.5 18.3v12.2L24 36.7l-10.5-6.2V18.3L24 12.2Z' fill='%23F8FBFD'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/layout.css">
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/pages.css">
+  <link rel="stylesheet" href="../css/recruitment-pipeline.css">
+  <link rel="stylesheet" href="../css/candidates.css">
 </head>
 <body>
   <aside class="sidebar" aria-label="Navigasi utama">
     <a class="brand" href="modules.html" aria-label="COMBEN Home">
-      <span class="brand-mark" aria-hidden="true"><svg class="logo-cube" viewBox="0 0 48 48" fill="none"><path d="M24 3 42 13.5v21L24 45 6 34.5v-21L24 3Z" fill="#12B9C3"/><path d="M24 12.2 34.5 18.3v12.2L24 36.7l-10.5-6.2V18.3L24 12.2Z" fill="#F8FBFD"/><path d="M24 12.2 34.5 18.3 24 24.3 13.5 18.3 24 12.2Z" fill="#D9F8F8"/></svg></span>
-      <span class="brand-copy"><span class="brand-title">COMBEN</span><span class="brand-subtitle">Commission Benefit System</span></span>
+      <span class="brand-mark" aria-hidden="true">
+        <svg class="logo-cube" viewBox="0 0 48 48" fill="none">
+          <path d="M24 3 42 13.5v21L24 45 6 34.5v-21L24 3Z" fill="#12B9C3"/>
+          <path d="M24 12.2 34.5 18.3v12.2L24 36.7l-10.5-6.2V18.3L24 12.2Z" fill="#F8FBFD"/>
+          <path d="M24 12.2 34.5 18.3 24 24.3 13.5 18.3 24 12.2Z" fill="#D9F8F8"/>
+        </svg>
+      </span>
+      <span class="brand-copy">
+        <span class="brand-title">COMBEN</span>
+        <span class="brand-subtitle">Commission Benefit System</span>
+      </span>
     </a>
+
             <nav class="nav-list">
       <!-- 1. Dashboards -->
       <div class="nav-section-title">Dashboards</div>
@@ -47,7 +60,7 @@
 
       <!-- 3. Data & Master -->
       <div class="nav-section-title">Data & Master</div>
-      <a class="nav-link" href="modules.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/><circle cx="7" cy="5" r="1.5"/><circle cx="7" cy="12" r="1.5"/><circle cx="7" cy="19" r="1.5"/></svg><span class="nav-text">Master Data</span><span></span></a>
+      <a class="nav-link active" href="modules.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/><circle cx="7" cy="5" r="1.5"/><circle cx="7" cy="12" r="1.5"/><circle cx="7" cy="19" r="1.5"/></svg><span class="nav-text">Master Data</span><span></span></a>
       <div class="nav-group collapsed">
         <a class="nav-group-head" href="data-integration.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7a8 3 0 1 0 16 0A8 3 0 1 0 4 7"/><path d="M4 7v10a8 3 0 0 0 16 0V7"/><path d="M4 12a8 3 0 0 0 16 0"/></svg><span class="nav-text">Data Management</span><span class="nav-chevron">⌃</span></a>
         <div class="nav-submenu">
@@ -84,6 +97,18 @@
         </div>
       </div>
     </nav>
+
+    <div class="sidebar-footer">
+      <div class="system-card">
+        <div class="system-card-head">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#12B9C3" aria-hidden="true"><path d="M12 2 20 5.6v6.1c0 5-3.4 8.8-8 10.3-4.6-1.5-8-5.3-8-10.3V5.6L12 2Z"/></svg>
+          <span>Sistem Informasi</span>
+        </div>
+        <span class="system-version">COMBEN v2.0.0</span>
+        <span class="environment">Production <i class="environment-dot"></i></span>
+      </div>
+      <p class="copyright">&copy; 2025 COMBEN. All rights reserved.</p>
+    </div>
   </aside>
 
   <div class="app-shell">
@@ -92,25 +117,23 @@
         <button class="icon-button" type="button" data-sidebar-toggle aria-label="Tutup atau buka sidebar">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
-        <div class="breadcrumb" aria-label="Breadcrumb">
-          <span>Data Management</span><span>&rsaquo;</span><a href="data-integration.html">Import Data</a><span>&rsaquo;</span><a href="import-queue.html">Import Queue</a>
-        </div>
+        <div class="breadcrumb" aria-label="Breadcrumb"><span>Recruitment &amp; Onboarding</span><span>&rsaquo;</span><a href="candidate-list.html">Candidate List</a></div>
       </div>
       <div class="topbar-actions">
-        <label class="field topbar-search">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-          <input class="input" type="search" data-formula-search placeholder="Search anything..." aria-label="Search anything">
-          <span class="shortcut">&#8984; K</span>
-        </label>
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="16" height="16"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" placeholder="Search anything...">
+          <span class="search-shortcut">⌘ K</span>
+        </div>
         <button class="icon-button" type="button" aria-label="Notifikasi">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 7h18s-3 0-3-7"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-          <span class="badge">8</span>
+          <span class="badge" style="background-color: #F59E0B; color: white;">8</span>
         </button>
         <button class="icon-button" type="button" aria-label="Bantuan">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 1 1 5.8 1c-.7 1.1-1.8 1.4-2.4 2.3-.3.4-.5.9-.5 1.7"/><path d="M12 17h.01"/></svg>
         </button>
         <div class="profile">
-          <span class="avatar">AD</span>
+          <span class="avatar" style="background-color: #12B9C3; color: white; background-image: none;">AD</span>
           <span class="profile-copy">
             <span class="profile-name">Admin User</span>
             <span class="profile-role">Administrator</span>
@@ -122,41 +145,38 @@
       </div>
     </header>
 
-    <main class="page-main">
-      <section class="subpage-grid">
-        <div class="content-header page-heading-row">
-          <div><h1 class="content-title">Import Queue</h1><p class="content-subtitle">Monitor all import jobs, progress state, retry queue, and imported file history.</p></div>
-          <a class="primary-button" href="data-integration.html">Back to Import Data</a>
+    <main class="page-main candidate-page candidate-list-page" data-candidate-list-page>
+      <section class="candidate-page-head">
+        <div>
+          <h1>Candidate List</h1>
+          <p>Kelola kandidat, status rekrutmen, dokumen, dan aksi berikutnya dalam satu daftar.</p>
         </div>
-        <div class="metric-row">
-          <article class="metric-card"><span>Total Jobs</span><strong>148</strong><small>May 2025 commission period</small></article>
-          <article class="metric-card"><span>In Progress</span><strong>6</strong><small>2 high priority jobs</small></article>
-          <article class="metric-card"><span>Success Rate</span><strong>96%</strong><small>Last 30 days</small></article>
-          <article class="metric-card"><span>Failed</span><strong>3</strong><small>Ready for retry</small></article>
-        </div>
-        <article class="wide-panel">
-          <div class="subpage-toolbar">
-            <label class="field"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg><input class="input" placeholder="Search file name or owner"></label>
-            <select class="select"><option>All Sources</option><option>Excel Upload</option><option>DTS Scheduler</option><option>Core System / API</option></select>
-            <select class="select"><option>All Status</option><option>Success</option><option>In Progress</option><option>Warning</option><option>Failed</option></select>
-            <button class="mini-button" type="button" data-show-toast="Queue refreshed.">Refresh</button>
-          </div>
-          <div class="table-scroll">
-            <table class="subpage-table">
-              <thead><tr><th>File Name</th><th>Source</th><th>Records</th><th>Status</th><th>Progress</th><th>Owner</th><th>Started At</th><th>Action</th></tr></thead>
-              <tbody>
-                <tr><td>Agent_Master_May2025.xlsx</td><td>Excel Upload</td><td>8,765</td><td><span class="status-pill progress">In Progress</span></td><td><span class="progress-line"><i style="width:68%"></i></span><b>68%</b></td><td>Arjun Dev</td><td>20 May 2025, 11:20 AM</td><td><button class="mini-button" type="button" data-show-toast="Opening live job detail.">Open</button></td></tr>
-                <tr><td>Premium_Payment_May2025.xlsx</td><td>Excel Upload</td><td>125,430</td><td><span class="status-pill">Success</span></td><td><span class="progress-line"><i style="width:100%"></i></span><b>100%</b></td><td>Arjun Dev</td><td>20 May 2025, 10:45 AM</td><td><button class="mini-button" type="button" data-show-toast="Download started.">Download</button></td></tr>
-                <tr><td>Policy_Updates_May2025.xlsx</td><td>Excel Upload</td><td>23,542</td><td><span class="status-pill draft">Warning</span></td><td><span class="progress-line warning"><i style="width:100%"></i></span><b>100%</b></td><td>Meera Nair</td><td>20 May 2025, 09:15 AM</td><td><button class="mini-button" type="button" data-show-toast="Warning detail opened.">Review</button></td></tr>
-                <tr><td>Incentive_Adjustments.csv</td><td>DTS Scheduler</td><td>15,210</td><td><span class="status-pill inactive">Failed</span></td><td><span class="progress-line muted"><i style="width:0%"></i></span><b>0%</b></td><td>Rohan Singh</td><td>19 May 2025, 08:05 PM</td><td><button class="mini-button" type="button" data-show-toast="Retry submitted.">Retry</button></td></tr>
-              </tbody>
-            </table>
-          </div>
-        </article>
+        <button class="candidate-primary" type="button" data-open-add-candidate>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 5v14M5 12h14"/></svg>
+          Tambah Kandidat
+        </button>
       </section>
+    
+      <section class="candidate-toolbar candidate-toolbar-wide" aria-label="Filter kandidat">
+        <label class="pipeline-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input type="search" data-candidate-search placeholder="Cari kandidat, ID, email, atau cabang..."><span class="search-shortcut">⌘ K</span></label>
+        <label class="pipeline-filter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 6h16M4 12h16M4 18h7"/><path d="m15 15 2 2 4-4"/></svg><span class="filter-copy"><small>Tahap</small><select data-candidate-stage><option value="all">Semua Tahap</option><option value="new-applicant">New Applicant</option><option value="screening">Screening</option><option value="interview">Interview</option><option value="verification">Verification</option><option value="approved">Approved</option><option value="rejected">Rejected</option></select></span></label>
+        <label class="pipeline-filter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg><span class="filter-copy"><small>Cabang</small><select data-candidate-branch><option value="all">Semua Cabang</option><option value="jakarta-selatan">Jakarta Selatan</option><option value="bandung">Bandung</option><option value="surabaya">Surabaya</option><option value="bali">Bali</option><option value="makassar">Makassar</option><option value="medan">Medan</option></select></span></label>
+        <label class="pipeline-filter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg><span class="filter-copy"><small>Status</small><select data-candidate-status><option value="all">Semua Status</option><option value="active">Aktif</option><option value="revision">Butuh Revisi</option><option value="done">Selesai</option><option value="rejected">Rejected</option></select></span></label>
+        <button class="pipeline-action" type="button" data-reset-candidates>Reset</button>
+      </section>
+    
+      <section class="candidate-summary-grid" data-candidate-summary></section>
+      <section class="candidate-list-grid candidate-list-grid-large" data-candidate-grid></section>
+      <div class="candidate-empty" data-candidate-empty hidden>Tidak ada kandidat yang cocok dengan filter.</div>
+  <div class="candidate-pagination" data-candidate-pagination></div>
+    
+      <div class="candidate-modal-card" data-candidate-modal hidden><section class="candidate-modal-content"><div class="candidate-panel-head"><h2 data-modal-title>Detail</h2><button class="candidate-modal-close" type="button" data-close-modal>×</button></div><div data-modal-body></div></section></div>
+      <div class="pipeline-toast" data-candidate-toast></div>
     </main>
   </div>
-  <div class="toast" data-toast></div>
+
   <script src="../js/main.js"></script>
+  <script src="../js/recruitment-pipeline.js"></script>
+  <script src="../js/candidates.js"></script>
 </body>
 </html>

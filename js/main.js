@@ -111,6 +111,26 @@ resetButton?.addEventListener("click", () => {
 
 filterModules();
 
+moduleGrid?.querySelectorAll("[data-module-card]").forEach((card) => {
+  const link = card.querySelector(".card-arrow[href]");
+  if (!link) return;
+
+  card.setAttribute("role", "link");
+  card.setAttribute("tabindex", "0");
+
+  const goToModule = (event) => {
+    if (event.target.closest("a, button, input, select, textarea")) return;
+    window.location.href = link.href;
+  };
+
+  card.addEventListener("click", goToModule);
+  card.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    window.location.href = link.href;
+  });
+});
+
 const formulaTable = document.querySelector("[data-formula-table]");
 const formulaRows = formulaTable ? Array.from(formulaTable.querySelectorAll("[data-formula-row]")) : [];
 const formulaSearch = document.querySelector("[data-formula-search]");
