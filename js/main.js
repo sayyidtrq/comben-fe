@@ -2,6 +2,18 @@ const root = document.documentElement;
 const sidebarToggle = document.querySelector("[data-sidebar-toggle]");
 const sidebar = document.querySelector(".sidebar");
 
+function pruneDeprecatedNavItems() {
+  document.querySelectorAll(".nav-sub-link").forEach((item) => {
+    const label = item.textContent.trim();
+    const href = item.getAttribute("href") || "";
+    if (label === "Interview Mendatang" || label === "Candidate Detail" || href.includes("recruitment-interviews.html") || href.includes("candidate-detail.html")) {
+      item.remove();
+    }
+  });
+}
+
+pruneDeprecatedNavItems();
+
 function setSidebarState() {
   const collapsed = localStorage.getItem("comben-sidebar") === "collapsed";
   root.classList.toggle("sidebar-collapsed", collapsed);
@@ -61,11 +73,12 @@ document.querySelectorAll(".nav-group-head").forEach((button) => {
 });
 
 const moduleGrid = document.querySelector("[data-module-grid]");
-const emptyState = document.querySelector("[data-empty-state]");
-const searchInput = document.querySelector("[data-module-search]");
-const categorySelect = document.querySelector("[data-category-filter]");
-const statusSelect = document.querySelector("[data-status-filter]");
-const resetButton = document.querySelector("[data-reset-filter]");
+const modulePage = moduleGrid?.closest(".modules-page") || document;
+const emptyState = modulePage.querySelector("[data-empty-state]");
+const searchInput = modulePage.querySelector("[data-module-search]");
+const categorySelect = modulePage.querySelector("[data-category-filter]");
+const statusSelect = modulePage.querySelector("[data-status-filter]");
+const resetButton = modulePage.querySelector("[data-reset-filter]");
 
 function normalize(value) {
   return String(value || "").toLowerCase().trim();
@@ -76,21 +89,23 @@ function filterModules() {
 
   const query = normalize(searchInput?.value);
   const category = categorySelect?.value || "all";
-  const status = statusSelect?.value || "active";
+  const status = statusSelect?.value || "all";
   let visibleCount = 0;
 
   moduleGrid.querySelectorAll("[data-module-card]").forEach((card) => {
     const haystack = normalize([
       card.dataset.title,
       card.dataset.description,
-      card.dataset.category
+      card.dataset.category,
+      card.querySelector(".status-pill")?.textContent
     ].join(" "));
     const matchesQuery = !query || haystack.includes(query);
-    const matchesCategory = category === "all" || card.dataset.category === category;
-    const matchesStatus = status === "all" || card.dataset.status === status;
+    const matchesCategory = category === "all" || normalize(card.dataset.category) === normalize(category);
+    const matchesStatus = status === "all" || normalize(card.dataset.status) === normalize(status);
     const visible = matchesQuery && matchesCategory && matchesStatus;
 
     card.hidden = !visible;
+    card.style.display = visible ? "" : "none";
     if (visible) visibleCount += 1;
   });
 
@@ -105,7 +120,7 @@ function filterModules() {
 resetButton?.addEventListener("click", () => {
   if (searchInput) searchInput.value = "";
   if (categorySelect) categorySelect.value = "all";
-  if (statusSelect) statusSelect.value = "active";
+  if (statusSelect) statusSelect.value = "all";
   filterModules();
 });
 
@@ -659,6 +674,7 @@ const importSearch = document.querySelector("[data-import-search]");
 const importSourceFilter = document.querySelector("[data-import-source-filter]");
 const importMethodFilter = document.querySelector("[data-import-method-filter]");
 const importPeriod = document.querySelector("[data-import-period]");
+const importResetFilter = document.querySelector("[data-import-reset-filter]");
 const queueCount = document.querySelector("[data-queue-count]");
 const currentFile = document.querySelector("[data-current-file]");
 const uploadSelected = document.querySelector("[data-upload-selected]");
@@ -755,6 +771,18 @@ function addImportRow(fileName = selectedImportFile, source = "Excel Upload", me
 
 importPeriod?.addEventListener("change", () => {
   showToast(`Commission period diganti ke ${importPeriod.value}.`);
+});
+
+importResetFilter?.addEventListener("click", () => {
+  if (importSearch) importSearch.value = "";
+  if (importPeriod) importPeriod.value = "May 2025";
+  if (importSourceFilter) importSourceFilter.value = "all";
+  if (importMethodFilter) importMethodFilter.value = "all";
+  queueExpanded = false;
+  const viewQueue = document.querySelector("[data-view-queue]");
+  if (viewQueue) viewQueue.textContent = "View Full Queue ->";
+  updateImportQueue();
+  showToast("Filter import data direset.");
 });
 
 document.querySelectorAll("[data-source-tab]").forEach((tabButton) => {

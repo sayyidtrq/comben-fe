@@ -15,8 +15,8 @@ base_nav = """    <nav class="nav-list">
         <div class="nav-submenu">
           <a class="nav-sub-link" href="#">Recruitment Pipeline</a>
           <a class="nav-sub-link" href="#">Candidates List</a>
-          <a class="nav-sub-link" href="#">Recruitment Approval</a>
           <a class="nav-sub-link" href="#">Document Verification</a>
+          <a class="nav-sub-link" href="#">Recruitment Approval</a>
           <a class="nav-sub-link" href="#">Agent Onboarding</a>
         </div>
       </div>

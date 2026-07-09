@@ -243,32 +243,34 @@ const candidates = [
     ]
   },
   {
-    id: "AGT-002415",
-    name: "Nanda Pratama",
-    email: "nanda.pratama@mail.com",
-    phone: "0821-6601-2020",
-    birth: "Surabaya, 11 November 1993",
+    id: "AGT-002789",
+    name: "Rudi Pratama",
+    email: "rudi.pratama@email.com",
+    phone: "0812-3456-7890",
+    birth: "Jakarta, 15 Maret 1996",
     gender: "Laki-laki",
     marital: "Menikah",
     citizenship: "WNI",
-    address: "Jl. Tunjungan No. 21, Surabaya",
-    domicile: "Surabaya",
-    position: "Agent Asuransi",
-    branch: "Surabaya",
-    branchKey: "surabaya",
+    address: "Jl. Cihampelas No. 123, Bandung",
+    domicile: "Jakarta Selatan",
+    position: "Senior Agent",
+    branch: "Jakarta Selatan",
+    branchKey: "jakarta-selatan",
     source: "Website Career",
-    stage: "Screening",
-    stageKey: "screening",
+    stage: "Verification",
+    stageKey: "verification",
     status: "active",
-    registered: "24 Mei 2025",
-    recruiter: "Yuliana Lestari",
-    recruiterRole: "Recruiter",
-    initials: "NP",
-    note: "Profil sales bagus, sedang menunggu hasil pengecekan awal.",
-    checklist: ["Formulir Lamaran", "KTP", "NPWP", "Rekening Bank"],
+    registered: "22 Mei 2025",
+    recruiter: "Dewi Sartika",
+    recruiterRole: "Unit Manager",
+    initials: "RP",
+    note: "Kandidat direkomendasikan untuk final approval setelah interview dan dokumen utama dinyatakan lengkap.",
+    checklist: ["Formulir Lamaran", "KTP", "NPWP", "Rekening Bank", "Sertifikat / Lisensi", "Surat Referensi"],
     history: [
-      ["Pendaftaran", "Selesai", "Sistem", "24 Mei 2025, 08:15", "Pendaftaran website"],
-      ["Screening", "Berjalan", "Yuliana Lestari", "24 Mei 2025, 11:45", "Dalam proses"]
+      ["Pendaftaran", "Selesai", "Sistem", "22 Mei 2025, 08:15", "Pendaftaran website"],
+      ["Screening", "Selesai", "Dewi Sartika", "22 Mei 2025, 11:45", "Lolos screening"],
+      ["Interview", "Selesai", "Dedi Kurniawan", "25 Mei 2025, 10:30", "Skor interview baik"],
+      ["Verifikasi Dokumen", "Berjalan", "Ops Team", "26 Mei 2025, 09:00", "Siap diajukan ke approval"]
     ]
   },
   {
@@ -378,12 +380,53 @@ function avatar(candidate, large = false) {
 }
 
 function stagePill(candidate) {
-  const extra = candidate.status === "done" ? " done" : candidate.status === "revision" ? " warn" : candidate.status === "rejected" ? " danger" : "";
-  return `<span class="candidate-pill${extra}">${candidate.stage}</span>`;
+  const extra = candidate.status === "revision" ? " warn" : candidate.status === "rejected" ? " danger" : "";
+  return `<span class="candidate-pill stage-${candidate.stageKey}${extra}">${candidate.stage}</span>`;
 }
 
-function documentsHtml(limit = documentAssets.length) {
-  return documentAssets.slice(0, limit).map(([label, src, file]) => `
+function workflowActionsHtml(candidate) {
+  const actionsByStage = {
+    "new-applicant": [
+      ["screening", "Move to Screening", "candidate-action-screening"],
+      ["revision", "Request Revision", "candidate-warning"]
+    ],
+    screening: [
+      ["interview", "Schedule Interview", "candidate-action-interview"],
+      ["revision", "Request Revision", "candidate-warning"]
+    ],
+    interview: [
+      ["verification", "Move to Document Verification", "candidate-action-verification"],
+      ["revision", "Request Revision", "candidate-warning"]
+    ],
+    verification: [
+      ["approval", "Submit to Approval", "candidate-action-approval"],
+      ["revision", "Request Revision", "candidate-warning"]
+    ],
+    approval: [
+      ["approval", "Submit to Approval", "candidate-action-approval"],
+      ["revision", "Request Revision", "candidate-warning"]
+    ],
+    approved: [
+      ["onboarding", "Continue Onboarding", "candidate-action-onboarding"]
+    ],
+    rejected: [
+      ["revision", "Request Revision", "candidate-warning"]
+    ]
+  };
+  const actions = actionsByStage[candidate.stageKey] || actionsByStage.screening;
+  return actions.map(([action, label, className]) => {
+    const attribute = action === "revision" ? 'data-open-modal="revision"' : `data-detail-action="${action}"`;
+    return `<button class="${className}" type="button" ${attribute}>${label}</button>`;
+  }).join("");
+}
+
+function getCandidateDocuments(candidate) {
+  if (!candidate) return documentAssets;
+  return documentAssets.filter(([label]) => candidate.checklist.includes(label));
+}
+
+function documentsHtml(candidate, limit = documentAssets.length) {
+  return getCandidateDocuments(candidate).slice(0, limit).map(([label, src, file]) => `
     <button class="document-card" type="button" data-doc-preview="${label}">
       <span class="document-thumb"><img src="${src}" alt="${label}"></span>
       <strong>${label}</strong>
@@ -502,7 +545,7 @@ function renderDetail() {
           ["Alamat", candidate.address]
         ].map(([k, v]) => `<div class="candidate-kv"><small>${k}</small><strong>${v}</strong></div>`).join("")}</article>
 
-        <article class="candidate-panel candidate-compact-panel documents-panel"><div class="candidate-panel-head"><h2>Dokumen Ringkas</h2><button class="panel-link" type="button" data-open-modal="documents">Lihat semua dokumen</button></div><div class="document-grid reference-doc-grid">${documentsHtml(4)}</div></article>
+        <article class="candidate-panel candidate-compact-panel documents-panel"><div class="candidate-panel-head"><h2>Dokumen Ringkas</h2><button class="panel-link" type="button" data-open-modal="documents">Lihat semua dokumen</button></div><div class="document-grid reference-doc-grid">${documentsHtml(candidate, 4) || '<p class="candidate-muted">Belum ada dokumen yang lengkap.</p>'}</div></article>
 
         <article class="candidate-panel candidate-compact-panel"><div class="candidate-panel-head"><h2>Riwayat Tahapan Rekrutmen</h2><button class="panel-link" type="button" data-open-modal="history">Lihat riwayat lengkap</button></div><table class="history-table"><thead><tr><th>Tahapan</th><th>Status</th><th>Oleh</th><th>Tanggal</th><th>Catatan</th></tr></thead><tbody>${candidate.history.slice(0, 5).map((row) => `<tr>${row.map((cell, idx) => `<td>${idx === 1 ? `<span class="candidate-pill ${cell === "Selesai" ? "done" : cell === "Berjalan" ? "" : "muted"}">${cell}</span>` : cell}</td>`).join("")}</tr>`).join("")}</tbody></table></article>
       </div>
@@ -532,6 +575,12 @@ function renderDetail() {
       }).join("")}</div></aside>
     </section>
   `;
+}
+
+function renderWorkflowActions() {
+  const target = detailPage.querySelector("[data-workflow-actions]");
+  if (!target) return;
+  target.innerHTML = workflowActionsHtml(getSelectedCandidate());
 }
 
 function addCandidateModal() {
@@ -567,11 +616,11 @@ function wireCommonEvents() {
       const candidate = getSelectedCandidate();
       const type = open.dataset.openModal;
       const map = {
-        documents: ["Semua Dokumen", `<div class="document-grid modal-doc-grid">${documentsHtml()}</div>`],
+        documents: ["Semua Dokumen", `<div class="document-grid modal-doc-grid">${documentsHtml(candidate) || '<p class="candidate-muted">Belum ada dokumen yang lengkap.</p>'}</div>`],
         history: ["Riwayat Lengkap", `<table class="history-table"><thead><tr><th>Tahapan</th><th>Status</th><th>Oleh</th><th>Tanggal</th><th>Catatan</th></tr></thead><tbody>${candidate.history.map((row) => `<tr>${row.map((cell) => `<td>${cell}</td>`).join("")}</tr>`).join("")}</tbody></table>`],
         notes: ["Edit Interview Notes", `<label class="candidate-form-full"><span>Catatan Interview</span><textarea class="input">${candidate.note}</textarea></label><button class="candidate-primary" type="button" data-save-modal>Save Notes</button>`],
         revision: ["Request Revision", `<label class="candidate-form-full"><span>Pesan Revisi</span><textarea class="input">Mohon lengkapi atau perbarui dokumen yang belum valid sebelum proses dilanjutkan.</textarea></label><button class="candidate-warning" type="button" data-save-modal>Kirim Request Revision</button>`],
-        more: ["Aksi Lainnya", `<div class="candidate-list-actions"><button class="pipeline-action" type="button" data-save-modal>Jadwal Ulang Interview</button><button class="pipeline-action" type="button" data-save-modal>Tandai Prioritas</button><button class="pipeline-action" type="button" data-save-modal>Download PDF</button></div>`]
+        more: ["Aksi Lainnya", `<div class="candidate-list-actions"><button class="pipeline-action" type="button" data-save-modal>Tandai Prioritas</button><button class="pipeline-action" type="button" data-save-modal>Download PDF</button></div>`]
       };
       if (map[type]) openModal(map[type][0], map[type][1]);
     }
@@ -632,6 +681,7 @@ function wireDetailPage() {
     backLink.textContent = "← Kembali ke recruitment approval";
   }
   renderDetail();
+  renderWorkflowActions();
   detailPage.addEventListener("click", (event) => {
     const check = event.target.closest("[data-check-item]");
     if (!check) return;
@@ -643,7 +693,7 @@ function wireDetailPage() {
     showToast(`${check.textContent.trim()} diperbarui.`);
   });
 
-  function setDecisionStatus(type) {
+  function setWorkflowStatus(type) {
     const candidate = getSelectedCandidate();
     const root = detailPage.querySelector("[data-candidate-detail-root]");
     if (!root) return;
@@ -653,13 +703,45 @@ function wireDetailPage() {
       banner.dataset.decisionBanner = "";
       root.prepend(banner);
     }
-    const isApproved = type === "approve";
-    banner.className = `candidate-decision-banner ${isApproved ? "approved" : "rejected"}`;
+    const copy = {
+      screening: {
+        icon: "1",
+        title: `${candidate.name} dipindahkan ke Screening`,
+        body: "Recruiter dapat melanjutkan pengecekan awal kandidat sebelum dijadwalkan interview.",
+        toast: `${candidate.name} dipindahkan ke tahap screening.`
+      },
+      interview: {
+        icon: "2",
+        title: `Interview ${candidate.name} dijadwalkan`,
+        body: "Kandidat siap masuk agenda interview dan menunggu konfirmasi interviewer.",
+        toast: `Jadwal interview ${candidate.name} disiapkan.`
+      },
+      verification: {
+        icon: "3",
+        title: `${candidate.name} masuk Document Verification`,
+        body: "Tim dapat memvalidasi dokumen kandidat sebelum dikirim ke Recruitment Approval.",
+        toast: `${candidate.name} dipindahkan ke document verification.`
+      },
+      approval: {
+        icon: "4",
+        title: `${candidate.name} dikirim ke Recruitment Approval`,
+        body: "Keputusan approve atau reject final dilakukan dari halaman Recruitment Approval.",
+        toast: `${candidate.name} dikirim ke recruitment approval.`
+      },
+      onboarding: {
+        icon: "5",
+        title: `${candidate.name} lanjut ke Onboarding`,
+        body: "Kandidat sudah approved dan siap diproses menjadi agent aktif.",
+        toast: `${candidate.name} siap lanjut onboarding.`
+      }
+    }[type];
+    if (!copy) return;
+    banner.className = "candidate-decision-banner approved";
     banner.innerHTML = `
-      <span class="decision-icon">${isApproved ? "✓" : "!"}</span>
+      <span class="decision-icon">${copy.icon}</span>
       <div>
-        <strong>${candidate.name} ${isApproved ? "disetujui" : "ditolak"}</strong>
-        <p>${isApproved ? "Status kandidat ditandai approved dan siap lanjut ke onboarding." : "Status kandidat ditandai rejected dan proses rekrutmen dihentikan."}</p>
+        <strong>${copy.title}</strong>
+        <p>${copy.body}</p>
       </div>
       <small>${new Date().toLocaleString("id-ID", { day: "2-digit", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" })}</small>
     `;
@@ -667,11 +749,12 @@ function wireDetailPage() {
     detailPage.querySelectorAll("[data-detail-action]").forEach((button) => {
       button.classList.toggle("is-active", button.dataset.detailAction === type);
     });
-    showToast(`${candidate.name} ${isApproved ? "ditandai approved." : "ditandai rejected."}`);
+    showToast(copy.toast);
   }
 
-  detailPage.querySelector("[data-detail-action='approve']")?.addEventListener("click", () => setDecisionStatus("approve"));
-  detailPage.querySelector("[data-detail-action='reject']")?.addEventListener("click", () => setDecisionStatus("reject"));
+  detailPage.querySelectorAll("[data-detail-action]").forEach((button) => {
+    button.addEventListener("click", () => setWorkflowStatus(button.dataset.detailAction));
+  });
 }
 
 wireCommonEvents();

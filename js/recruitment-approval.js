@@ -12,16 +12,9 @@ const docs = [
 ];
 
 const names = [
-  ["AGT-002789", "Rudi Pratama", "Jakarta Selatan", "Dewi Sartika", 87, 100],
-  ["AGT-002546", "Siti Nurhaliza", "Jakarta Selatan", "Rina Setiawati", 78, 90],
-  ["AGT-002347", "Fajar Ramadhan", "Bandung", "Dedi Kurniawan", 82, 100],
-  ["AGT-002348", "Maya Lestari", "Medan", "Rina Setiawati", 74, 85],
-  ["AGT-002349", "Ahmad Fauzi", "Makassar", "Dedi Kurniawan", 81, 95],
-  ["AGT-002350", "Rina Sari", "Bali", "Iqbal Maulana", 89, 100],
-  ["AGT-002411", "Agung Setiawan", "Makassar", "Putri Amelia", 84, 100],
-  ["AGT-002412", "Dinda Ayu Lestari", "Surabaya", "Yuliana Lestari", 86, 100],
-  ["AGT-002413", "Bambang Setiawan", "Bandung", "Ahmad Fauzi", 77, 90],
-  ["AGT-002414", "Putri Amelia", "Jakarta Selatan", "Iqbal Maulana", 88, 95]
+  ["AGT-002789", "Rudi Pratama", "Jakarta Selatan", "Senior Agent", "Dewi Sartika", 87, 100],
+  ["AGT-002567", "Dinda Ayu Lestari", "Surabaya", "Financial Advisor", "Yuliana Lestari", 86, 100],
+  ["AGT-002413", "Bambang Setiawan", "Bandung", "Agent Asuransi", "Ahmad Fauzi", 77, 90]
 ];
 
 const approvals = Array.from({ length: 36 }, (_, index) => {
@@ -29,14 +22,16 @@ const approvals = Array.from({ length: 36 }, (_, index) => {
   const day = 27 - (index % 12);
   const statusCycle = ["waiting", "approved", "revision", "waiting", "rejected", "approved", "waiting", "revision", "waiting", "approved", "rejected", "waiting"][index % 12];
   return {
-    id: `${base[0]}${index > 9 ? "-" + (index + 1) : ""}`,
+    rowKey: `${base[0]}-approval-${index + 1}`,
+    id: base[0],
+    profileId: base[0],
     name: base[1],
     branch: base[2],
-    position: index % 4 === 0 ? "Senior Agent" : "Agen",
-    submittedBy: base[3],
+    position: base[3],
+    submittedBy: base[4],
     submitterRole: index % 2 === 0 ? "Unit Manager" : "Branch Manager",
-    interviewScore: Math.max(68, base[4] - (index % 5)),
-    completeness: Math.max(80, base[5] - (index % 3) * 5),
+    interviewScore: Math.max(68, base[5] - (index % 5)),
+    completeness: Math.max(80, base[6] - (index % 3) * 5),
     status: statusCycle,
     level: index % 3 === 0 ? "Regional Manager" : index % 3 === 1 ? "Branch Manager" : "Super Admin",
     date: `2025-05-${String(day).padStart(2, "0")}`,
@@ -54,7 +49,7 @@ const approvals = Array.from({ length: 36 }, (_, index) => {
 let state = {
   page: 1,
   pageSize: 5,
-  selectedId: approvals[0].id
+  selectedId: approvals[0].rowKey
 };
 
 function toast(message) {
@@ -120,7 +115,7 @@ function renderTable() {
   const visible = rows.slice(start, start + state.pageSize);
   page.querySelector("[data-ra-count]").textContent = `(${rows.length})`;
   page.querySelector("[data-ra-rows]").innerHTML = visible.map((row) => `
-    <tr data-ra-row="${row.id}" class="${row.id === state.selectedId ? "is-selected" : ""}">
+    <tr data-ra-row="${row.rowKey}" class="${row.rowKey === state.selectedId ? "is-selected" : ""}">
       <td><span class="ra-radio"></span></td>
       <td><strong style="color:#2478e8">${row.id}</strong></td>
       <td><strong>${row.name}</strong></td>
@@ -131,7 +126,7 @@ function renderTable() {
       <td><strong>${row.submittedBy}</strong><br><small>${row.submitterRole}</small></td>
       <td>${new Date(row.date).toLocaleDateString("id-ID", { day:"2-digit", month:"short", year:"numeric" })}<br><small>${row.time}</small></td>
       <td><span class="ra-status ${row.status}">${statusLabel(row.status)}</span></td>
-      <td><button class="ra-view ${row.seen ? "is-seen" : ""}" type="button" data-ra-view="${row.id}" aria-label="${row.seen ? "Tandai belum dilihat" : "Lihat"} ${row.name}">${eyeIcon(row.seen)}<span>Lihat</span></button></td>
+      <td><button class="ra-view ${row.seen ? "is-seen" : ""}" type="button" data-ra-view="${row.rowKey}" aria-label="${row.seen ? "Tandai belum dilihat" : "Lihat"} ${row.name}">${eyeIcon(row.seen)}<span>Lihat</span></button></td>
     </tr>
   `).join("");
 
@@ -150,7 +145,7 @@ function renderTable() {
 
 function selectedRow() {
   const rows = filteredRows();
-  return rows.find((row) => row.id === state.selectedId) || rows[0] || approvals[0];
+  return rows.find((row) => row.rowKey === state.selectedId) || rows[0] || approvals[0];
 }
 
 function updateDateLabel() {
@@ -163,8 +158,8 @@ function updateDateLabel() {
 
 function renderDetail() {
   const row = selectedRow();
-  const profileId = ({ "Rudi Pratama": "AGT-002415", "Siti Nurhaliza": "AGT-002345", "Fajar Ramadhan": "AGT-002346", "Maya Lestari": "AGT-002412", "Ahmad Fauzi": "AGT-002411", "Rina Sari": "AGT-002350", "Agung Setiawan": "AGT-002411", "Dinda Ayu Lestari": "AGT-002567", "Bambang Setiawan": "AGT-002413", "Putri Amelia": "AGT-002416" })[row.name] || "AGT-002345";
-  state.selectedId = row.id;
+  const profileId = row.profileId || row.id.split("-").slice(0, 2).join("-");
+  state.selectedId = row.rowKey;
   const initials = row.name.split(" ").map((part) => part[0]).join("").slice(0, 2);
   page.querySelector("[data-ra-candidate-detail]").innerHTML = `
     <h3 class="ra-card-title">Detail Kandidat</h3>
@@ -178,7 +173,7 @@ function renderDetail() {
           ["▣", "Pendidikan Terakhir", row.education],
           ["◴", "Pengalaman Kerja", `${3 + (row.age % 4)} tahun`],
           ["⌖", "Alamat", row.address]
-        ].map(([icon, k, v]) => `<div class="ra-kv ra-icon-kv"><span>${icon}</span><small>${k}</small><strong>${v}</strong></div>`).join("")}
+        ].map(([icon, k, v]) => `<div class="ra-kv ra-icon-kv"><span>${icon}</span><small>${k}</small><strong class="${k === "Email" ? "ra-value-email" : ""}">${v}</strong></div>`).join("")}
         <a class="ra-link-button" href="candidate-detail.html?id=${profileId}&from=approval" data-full-profile>Lihat Profil Lengkap ↗</a>
       </div>
       <div class="ra-summary-column"><strong>Ringkasan Rekrutmen</strong>${[
@@ -188,7 +183,7 @@ function renderDetail() {
         ["Skor Interview", `${row.interviewScore} / 100 (Baik)`],
         ["Kelengkapan Dokumen", `${row.completeness}% (${row.completeness >= 95 ? "Lengkap" : "Kurang"})`],
         ["Rekomendasi", row.recommendation]
-      ].map(([k, v]) => `<div class="ra-kv"><small>${k}</small><strong>${v}</strong></div>`).join("")}</div>
+      ].map(([k, v]) => `<div class="ra-kv"><small>${k}</small><strong class="${k === "Rekomendasi" ? "ra-value-recommendation" : ""}">${v}</strong></div>`).join("")}</div>
       <div class="ra-doc-column"><strong>Dokumen Utama</strong><div class="ra-doc-list">${docs.slice(0, 6).map(([name, , status]) => `<div class="ra-doc-row"><span>✓ ${name}</span><span>${status}</span></div>`).join("")}</div><button class="ra-link-inline" type="button" data-ra-documents>Lihat semua dokumen (12)</button></div>
     </div>
   `;
@@ -255,9 +250,9 @@ page.addEventListener("click", (event) => {
   const view = event.target.closest("[data-ra-view]");
   if (view) {
     event.stopPropagation();
-    const item = approvals.find((approval) => approval.id === view.dataset.raView);
+    const item = approvals.find((approval) => approval.rowKey === view.dataset.raView);
     item.seen = !item.seen;
-    state.selectedId = item.id;
+    state.selectedId = item.rowKey;
     renderTable();
     renderDetail();
     toast(item.seen ? "Data kandidat ditandai sudah dilihat." : "Data kandidat ditandai belum dilihat.");
@@ -267,7 +262,7 @@ page.addEventListener("click", (event) => {
   const row = event.target.closest("[data-ra-row]");
   if (row) {
     state.selectedId = row.dataset.raRow;
-    approvals.find((item) => item.id === state.selectedId).seen = true;
+    approvals.find((item) => item.rowKey === state.selectedId).seen = true;
     renderTable();
     renderDetail();
   }
