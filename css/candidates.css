@@ -179,6 +179,36 @@ body:has(.candidate-page) .profile {
   font-weight: 900;
 }
 
+.candidate-pill.stage-new-applicant {
+  background: #e8f1ff;
+  color: #2478e8;
+}
+
+.candidate-pill.stage-screening {
+  background: #d8fbfa;
+  color: #078d9b;
+}
+
+.candidate-pill.stage-interview {
+  background: #fff2cf;
+  color: #b97904;
+}
+
+.candidate-pill.stage-verification {
+  background: #efe8ff;
+  color: #6942d6;
+}
+
+.candidate-pill.stage-approved {
+  background: #e7f8ed;
+  color: #16a764;
+}
+
+.candidate-pill.stage-rejected {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
 .candidate-pill.done {
   background: #e7f8ed;
   color: #16a764;
@@ -570,7 +600,12 @@ body:has(.candidate-page) .profile {
 .candidate-primary,
 .candidate-danger,
 .candidate-warning,
-.candidate-light-button {
+.candidate-light-button,
+.candidate-action-screening,
+.candidate-action-interview,
+.candidate-action-verification,
+.candidate-action-approval,
+.candidate-action-onboarding {
   display: inline-flex;
   min-height: 40px;
   align-items: center;
@@ -606,10 +641,45 @@ body:has(.candidate-page) .profile {
   color: #078d9b;
 }
 
+.candidate-action-screening {
+  border: 1px solid #20c6cd;
+  background: #20c6cd;
+  color: #ffffff;
+}
+
+.candidate-action-interview {
+  border: 1px solid #f2ae24;
+  background: #f2ae24;
+  color: #ffffff;
+}
+
+.candidate-action-verification {
+  border: 1px solid #7b55e7;
+  background: #7b55e7;
+  color: #ffffff;
+}
+
+.candidate-action-approval {
+  border: 1px solid #12b9c3;
+  background: #ffffff;
+  color: #078d9b;
+}
+
+.candidate-action-onboarding {
+  border: 1px solid #15a766;
+  background: #15a766;
+  color: #ffffff;
+}
+
 .candidate-primary:hover,
 .candidate-danger:hover,
 .candidate-warning:hover,
-.candidate-light-button:hover {
+.candidate-light-button:hover,
+.candidate-action-screening:hover,
+.candidate-action-interview:hover,
+.candidate-action-verification:hover,
+.candidate-action-approval:hover,
+.candidate-action-onboarding:hover {
   box-shadow: 0 12px 26px rgba(17, 38, 70, 0.12);
   transform: translateY(-1px);
 }
@@ -621,6 +691,13 @@ body:has(.candidate-page) .profile {
 
 .candidate-detail-actions {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.candidate-workflow-actions {
+  display: inline-flex;
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 10px;

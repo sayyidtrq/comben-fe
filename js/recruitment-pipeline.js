@@ -54,6 +54,7 @@ if (pipelineRoot) {
   const branchFilter = pipelineRoot.querySelector("[data-branch-filter]");
   const sourceFilter = pipelineRoot.querySelector("[data-source-filter]");
   const statusFilter = pipelineRoot.querySelector("[data-status-filter]");
+  const resetFilter = pipelineRoot.querySelector("[data-reset-pipeline]");
   const funnelPeriod = pipelineRoot.querySelector("[data-funnel-period]");
   const cards = Array.from(pipelineRoot.querySelectorAll("[data-candidate-card]"));
 
@@ -90,6 +91,17 @@ if (pipelineRoot) {
     control?.addEventListener("keyup", filterCards);
     control?.addEventListener("search", filterCards);
     control?.addEventListener("change", filterCards);
+  });
+
+  resetFilter?.addEventListener("click", () => {
+    if (search) search.value = "";
+    if (periodFilter) periodFilter.value = "mei-2025";
+    if (branchFilter) branchFilter.value = "all";
+    if (stageFilter) stageFilter.value = "all";
+    if (sourceFilter) sourceFilter.value = "all";
+    if (statusFilter) statusFilter.value = "all";
+    filterCards();
+    showPipelineToast("Filter pipeline direset.");
   });
 
   function textAfter(label, card) {
