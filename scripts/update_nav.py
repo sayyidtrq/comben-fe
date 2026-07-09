@@ -23,9 +23,9 @@ base_nav = """    <nav class="nav-list">
       <div class="nav-group collapsed">
         <a class="nav-group-head" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="nav-text">Agent Management</span><span class="nav-chevron">⌃</span></a>
         <div class="nav-submenu">
-          <a class="nav-sub-link" href="#">Agent Master List</a>
+          <a class="nav-sub-link" href="agent-master-list.html">Agent Master List</a>
           <a class="nav-sub-link" href="#">Agent Hierarchy Tree</a>
-          <a class="nav-sub-link" href="#">Agent Status & License</a>
+          <a class="nav-sub-link" href="agent-status-license.html">Agent Status & License</a>
           <a class="nav-sub-link" href="#">Agent Mutation Request</a>
         </div>
       </div>

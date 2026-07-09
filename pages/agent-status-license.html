@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Status & License - COMBEN</title>
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M24 3 42 13.5v21L24 45 6 34.5v-21L24 3Z' fill='%2312B9C3'/%3E%3Cpath d='M24 12.2 34.5 18.3v12.2L24 36.7l-10.5-6.2V18.3L24 12.2Z' fill='%23F8FBFD'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css?v=4">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/agent-status-license.css">
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <aside class="sidebar" aria-label="Navigasi utama">
+    <a class="brand" href="modules.html" aria-label="COMBEN Home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg class="logo-cube" viewBox="0 0 48 48" fill="none">
+          <path d="M24 3 42 13.5v21L24 45 6 34.5v-21L24 3Z" fill="#12B9C3" />
+          <path d="M24 12.2 34.5 18.3v12.2L24 36.7l-10.5-6.2V18.3L24 12.2Z" fill="#F8FBFD" />
+          <path d="M24 12.2 34.5 18.3 24 24.3 13.5 18.3 24 12.2Z" fill="#D9F8F8" />
+        </svg>
+      </span>
+      <span class="brand-copy">
+        <span class="brand-title">COMBEN</span>
+        <span class="brand-subtitle">Commission Benefit System</span>
+      </span>
+    </a>
+
+            <nav class="nav-list">
+      <!-- 1. Dashboards -->
+      <div class="nav-section-title">Dashboards</div>
+      <a class="nav-link" href="dashboard-agent-lifecycle.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span class="nav-text">Dashboard Agent Lifecycle</span><span></span></a>
+      <a class="nav-link" href="dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 13h6V4H4v9Z"/><path d="M14 20h6V4h-6v16Z"/><path d="M4 20h6v-3H4v3Z"/></svg><span class="nav-text">Dashboard Commission</span><span></span></a>
+
+      <!-- 2. Agent Lifecycle -->
+      <div class="nav-section-title">Agent Lifecycle</div>
+      <div class="nav-group collapsed">
+        <a class="nav-group-head" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span class="nav-text">Recruitment & Onboarding</span><span class="nav-chevron">⌃</span></a>
+        <div class="nav-submenu">
+          <a class="nav-sub-link" href="#">Recruitment Pipeline</a>
+          <a class="nav-sub-link" href="#">Candidates List</a>
+          <a class="nav-sub-link" href="#">Recruitment Approval</a>
+          <a class="nav-sub-link" href="#">Document Verification</a>
+          <a class="nav-sub-link" href="#">Agent Onboarding</a>
+        </div>
+      </div>
+      <div class="nav-group collapsed">
+        <a class="nav-group-head" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="nav-text">Agent Management</span><span class="nav-chevron">⌃</span></a>
+        <div class="nav-submenu">
+          <a class="nav-sub-link" href="agent-master-list.html">Agent Master List</a>
+          <a class="nav-sub-link" href="agent-hierarchy.html">Agent Hierarchy Tree</a>
+          <a class="nav-sub-link active" href="agent-status-license.html">Agent Status & License</a>
+          <a class="nav-sub-link" href="#">Agent Mutation Request</a>
+        </div>
+      </div>
+
+      <!-- 3. Data & Master -->
+      <div class="nav-section-title">Data & Master</div>
+      <a class="nav-link" href="modules.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/><circle cx="7" cy="5" r="1.5"/><circle cx="7" cy="12" r="1.5"/><circle cx="7" cy="19" r="1.5"/></svg><span class="nav-text">Master Data</span><span></span></a>
+      <div class="nav-group collapsed">
+        <a class="nav-group-head" href="data-integration.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 7a8 3 0 1 0 16 0A8 3 0 1 0 4 7"/><path d="M4 7v10a8 3 0 0 0 16 0V7"/><path d="M4 12a8 3 0 0 0 16 0"/></svg><span class="nav-text">Data Management</span><span class="nav-chevron">⌃</span></a>
+        <div class="nav-submenu">
+          <a class="nav-sub-link" href="data-integration.html">Import Data</a>
+          <a class="nav-sub-link" href="data-mapping.html">Data Mapping</a>
+          <a class="nav-sub-link" href="integration-logs.html">Integration Logs</a>
+          <a class="nav-sub-link" href="data-quality.html">Data Quality</a>
+          <a class="nav-sub-link" href="data-preparation.html">Data Preparation</a>
+        </div>
+      </div>
+
+      <!-- 4. Commission & Benefit -->
+      <div class="nav-section-title">Commission & Benefit</div>
+      <div class="nav-group collapsed">
+        <a class="nav-group-head" href="formula-list.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 6h16M4 12h16M4 18h7"/><path d="m15 15 2 2 4-4"/></svg><span class="nav-text">Formula & Rules</span><span class="nav-chevron">⌃</span></a>
+        <div class="nav-submenu">
+          <a class="nav-sub-link" href="formula-list.html">Formula List</a>
+          <a class="nav-sub-link" href="rule-builder.html">Rule Builder</a>
+        </div>
+      </div>
+      <div class="nav-group collapsed">
+        <a class="nav-group-head" href="commission-calculation.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19V5"/><path d="M4 19h16"/><path d="m7 15 4-4 3 3 5-7"/></svg><span class="nav-text">Commission Processing</span><span class="nav-chevron">⌃</span></a>
+        <div class="nav-submenu">
+          <a class="nav-sub-link" href="commission-calculation.html">Commission Calculation</a>
+          <a class="nav-sub-link" href="adjustment-management.html">Adjustment Management</a>
+          <a class="nav-sub-link" href="commission-approval.html">Commission Approval</a>
+        </div>
+      </div>
+      <div class="nav-group collapsed">
+        <a class="nav-group-head" href="payout-file.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg><span class="nav-text">Reports & Payout</span><span class="nav-chevron">⌃</span></a>
+        <div class="nav-submenu">
+          <a class="nav-sub-link" href="payout-file.html">Pay Order / Payout File</a>
+          <a class="nav-sub-link" href="e-slip-agent.html">e-Slip Agent</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="system-card">
+        <div class="system-card-head">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="#12B9C3" aria-hidden="true">
+            <path d="M12 2 20 5.6v6.1c0 5-3.4 8.8-8 10.3-4.6-1.5-8-5.3-8-10.3V5.6L12 2Z" />
+          </svg>
+          <span>Sistem Informasi</span>
+        </div>
+        <span class="system-version">COMBEN v2.0.0</span>
+        <span class="environment">Production <i class="environment-dot"></i></span>
+      </div>
+      <p class="copyright">&copy; 2025 COMBEN. All rights reserved.</p>
+    </div>
+  </aside>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="icon-button" type="button" data-sidebar-toggle aria-label="Tutup atau buka sidebar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="topbar-actions">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="16" height="16">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+          <input type="text" placeholder="Search anything...">
+          <span class="search-shortcut">⌘ K</span>
+        </div>
+        <button class="icon-button" type="button" aria-label="Notifikasi">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 7h18s-3 0-3-7" />
+            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+          </svg>
+          <span class="badge" style="background-color: #F59E0B; color: white;">8</span>
+        </button>
+        <button class="icon-button" type="button" aria-label="Bantuan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M9.1 9a3 3 0 1 1 5.8 1c-.7 1.1-1.8 1.4-2.4 2.3-.3.4-.5.9-.5 1.7" />
+            <path d="M12 17h.01" />
+          </svg>
+        </button>
+        <div class="profile">
+          <span class="avatar" style="background-color: #12B9C3; color: white; background-image: none;">AD</span>
+          <span class="profile-copy">
+            <span class="profile-name">Admin User</span>
+            <span class="profile-role">Administrator</span>
+          </span>
+          <button class="icon-button" type="button" aria-label="Menu profil">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main class="main-content">
+      <div class="page-header" style="margin-bottom: 24px;">
+        <h1 class="page-title" style="font-size: 37px; font-weight: 700; color: #092852; margin: 0 0 8px 0; letter-spacing: 0; line-height: 1.15;">Agent Status & License Monitoring</h1>
+        <p class="page-desc" style="font-size: 14px; color: #6B7280; margin: 0;">Pantau status agent dan masa berlaku license secara real-time serta kelola pengingat perpanjangan.</p>
+      </div>
+
+      <!-- Metrics Row -->
+      <div class="metrics-grid-6">
+        <div class="metric-card">
+          <div class="metric-icon-wrapper" style="background: #D1FAE5; color: #10B981;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="metric-info">
+            <span class="metric-title">Total Agent</span>
+            <span class="metric-value">4.782</span>
+            <span class="metric-change positive"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg> 5.6% <span style="color:#6B7280; font-weight:normal;">dari Apr 2025</span></span>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon-wrapper" style="background: #D1FAE5; color: #10B981;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
+          </div>
+          <div class="metric-info">
+            <span class="metric-title">Active</span>
+            <span class="metric-value">4.028</span>
+            <span class="metric-change positive"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg> 6.2% <span style="color:#6B7280; font-weight:normal;">dari Apr 2025</span></span>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon-wrapper" style="background: #DBEAFE; color: #3B82F6;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="18" y1="8" x2="23" y2="13"/><line x1="23" y1="8" x2="18" y2="13"/></svg>
+          </div>
+          <div class="metric-info">
+            <span class="metric-title">Inactive</span>
+            <span class="metric-value">412</span>
+            <span class="metric-change positive"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg> 2.0% <span style="color:#6B7280; font-weight:normal;">dari Apr 2025</span></span>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon-wrapper" style="background: #FEF3C7; color: #F59E0B;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="20" y1="18" x2="20.01" y2="18"/></svg>
+          </div>
+          <div class="metric-info">
+            <span class="metric-title">Suspend</span>
+            <span class="metric-value">182</span>
+            <span class="metric-change negative"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg> 3.3% <span style="color:#6B7280; font-weight:normal;">dari Apr 2025</span></span>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon-wrapper" style="background: #F3E8FF; color: #A855F7;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><circle cx="12" cy="13" r="3"/><line x1="12" y1="13" x2="12" y2="15"/></svg>
+          </div>
+          <div class="metric-info">
+            <span class="metric-title">License Expiring 30 Hari</span>
+            <span class="metric-value">243</span>
+            <span class="metric-change positive"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg> 7.2% <span style="color:#6B7280; font-weight:normal;">dari Apr 2025</span></span>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon-wrapper" style="background: #FEE2E2; color: #EF4444;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="9" y1="15" x2="15" y2="15"/><line x1="9" y1="11" x2="15" y2="11"/></svg>
+          </div>
+          <div class="metric-info">
+            <span class="metric-title">Expired License</span>
+            <span class="metric-value">96</span>
+            <span class="metric-change negative"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg> 10.1% <span style="color:#6B7280; font-weight:normal;">dari Apr 2025</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Section (Filters, Actions, Table & Form) -->
+      <div class="filter-row">
+        <div class="filter-group">
+          <label>Cabang</label>
+          <div class="dropdown-mini" style="width: 100%; border: 1px solid #E5E7EB; border-radius: 6px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; background: white; font-size: 13px;">
+            Semua Cabang <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="filter-group">
+          <label>Channel</label>
+          <div class="dropdown-mini" style="width: 100%; border: 1px solid #E5E7EB; border-radius: 6px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; background: white; font-size: 13px;">
+            Semua Channel <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="filter-group">
+          <label>Position</label>
+          <div class="dropdown-mini" style="width: 100%; border: 1px solid #E5E7EB; border-radius: 6px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; background: white; font-size: 13px;">
+            Semua Position <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="filter-group">
+          <label>Status</label>
+          <div class="dropdown-mini" style="width: 100%; border: 1px solid #E5E7EB; border-radius: 6px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; background: white; font-size: 13px;">
+            Semua Status <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="filter-group">
+          <label>Periode Expiry</label>
+          <div class="dropdown-mini" style="width: 100%; border: 1px solid #E5E7EB; border-radius: 6px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; background: white; font-size: 13px;">
+            <div style="display:flex; align-items:center; gap: 8px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Mei 2025</div>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: flex-end; padding-top: 20px;">
+          <button class="button" style="background: white; border: 1px solid #E5E7EB; display: flex; align-items: center; gap: 8px; border-radius: 6px; padding: 8px 16px; font-weight: 500; font-size: 13px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg> Reset Filter</button>
+          <button class="button" style="background: #12B9C3; color: white; border: none; display: flex; align-items: center; gap: 8px; border-radius: 6px; padding: 8px 16px; font-weight: 500; font-size: 13px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg> Terapkan Filter</button>
+        </div>
+      </div>
+
+      <div class="main-content-grid">
+        <!-- Table Card -->
+        <div class="table-card">
+          <div class="action-row" style="padding: 16px 16px 0 16px; margin-bottom: 16px;">
+            <div class="action-left">
+              <span class="selected-count" style="display:flex; align-items:center; gap:8px;"><input type="checkbox" style="width: 14px; height: 14px; border-radius: 4px; border: 1px solid #D1D5DB;"> 0 dipilih</span>
+              <button class="button" style="background: white; border: 1px solid #E5E7EB; color: #10B981; border-radius: 6px; padding: 6px 12px; font-size: 13px; font-weight: 500; display:flex; align-items:center; gap: 6px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg> Aktifkan</button>
+              <button class="button" style="background: white; border: 1px solid #E5E7EB; color: #3B82F6; border-radius: 6px; padding: 6px 12px; font-size: 13px; font-weight: 500; display:flex; align-items:center; gap: 6px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Inaktifkan</button>
+              <button class="button" style="background: white; border: 1px solid #E5E7EB; color: #F59E0B; border-radius: 6px; padding: 6px 12px; font-size: 13px; font-weight: 500; display:flex; align-items:center; gap: 6px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="10" y="8" width="4" height="8"/></svg> Suspend</button>
+              <button class="button" style="background: white; border: 1px solid #E5E7EB; color: #EF4444; border-radius: 6px; padding: 6px 12px; font-size: 13px; font-weight: 500; display:flex; align-items:center; gap: 6px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg> Resign</button>
+              <button class="button" style="background: white; border: 1px solid #E5E7EB; border-radius: 6px; padding: 6px 12px; font-size: 13px; font-weight: 500; display:flex; align-items:center; gap: 6px;">Lainnya <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="m6 9 6 6 6-6"/></svg></button>
+            </div>
+            <div class="action-right">
+              <button class="button" style="background: white; border: 1px solid #E5E7EB; border-radius: 6px; padding: 8px 16px; font-size: 13px; font-weight: 500; display:flex; align-items:center; gap: 6px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Export <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="m6 9 6 6 6-6"/></svg></button>
+              <button class="button" style="background: #12B9C3; color: white; border: none; border-radius: 6px; padding: 8px 16px; font-size: 13px; font-weight: 500; display:flex; align-items:center; gap: 6px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Tambah Agent</button>
+            </div>
+          </div>
+          <div class="table-container" style="overflow-x: auto;">
+            <table class="data-table" style="width: 100%; border-collapse: collapse; table-layout: fixed;">
+              
+              <colgroup>
+                <col style="width: 4%;">
+                <col style="width: 10%;">
+                <col style="width: 12%;">
+                <col style="width: 8%;">
+                <col style="width: 10%;">
+                <col style="width: 8%;">
+                <col style="width: 9%;">
+                <col style="width: 9%;">
+                <col style="width: 12%;">
+                <col style="width: 14%;">
+                <col style="width: 4%;">
+              </colgroup>
+              <thead>
+                <tr style="border-bottom: 1px solid #E5E7EB;">
+                  <th style="padding: 10px 8px; text-align: left;"><input type="checkbox" style="width: 14px; height: 14px; border-radius: 4px; border: 1px solid #D1D5DB;"></th>
+                  <th style="padding: 10px 8px; text-align: left; font-size: 12px; color: #6B7280; font-weight: 600;">Agent Code <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12" style="vertical-align: middle;"><path d="m6 9 6 6 6-6"/></svg></th>
+                  <th style="padding: 10px 8px; text-align: left; font-size: 12px; color: #6B7280; font-weight: 600;">Name</th>
+                  <th style="padding: 10px 8px; text-align: left; font-size: 12px; color: #6B7280; font-weight: 600;">Position</th>
+                  <th style="padding: 10px 8px; text-align: left; font-size: 12px; color: #6B7280; font-weight: 600;">Branch</th>
+                  <th style="padding: 10px 8px; text-align: left; font-size: 12px; color: #6B7280; font-weight: 600;">Channel</th>
+                  <th style="padding: 10px 8px; text-align: left; font-size: 12px; color: #6B7280; font-weight: 600;">Current Status</th>
+                  <th style="padding: 10px 8px; text-align: left; font-size: 12px; color: #6B7280; font-weight: 600;">License Type</th>
+                  <th style="padding: 10px 8px; text-align: left; font-size: 12px; color: #6B7280; font-weight: 600;">License Expiry Date <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12" style="vertical-align: middle;"><path d="m19 12-7 7-7-7"/></svg></th>
+                  <th style="padding: 10px 8px; text-align: left; font-size: 12px; color: #6B7280; font-weight: 600;">Reminder Status</th>
+                  <th style="padding: 10px 8px; text-align: center; font-size: 12px; color: #6B7280; font-weight: 600;">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Row 1 -->
+                <tr style="border-bottom: 1px solid #F3F4F6;">
+                  <td style="padding: 10px 8px;"><input type="checkbox" style="width: 14px; height: 14px; border-radius: 4px; border: 1px solid #D1D5DB;"></td>
+                  <td style="padding: 10px 8px; font-size: 13px; font-weight: 500; color: #4B5563;">AGT-002345</td>
+                  <td style="padding: 10px 8px; font-size: 13px; font-weight: 600; color: #111827;">Siti Nurhaliza</td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">Agen</td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">Jakarta Selatan</td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">Agency</td>
+                  <td style="padding: 10px 8px;"><span class="status-badge aktif">Aktif</span></td>
+                  <td style="padding: 10px 8px;"><span class="license-badge">LISENSI A</span></td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">22 Mei 2025</td>
+                  <td style="padding: 10px 8px;"><span class="reminder-badge expiring">Expiring (7 hari)</span></td>
+                  <td style="padding: 10px 8px; text-align: center;"><svg viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg></td>
+                </tr>
+                <!-- Row 2 -->
+                <tr style="border-bottom: 1px solid #F3F4F6;">
+                  <td style="padding: 10px 8px;"><input type="checkbox" style="width: 14px; height: 14px; border-radius: 4px; border: 1px solid #D1D5DB;"></td>
+                  <td style="padding: 10px 8px; font-size: 13px; font-weight: 500; color: #4B5563;">AGT-002346</td>
+                  <td style="padding: 10px 8px; font-size: 13px; font-weight: 600; color: #111827;">Fajar Ramadhan</td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">Agen</td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">Bandung</td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">Agency</td>
+                  <td style="padding: 10px 8px;"><span class="status-badge aktif">Aktif</span></td>
+                  <td style="padding: 10px 8px;"><span class="license-badge">LISENSI A</span></td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">18 Juni 2025</td>
+                  <td style="padding: 10px 8px;"><span class="reminder-badge aman">Aman (25 hari)</span></td>
+                  <td style="padding: 10px 8px; text-align: center;"><svg viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg></td>
+                </tr>
+                <!-- Row 3 -->
+                <tr style="border-bottom: 1px solid #F3F4F6;">
+                  <td style="padding: 10px 8px;"><input type="checkbox" style="width: 14px; height: 14px; border-radius: 4px; border: 1px solid #D1D5DB;"></td>
+                  <td style="padding: 10px 8px; font-size: 13px; font-weight: 500; color: #4B5563;">AGT-002347</td>
+                  <td style="padding: 10px 8px; font-size: 13px; font-weight: 600; color: #111827;">Nanda Pratama</td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">Unit Manager</td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">Surabaya</td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">Agency</td>
+                  <td style="padding: 10px 8px;"><span class="status-badge aktif">Aktif</span></td>
+                  <td style="padding: 10px 8px;"><span class="license-badge">LISENSI B</span></td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">05 Jul 2025</td>
+                  <td style="padding: 10px 8px;"><span class="reminder-badge aman">Aman (42 hari)</span></td>
+                  <td style="padding: 10px 8px; text-align: center;"><svg viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg></td>
+                </tr>
+                <!-- Row 4 -->
+                <tr style="border-bottom: 1px solid #F3F4F6;">
+                  <td style="padding: 10px 8px;"><input type="checkbox" style="width: 14px; height: 14px; border-radius: 4px; border: 1px solid #D1D5DB;"></td>
+                  <td style="padding: 10px 8px; font-size: 13px; font-weight: 500; color: #4B5563;">AGT-002348</td>
+                  <td style="padding: 10px 8px; font-size: 13px; font-weight: 600; color: #111827;">Maya Lestari</td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">Agen</td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">Medan</td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">Agency</td>
+                  <td style="padding: 10px 8px;"><span class="status-badge inaktif">Inaktif</span></td>
+                  <td style="padding: 10px 8px;"><span class="license-badge">LISENSI A</span></td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">-</td>
+                  <td style="padding: 10px 8px;"><span class="reminder-badge">-</span></td>
+                  <td style="padding: 10px 8px; text-align: center;"><svg viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg></td>
+                </tr>
+                <!-- Row 5 -->
+                <tr style="border-bottom: 1px solid #F3F4F6;">
+                  <td style="padding: 10px 8px;"><input type="checkbox" style="width: 14px; height: 14px; border-radius: 4px; border: 1px solid #D1D5DB;"></td>
+                  <td style="padding: 10px 8px; font-size: 13px; font-weight: 500; color: #4B5563;">AGT-002349</td>
+                  <td style="padding: 10px 8px; font-size: 13px; font-weight: 600; color: #111827;">Ahmad Fauzi</td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">Agen</td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">Makassar</td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">Agency</td>
+                  <td style="padding: 10px 8px;"><span class="status-badge suspend">Suspend</span></td>
+                  <td style="padding: 10px 8px;"><span class="license-badge">LISENSI A</span></td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">17 Mei 2025</td>
+                  <td style="padding: 10px 8px;"><span class="reminder-badge expired">Expired (3 hari)</span></td>
+                  <td style="padding: 10px 8px; text-align: center;"><svg viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg></td>
+                </tr>
+                <!-- Row 6 -->
+                <tr style="border-bottom: 1px solid #F3F4F6;">
+                  <td style="padding: 10px 8px;"><input type="checkbox" style="width: 14px; height: 14px; border-radius: 4px; border: 1px solid #D1D5DB;"></td>
+                  <td style="padding: 10px 8px; font-size: 13px; font-weight: 500; color: #4B5563;">AGT-002350</td>
+                  <td style="padding: 10px 8px; font-size: 13px; font-weight: 600; color: #111827;">Dewi Sartika</td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">Agen</td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">Bandung</td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">Bancassurance</td>
+                  <td style="padding: 10px 8px;"><span class="status-badge aktif">Aktif</span></td>
+                  <td style="padding: 10px 8px;"><span class="license-badge">LISENSI B</span></td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">12 Mei 2025</td>
+                  <td style="padding: 10px 8px;"><span class="reminder-badge expired">Expired (8 hari)</span></td>
+                  <td style="padding: 10px 8px; text-align: center;"><svg viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg></td>
+                </tr>
+                <!-- Row 7 -->
+                <tr style="border-bottom: 1px solid #F3F4F6;">
+                  <td style="padding: 10px 8px;"><input type="checkbox" style="width: 14px; height: 14px; border-radius: 4px; border: 1px solid #D1D5DB;"></td>
+                  <td style="padding: 10px 8px; font-size: 13px; font-weight: 500; color: #4B5563;">AGT-002351</td>
+                  <td style="padding: 10px 8px; font-size: 13px; font-weight: 600; color: #111827;">Rudi Pratama</td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">Agen</td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">Jakarta Selatan</td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">Agency</td>
+                  <td style="padding: 10px 8px;"><span class="status-badge aktif">Aktif</span></td>
+                  <td style="padding: 10px 8px;"><span class="license-badge">LISENSI A</span></td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">15 Mei 2025</td>
+                  <td style="padding: 10px 8px;"><span class="reminder-badge expiring">Expiring (15 hari)</span></td>
+                  <td style="padding: 10px 8px; text-align: center;"><svg viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg></td>
+                </tr>
+                <!-- Row 8 -->
+                <tr style="border-bottom: 1px solid #F3F4F6;">
+                  <td style="padding: 10px 8px;"><input type="checkbox" style="width: 14px; height: 14px; border-radius: 4px; border: 1px solid #D1D5DB;"></td>
+                  <td style="padding: 10px 8px; font-size: 13px; font-weight: 500; color: #4B5563;">AGT-002352</td>
+                  <td style="padding: 10px 8px; font-size: 13px; font-weight: 600; color: #111827;">Yuliana Lestari</td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">Agen</td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">Jakarta Pusat</td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">Bancassurance</td>
+                  <td style="padding: 10px 8px;"><span class="status-badge suspend">Suspend</span></td>
+                  <td style="padding: 10px 8px;"><span class="license-badge">LISENSI A</span></td>
+                  <td style="padding: 10px 8px; font-size: 13px; color: #4B5563;">03 Jun 2025</td>
+                  <td style="padding: 10px 8px;"><span class="reminder-badge aman">Aman (30 hari)</span></td>
+                  <td style="padding: 10px 8px; text-align: center;"><svg viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <!-- Pagination Footer -->
+          <div style="padding: 16px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #E5E7EB; margin-top: auto;">
+            <div style="font-size: 12px; color: #6B7280;">Menampilkan 1 - 8 dari 4.782 data</div>
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 12px; color: #6B7280;">Rows per page</span>
+                <select style="border: 1px solid #E5E7EB; border-radius: 4px; padding: 4px 8px; font-size: 12px;">
+                  <option>10</option>
+                  <option>20</option>
+                  <option>50</option>
+                </select>
+              </div>
+              <div class="pagination" style="display: flex; gap: 4px;">
+                <button style="border: 1px solid #E5E7EB; background: white; padding: 4px 8px; border-radius: 4px; color: #9CA3AF;">&laquo;</button>
+                <button style="border: 1px solid #E5E7EB; background: white; padding: 4px 8px; border-radius: 4px; color: #9CA3AF;">&lsaquo;</button>
+                <button style="border: 1px solid #12B9C3; background: #12B9C3; padding: 4px 12px; border-radius: 4px; color: white; font-weight: 500;">1</button>
+                <button style="border: 1px solid #E5E7EB; background: white; padding: 4px 12px; border-radius: 4px; color: #4B5563;">2</button>
+                <button style="border: 1px solid #E5E7EB; background: white; padding: 4px 12px; border-radius: 4px; color: #4B5563;">3</button>
+                <button style="border: 1px solid #E5E7EB; background: white; padding: 4px 12px; border-radius: 4px; color: #4B5563;">4</button>
+                <button style="border: 1px solid #E5E7EB; background: white; padding: 4px 12px; border-radius: 4px; color: #4B5563;">5</button>
+                <button style="border: 1px solid #E5E7EB; background: white; padding: 4px 8px; border-radius: 4px; color: #4B5563;">&rsaquo;</button>
+                <button style="border: 1px solid #E5E7EB; background: white; padding: 4px 8px; border-radius: 4px; color: #4B5563;">&raquo;</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Panel -->
+        <div class="form-panel">
+          <h3 class="form-panel-title">Ubah Status Agent</h3>
+          <p class="form-panel-desc">Pilih agent dan ubah status secara cepat.</p>
+          
+          <div class="form-group">
+            <label>Pilih Agent</label>
+            <div class="dropdown-mini" style="width: 100%; border: 1px solid #E5E7EB; border-radius: 6px; padding: 10px 12px; display: flex; justify-content: space-between; align-items: center; background: white; font-size: 13px; color: #9CA3AF;">
+              Cari kode atau nama agent... <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>Pilih Status</label>
+            <div class="status-toggle-group">
+              <button class="status-btn aktif active">Aktif</button>
+              <button class="status-btn inaktif">Inaktif</button>
+              <button class="status-btn suspend">Suspend</button>
+              <button class="status-btn resign">Resign</button>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>Tanggal Efektif</label>
+            <div style="width: 100%; border: 1px solid #E5E7EB; border-radius: 6px; padding: 10px 12px; display: flex; align-items: center; gap: 8px; background: white; font-size: 13px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2" width="14" height="14"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              21 Mei 2025
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>Alasan Perubahan</label>
+            <textarea style="width: 100%; border: 1px solid #E5E7EB; border-radius: 6px; padding: 10px 12px; background: white; font-size: 13px; font-family: inherit; resize: none; height: 80px;" placeholder="Masukkan alasan perubahan status..."></textarea>
+            <div style="text-align: right; font-size: 11px; color: #9CA3AF; margin-top: 4px;">0/500</div>
+          </div>
+          
+          <button class="button" style="margin-top: auto; width: 100%; background: #12B9C3; color: white; border: none; border-radius: 6px; padding: 10px 16px; font-size: 13px; font-weight: 600; cursor: pointer;">Simpan Perubahan</button>
+        </div>
+      </div>
+
+      <!-- Bottom Panels Grid -->
+      <div class="bottom-panels-grid">
+        <!-- Panel 1 -->
+        <div class="bottom-panel">
+          <div class="panel-header">
+            <h3 class="panel-title">Renewal Mendatang (30 Hari)</h3>
+            <a href="#" class="panel-link">Lihat semua</a>
+          </div>
+          <div class="renewal-list">
+            <div class="renewal-item">
+              <div class="ri-avatar" style="background: #EFF6FF; color: #3B82F6;">RS</div>
+              <div class="ri-info">
+                <div class="ri-name">Siti Nurhaliza</div>
+                <div class="ri-code-license">AGT-002345 <span class="license-badge" style="font-size:9px; padding:2px 6px;">LISENSI A</span></div>
+              </div>
+              <div class="ri-date">
+                <div class="ri-date-val">22 Mei 2025</div>
+                <div class="ri-days-left" style="color: #F59E0B;">7 hari lagi</div>
+              </div>
+            </div>
+            <div class="renewal-item">
+              <div class="ri-avatar" style="background: #F3F4F6; color: #6B7280;">RR</div>
+              <div class="ri-info">
+                <div class="ri-name">Rudi Pratama</div>
+                <div class="ri-code-license">AGT-002351 <span class="license-badge" style="font-size:9px; padding:2px 6px;">LISENSI A</span></div>
+              </div>
+              <div class="ri-date">
+                <div class="ri-date-val">15 Mei 2025</div>
+                <div class="ri-days-left" style="color: #EF4444;">15 hari lagi</div>
+              </div>
+            </div>
+            <div class="renewal-item">
+              <div class="ri-avatar" style="background: #D1FAE5; color: #10B981;">FR</div>
+              <div class="ri-info">
+                <div class="ri-name">Fajar Ramadhan</div>
+                <div class="ri-code-license">AGT-002346 <span class="license-badge" style="font-size:9px; padding:2px 6px;">LISENSI A</span></div>
+              </div>
+              <div class="ri-date">
+                <div class="ri-date-val">18 Juni 2025</div>
+                <div class="ri-days-left" style="color: #F59E0B;">25 hari lagi</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Panel 2 -->
+        <div class="bottom-panel">
+          <div class="panel-header">
+            <h3 class="panel-title">Perpanjangan & Reminder</h3>
+          </div>
+          <div class="chart-container">
+            <div class="chart-wrapper">
+              <canvas id="licenseChart"></canvas>
+              <div class="chart-center">
+                <div class="chart-center-val">4.782</div>
+                <div class="chart-center-lbl">Total Agent</div>
+              </div>
+            </div>
+            <div class="chart-legend">
+              <div class="legend-item">
+                <div class="legend-label"><div class="legend-dot" style="background: #10B981;"></div> Aman (>30 hari)</div>
+                <div class="legend-val">3.842 (80.3%)</div>
+              </div>
+              <div class="legend-item">
+                <div class="legend-label"><div class="legend-dot" style="background: #FBBF24;"></div> Expiring (7-30 hari)</div>
+                <div class="legend-val">604 (12.6%)</div>
+              </div>
+              <div class="legend-item">
+                <div class="legend-label"><div class="legend-dot" style="background: #F97316;"></div> Expiring (<7 hari)</div>
+                <div class="legend-val">240 (5.0%)</div>
+              </div>
+              <div class="legend-item">
+                <div class="legend-label"><div class="legend-dot" style="background: #EF4444;"></div> Expired</div>
+                <div class="legend-val">96 (2.1%)</div>
+              </div>
+            </div>
+          </div>
+          <div class="compliance-bar">
+            <div class="cb-header">
+              <span>Tingkat Kepatuhan License</span>
+              <span style="font-weight:700; color:#111827;">92.1%</span>
+            </div>
+            <div class="cb-track">
+              <div class="cb-fill" style="width: 92.1%;"></div>
+            </div>
+            <div class="cb-target">Target: ≥ 90%</div>
+          </div>
+        </div>
+
+        <!-- Panel 3 -->
+        <div class="bottom-panel">
+          <div class="panel-header">
+            <h3 class="panel-title">Alert & Notifikasi</h3>
+            <a href="#" class="panel-link">Lihat semua</a>
+          </div>
+          <div class="alert-list">
+            <div class="alert-item">
+              <div class="alert-icon" style="background: #FEE2E2; color: #EF4444;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="m10.29 3.86-7.1 12.28A2 2 0 0 0 4.93 19h14.15a2 2 0 0 0 1.73-3L13.72 3.86a2 2 0 0 0-3.44 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </div>
+              <div class="alert-info">
+                <div class="alert-title"><span>License Expired</span> <span class="alert-time">3 menit lalu</span></div>
+                <div class="alert-desc">96 agent memiliki license yang sudah expired.</div>
+              </div>
+            </div>
+            <div class="alert-item">
+              <div class="alert-icon" style="background: #FEF3C7; color: #F59E0B;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+              </div>
+              <div class="alert-info">
+                <div class="alert-title"><span>License Expiring < 7 Hari</span> <span class="alert-time">8 menit lalu</span></div>
+                <div class="alert-desc">240 agent license akan expired dalam 7 hari.</div>
+              </div>
+            </div>
+            <div class="alert-item">
+              <div class="alert-icon" style="background: #FEE2E2; color: #EF4444;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="20" y1="18" x2="20.01" y2="18"/></svg>
+              </div>
+              <div class="alert-info">
+                <div class="alert-title"><span>Status Suspend</span> <span class="alert-time">15 menit lalu</span></div>
+                <div class="alert-desc">182 agent saat ini berstatus suspend.</div>
+              </div>
+            </div>
+          </div>
+          <button class="button" style="width: 100%; background: white; border: 1px solid #E5E7EB; border-radius: 6px; padding: 10px; display: flex; align-items: center; justify-content: space-between; font-size: 13px; font-weight: 600; color: #111827;">
+            <div style="display:flex; align-items:center; gap:8px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg> Buat Pengingat Massal</div>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+
+        <!-- Panel 4 -->
+        <div class="bottom-panel">
+          <div class="panel-header">
+            <h3 class="panel-title">Aktivitas Terbaru</h3>
+            <a href="#" class="panel-link">Lihat semua</a>
+          </div>
+          <div class="activity-list">
+            <div class="activity-item">
+              <div class="activity-icon" style="color: #3B82F6;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+              </div>
+              <div class="activity-info">
+                <div class="activity-title">Dewi Sartika (AGT-002346)</div>
+                <div class="activity-desc">Status diubah menjadi <span style="color:#10B981; font-weight:500;">Aktif</span></div>
+              </div>
+              <div class="activity-time">21 Mei 2025, 10:45</div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon" style="color: #10B981;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </div>
+              <div class="activity-info">
+                <div class="activity-title">Siti Nurhaliza (AGT-002345)</div>
+                <div class="activity-desc">License diperbarui hingga 22 Mei 2025</div>
+              </div>
+              <div class="activity-time">21 Mei 2025, 09:32</div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon" style="color: #F59E0B;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="20" y1="18" x2="20.01" y2="18"/></svg>
+              </div>
+              <div class="activity-info">
+                <div class="activity-title">Ahmad Fauzi (AGT-002349)</div>
+                <div class="activity-desc">Status diubah menjadi <span style="color:#F59E0B; font-weight:500;">Suspend</span></div>
+              </div>
+              <div class="activity-time">21 Mei 2025, 08:51</div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-icon" style="color: #10B981;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <div class="activity-info">
+                <div class="activity-title">System</div>
+                <div class="activity-desc">Pengingat massal dikirim ke 240 agent</div>
+              </div>
+              <div class="activity-time">21 Mei 2025, 08:30</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  
+  <script src="../js/main.js"></script>
+  <script src="../js/agent-status-license.js"></script>
+</body>
+</html>
