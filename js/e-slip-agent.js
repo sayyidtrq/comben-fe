@@ -260,6 +260,8 @@ const agentData = {
 let currentAgentId = "AGT-0001";
 let currentPaginationPage = 1;
 
+window.eslipAgentData = agentData;
+
 // Toast helper from main.js or custom fallback
 function triggerToast(message) {
   const toast = document.querySelector("[data-toast]");
@@ -426,6 +428,7 @@ function updateTableAndPagination() {
 
 // Initial binding when window loads
 document.addEventListener("DOMContentLoaded", () => {
+  const initialAgentId = new URLSearchParams(window.location.search).get("agent") || "AGT-0001";
   const agentSelect = document.getElementById("filter-agent");
   const btnApply = document.getElementById("btn-apply");
   const btnReset = document.getElementById("btn-reset");
@@ -436,6 +439,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Dropdown change listener
   if (agentSelect) {
+    if (agentData[initialAgentId]) {
+      agentSelect.value = initialAgentId;
+    }
+
     agentSelect.addEventListener("change", (e) => {
       const selectedId = e.target.value;
       updateUI(selectedId);
@@ -467,7 +474,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (btnViewAll) {
     btnViewAll.addEventListener("click", (e) => {
       e.preventDefault();
-      triggerToast("Viewing all policy contributions (demo mode).");
+      window.location.href = `e-slip-policy-contributions.html?agent=${encodeURIComponent(currentAgentId)}`;
     });
   }
 
@@ -497,5 +504,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Initial UI Render
-  updateUI("AGT-0001");
+  if (document.querySelector(".eslip-page")) {
+    updateUI(agentData[initialAgentId] ? initialAgentId : "AGT-0001");
+  }
 });
