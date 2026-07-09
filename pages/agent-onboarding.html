@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Onboarding - COMBEN</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M24 3 42 13.5v21L24 45 6 34.5v-21L24 3Z' fill='%2312B9C3'/%3E%3Cpath d='M24 12.2 34.5 18.3v12.2L24 36.7l-10.5-6.2V18.3L24 12.2Z' fill='%23F8FBFD'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css?v=3">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/document-verification.css">
+  <link rel="stylesheet" href="../css/agent-onboarding.css">
+</head>
+<body class="agent-lifecycle-body onboarding-body">
+  <aside class="sidebar agent-sidebar onboarding-sidebar" aria-label="Navigasi utama">
+    <a class="agent-logo-panel compact-logo" href="modules.html" aria-label="COMBEN Home">
+      <span class="agent-logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none">
+          <path d="M24 3 42 13.5v21L24 45 6 34.5v-21L24 3Z" fill="#12B9C3"/>
+          <path d="M24 12.2 34.5 18.3v12.2L24 36.7l-10.5-6.2V18.3L24 12.2Z" fill="#F8FBFD"/>
+          <path d="M24 12.2 34.5 18.3 24 24.3 13.5 18.3 24 12.2Z" fill="#D9F8F8"/>
+        </svg>
+      </span>
+      <span>
+        <strong>COMBEN</strong>
+        <small>Agent Lifecycle</small>
+      </span>
+    </a>
+
+    <div class="agent-sidebar-scroll">
+      <nav class="agent-menu compact-menu" aria-label="COMBEN navigation">
+        <section class="agent-menu-section">
+          <a class="agent-menu-link" href="dashboard.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 11 12 3l9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+            <span>Dashboard</span>
+          </a>
+          <a class="agent-menu-link" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 5h16M4 12h16M4 19h16"/><path d="M8 5v14"/></svg>
+            <span>Recruitment Pipeline</span>
+          </a>
+          <a class="agent-menu-link" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 22c.8-4.6 4-7 8-7s7.2 2.4 8 7"/></svg>
+            <span>Candidates</span>
+          </a>
+          <a class="agent-menu-link" href="document-verification.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg>
+            <span>Document Verification</span>
+          </a>
+          <a class="agent-menu-link" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>
+            <span>Recruitment Approval</span>
+          </a>
+          <a class="agent-menu-link active" href="agent-onboarding.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>
+            <span>Onboarding</span>
+          </a>
+          <a class="agent-menu-link" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16v16H4Z"/><path d="M8 4v16M16 4v16M4 10h16M4 16h16"/></svg>
+            <span>Agent Master</span>
+          </a>
+          <a class="agent-menu-link" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><path d="M12 8v4M5 16l7-4 7 4"/></svg>
+            <span>Hierarchy</span>
+          </a>
+          <a class="agent-menu-link" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m16 3 4 4-4 4"/><path d="M20 7H8a4 4 0 0 0 0 8h8"/><path d="m8 21-4-4 4-4"/></svg>
+            <span>Mutation</span>
+          </a>
+          <a class="agent-menu-link" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+            <span>Status &amp; License</span>
+          </a>
+          <a class="agent-menu-link" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 16v-5M13 16V8M18 16v-9"/></svg>
+            <span>Reports</span>
+          </a>
+          <a class="agent-menu-link" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1.05V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-.4-1.05 1.7 1.7 0 0 0-1-.6 1.7 1.7 0 0 0-1.88.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1.05-.4H3a2 2 0 1 1 0-4h.09a1.7 1.7 0 0 0 1.05-.4 1.7 1.7 0 0 0 .6-1 1.7 1.7 0 0 0-.34-1.88l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1.05V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 .4 1.05 1.7 1.7 0 0 0 1 .6 1.7 1.7 0 0 0 1.88-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 9c.2.37.52.68.9.86.25.12.53.18.82.18H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.05.4c-.2.18-.36.4-.46.56Z"/></svg>
+            <span>Settings</span>
+          </a>
+        </section>
+      </nav>
+      <button class="collapse-button" type="button" data-sidebar-toggle>
+        <span>&lt;&lt;</span>
+        Collapse
+      </button>
+    </div>
+  </aside>
+
+  <div class="app-shell">
+    <header class="topbar agent-topbar onboarding-topbar">
+      <div class="topbar-left">
+        <div class="search-box dv-search onboarding-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" placeholder="Cari menu, data, atau laporan..." data-global-search>
+          <span class="search-shortcut">K</span>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <div class="filter-dropdown" data-dropdown="period">
+          <button class="top-filter" type="button" data-dropdown-toggle="period" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            <span><small>Periode</small><b data-filter-value="period">Mei 2025</b></span>
+            <svg class="filter-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="dropdown-menu" data-dropdown-menu="period">
+            <button type="button" data-filter-option="period" data-value="Mei 2025">Mei 2025</button>
+            <button type="button" data-filter-option="period" data-value="Juni 2025">Juni 2025</button>
+            <button type="button" data-filter-option="period" data-value="Juli 2025">Juli 2025</button>
+          </div>
+        </div>
+        <div class="filter-dropdown" data-dropdown="branch">
+          <button class="top-filter" type="button" data-dropdown-toggle="branch" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 3H2l8 9.5V20l4 2v-9.5L22 3Z"/></svg>
+            <span><small>Filter</small><b data-filter-value="branch">Surabaya</b></span>
+            <svg class="filter-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="dropdown-menu" data-dropdown-menu="branch">
+            <button type="button" data-filter-option="branch" data-value="Semua Cabang">Semua Cabang</button>
+            <button type="button" data-filter-option="branch" data-value="Jakarta Selatan">Jakarta Selatan</button>
+            <button type="button" data-filter-option="branch" data-value="Bandung">Bandung</button>
+            <button type="button" data-filter-option="branch" data-value="Surabaya">Surabaya</button>
+          </div>
+        </div>
+        <button class="icon-button" type="button" data-show-toast="Ada 8 notifikasi onboarding." aria-label="Notifikasi">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 7h18s-3 0-3-7"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="badge">8</span>
+        </button>
+        <div class="profile">
+          <span class="avatar avatar-photo"></span>
+          <span class="profile-copy">
+            <span class="profile-name">Budi Santoso</span>
+            <span class="profile-role">Super Admin</span>
+          </span>
+          <button class="icon-button" type="button" data-show-toast="Menu profil dibuka." aria-label="Menu profil">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-main onboarding-page">
+      <section class="onboarding-header">
+        <h1>Agent Onboarding</h1>
+        <p>Proses onboarding agen baru mulai dari data dasar hingga aktivasi portal.</p>
+      </section>
+
+      <section class="onboarding-stepper" aria-label="Tahapan onboarding">
+        <button class="step done" type="button" data-step="1"><span>✓</span><strong>Candidate Approved</strong><small>Selesai</small></button>
+        <button class="step active" type="button" data-step="2"><span>2</span><strong>Assign Agent Code</strong><small>Sedang diproses</small></button>
+        <button class="step" type="button" data-step="3"><span>3</span><strong>Assign Branch &amp; Channel</strong><small>Belum dimulai</small></button>
+        <button class="step" type="button" data-step="4"><span>4</span><strong>Assign Supervisor/Upline</strong><small>Belum dimulai</small></button>
+        <button class="step" type="button" data-step="5"><span>5</span><strong>Training &amp; Checklist</strong><small>Belum dimulai</small></button>
+        <button class="step" type="button" data-step="6"><span>6</span><strong>Portal Activation</strong><small>Belum dimulai</small></button>
+        <button class="step" type="button" data-step="7"><span>7</span><strong>Complete</strong><small>Belum dimulai</small></button>
+      </section>
+
+      <section class="candidate-card thin-card">
+        <div class="candidate-main">
+          <span class="candidate-avatar">AH</span>
+          <div>
+            <h2>Andi Hermawan <span>Disetujui</span></h2>
+            <p>AGT-000123 • Pria • 28 Tahun</p>
+            <p>Jakarta Selatan, DKI Jakarta</p>
+          </div>
+        </div>
+        <div class="candidate-meta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          <span>Tanggal Disetujui <strong>15 Jun 2025</strong></span>
+        </div>
+        <div class="candidate-meta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M21 8v6M24 11h-6"/></svg>
+          <span>Rekruter <strong>Budi Santoso</strong></span>
+        </div>
+        <div class="candidate-meta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v20M5 8h14M5 16h14"/></svg>
+          <span>Sumber Kandidat <strong>Referral</strong></span>
+        </div>
+        <button class="detail-button" type="button" data-show-toast="Detail kandidat Andi Hermawan ditampilkan.">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+          Lihat Detail Kandidat
+        </button>
+      </section>
+
+      <section class="onboarding-grid">
+        <article class="thin-card form-panel">
+          <h2>Informasi Penugasan Agen <span>i</span></h2>
+          <label>Kode Agen
+            <div class="code-row">
+              <input value="AGT-000124" data-agent-code>
+              <button type="button" data-generate-code>Generate Kode</button>
+            </div>
+          </label>
+          <label>Cabang *
+            <select data-required-field>
+              <option>Jakarta Selatan</option>
+              <option>Bandung</option>
+              <option>Surabaya</option>
+            </select>
+            <small>Pilih cabang tempat agen akan beroperasi</small>
+          </label>
+          <label>Channel *
+            <select data-required-field>
+              <option>Agency</option>
+              <option>Bancassurance</option>
+              <option>Direct</option>
+            </select>
+            <small>Pilih channel penjualan utama</small>
+          </label>
+          <label>Posisi *
+            <select data-required-field>
+              <option>Agen</option>
+              <option>Senior Agent</option>
+              <option>Agency Manager</option>
+            </select>
+            <small>Posisi / level agen dalam organisasi</small>
+          </label>
+          <label>Tanggal Mulai Aktif *
+            <input type="date" value="2025-05-22" data-required-field>
+            <small>Tanggal efektif agen dapat mulai beroperasi</small>
+          </label>
+          <p class="info-note">Kode agen akan digunakan untuk login portal dan identifikasi unik.</p>
+        </article>
+
+        <article class="thin-card upline-panel">
+          <h2>Penanggung Jawab / Upline <span>i</span></h2>
+          <label>Supervisor Langsung *
+            <select data-required-field>
+              <option>Dedi Kurniawan (AGT-002566)</option>
+              <option>Rina Setiawati (AGT-002348)</option>
+              <option>Maya Lestari (AGT-000982)</option>
+            </select>
+            <small>Pilih supervisor yang bertanggung jawab</small>
+          </label>
+          <label>Upline / Sponsor *
+            <select data-required-field>
+              <option>Rina Setiawati (AGT-002348)</option>
+              <option>Ahmad Fauzi (AGT-002110)</option>
+              <option>Dewi Sartika (AGT-000456)</option>
+            </select>
+            <small>Pilih sponsor / upline agen</small>
+          </label>
+          <label>Catatan Internal <span>(Opsional)</span>
+            <textarea maxlength="500" placeholder="Tulis catatan atau informasi tambahan..." data-note></textarea>
+            <small><b data-char-count>0</b> / 500 karakter</small>
+          </label>
+        </article>
+
+        <article class="thin-card checklist-panel">
+          <div class="panel-title-row">
+            <h2>Training &amp; Checklist <span>i</span></h2>
+            <strong data-training-count>4 / 6 Selesai</strong>
+          </div>
+          <div class="progress-line"><span data-training-progress></span></div>
+          <div class="check-list" data-training-list>
+            <label><input type="checkbox" checked> <span>Pengantar Produk &amp; Layanan Comben</span><em>Selesai 18 Mei 2025</em></label>
+            <label><input type="checkbox" checked> <span>Kode Etik &amp; Kepatuhan Agen</span><em>Selesai 18 Mei 2025</em></label>
+            <label><input type="checkbox" checked> <span>Proses Penjualan &amp; Layanan</span><em>Selesai 19 Mei 2025</em></label>
+            <label><input type="checkbox" checked> <span>Simulasi &amp; Roleplay</span><em>Selesai 20 Mei 2025</em></label>
+            <label><input type="checkbox"> <span>Ujian Sertifikasi Agen</span><em>Belum selesai</em></label>
+            <label><input type="checkbox"> <span>Pengenalan Portal Agen</span><em>Belum selesai</em></label>
+          </div>
+          <div class="panel-title-row document-row-title">
+            <h2>Dokumen Onboarding <span>i</span></h2>
+            <strong data-doc-count>5 / 6 Lengkap</strong>
+          </div>
+          <div class="check-list" data-document-list>
+            <label><input type="checkbox" checked> <span>Formulir Data Agen</span><em>Selesai</em></label>
+            <label><input type="checkbox" checked> <span>Fotokopi KTP</span><em>Selesai</em></label>
+            <label><input type="checkbox" checked> <span>NPWP (jika ada)</span><em>Selesai</em></label>
+            <label><input type="checkbox" checked> <span>Rekening Bank</span><em>Selesai</em></label>
+            <label><input type="checkbox" checked> <span>Surat Pernyataan &amp; Pakta Integritas</span><em>Selesai</em></label>
+            <label><input type="checkbox"> <span>Foto Diri (Formal)</span><em>Belum diunggah</em></label>
+          </div>
+          <button class="manage-docs" type="button" data-show-toast="Panel kelola dokumen dibuka.">Kelola Dokumen</button>
+        </article>
+
+      </section>
+
+      <section class="summary-readiness-row">
+        <article class="thin-card summary-card">
+          <h2>Ringkasan Onboarding</h2>
+          <div class="donut" style="--value: 71"><span data-progress-percent>71%</span><small>Progress</small></div>
+          <ul>
+            <li><b class="green-dot">5</b> Selesai</li>
+            <li><b class="blue-dot">1</b> Sedang Diproses</li>
+            <li><b class="gray-dot">1</b> Belum Dimulai</li>
+          </ul>
+        </article>
+        <article class="thin-card readiness-card">
+          <div>
+            <h2>Skor Kesiapan <span>Baik</span></h2>
+            <p>Agen siap untuk aktivasi portal. Pastikan semua checklist &amp; dokumen telah lengkap.</p>
+          </div>
+          <div class="score-ring"><strong data-readiness-score>82</strong><small>/100</small></div>
+        </article>
+        <article class="thin-card access-card">
+          <h2>Portal Access <span>i</span></h2>
+          <dl>
+            <div><dt>Username</dt><dd>AGT000124</dd></div>
+            <div><dt>Email Login</dt><dd>andi.hermawan@gmail.com</dd></div>
+            <div><dt>Status Aktivasi</dt><dd><span data-portal-status>Belum Diaktifkan</span></dd></div>
+          </dl>
+          <button type="button" data-prepare-portal>Siapkan Akun Portal</button>
+        </article>
+      </section>
+    </main>
+
+    <footer class="onboarding-actions">
+      <button class="secondary-action" type="button" data-show-toast="Kembali ke daftar onboarding.">Kembali</button>
+      <div>
+        <button class="secondary-action" type="button" data-save-draft>Save Draft</button>
+        <button class="submit-action" type="button" data-submit-onboarding>Submit</button>
+        <button class="complete-action" type="button" data-complete-onboarding>Complete Onboarding</button>
+      </div>
+    </footer>
+  </div>
+
+  <div class="dv-toast" data-onboarding-toast role="status" aria-live="polite"></div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/agent-onboarding.js"></script>
+</body>
+</html>

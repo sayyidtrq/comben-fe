@@ -98,6 +98,34 @@
     if (!silent) showToast(`Zoom preview ${nearest}%.`);
   }
 
+  function syncSidebarChevrons() {
+    document.querySelectorAll(".agent-menu-group").forEach((group) => {
+      const chevron = group.querySelector(".agent-chevron");
+      if (!chevron) return;
+      chevron.textContent = group.classList.contains("collapsed") ? "v" : "^";
+    });
+  }
+
+  document.addEventListener("click", (event) => {
+    const head = event.target.closest?.(".agent-group-head");
+    if (!head) return;
+    const group = head.closest(".agent-menu-group");
+    if (!group) return;
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+    group.classList.toggle("collapsed");
+    syncSidebarChevrons();
+  }, true);
+
+  document.querySelectorAll('.agent-menu a[href="#"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      const label = link.textContent.trim().replace(/\s+/g, " ");
+      showToast(`${label} belum memiliki halaman di prototype ini.`);
+    });
+  });
+
   document.querySelectorAll("[data-cycle-filter]").forEach((button) => {
     button.addEventListener("click", () => setFilter(button.dataset.cycleFilter));
   });
@@ -130,5 +158,6 @@
     showToast("Preview dokumen siap diunduh.");
   });
 
+  syncSidebarChevrons();
   setZoom(100, true);
 })();
