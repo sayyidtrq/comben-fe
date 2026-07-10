@@ -50,8 +50,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     if (cachedTopbar && topbarEl) {
-      topbarEl.innerHTML = cachedTopbar;
-      updateTopbarDynamicLeft();
+      if (!topbarEl.hasAttribute("data-keep-topbar")) {
+        topbarEl.innerHTML = cachedTopbar;
+        updateTopbarDynamicLeft();
+      }
     }
 
     // Fetch fresh components in background
@@ -79,11 +81,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       const topbarHtml = await topbarRes.text();
       localStorage.setItem("comben-cache-topbar", topbarHtml);
       
-      const targetTopbar = document.querySelector(".sidebar");
-      // Only inject if topbar wasn't cached or is different (simplified diff)
-      if (topbarEl && topbarHtml !== cachedTopbar) {
-        topbarEl.innerHTML = topbarHtml;
-        updateTopbarDynamicLeft();
+      const targetTopbar = document.querySelector(".topbar");
+      if (targetTopbar && !targetTopbar.hasAttribute("data-keep-topbar")) {
+        // Only inject if topbar wasn't cached or is different (simplified diff)
+        if (topbarHtml !== cachedTopbar) {
+          targetTopbar.innerHTML = topbarHtml;
+          updateTopbarDynamicLeft();
+        }
       }
     }
     
