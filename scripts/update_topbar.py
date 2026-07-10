@@ -1,21 +1,7 @@
-import os
+import glob
 import re
-from bs4 import BeautifulSoup
 
-def process_file(filepath):
-    with open(filepath, 'r') as f:
-        content = f.read()
-
-    # We can use regex if the structure is predictable, or bs4.
-    # Since bs4 might format the whole file differently and we want to preserve exact formatting, 
-    # let's use a targeted regex.
-    
-    # Match <div class="topbar-actions"> ... </div> (until the end of the topbar-actions div)
-    # We know the topbar-actions div is immediately followed by </header>
-    
-    pattern = r'(<div class="topbar-actions">.*?)(?=</header>)'
-    
-    new_actions = """<div class="topbar-actions">
+desired_topbar_actions = """      <div class="topbar-actions">
         <div class="search-box">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="16" height="16"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
           <input type="text" placeholder="Search anything...">
@@ -38,30 +24,15 @@ def process_file(filepath):
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
           </button>
         </div>
-      </div>
-    """
+      </div>"""
+
+for filepath in glob.glob('pages/*.html'):
+    with open(filepath, 'r') as f:
+        content = f.read()
     
-    new_content = re.sub(pattern, new_actions, content, flags=re.DOTALL)
+    new_content = re.sub(r'<div class="topbar-actions">.*?</header>', desired_topbar_actions + '\n    </header>', content, flags=re.DOTALL)
     
     if new_content != content:
         with open(filepath, 'w') as f:
             f.write(new_content)
         print(f"Updated {filepath}")
-    else:
-        print(f"No match found in {filepath} (or already updated)")
-
-files = [
-    'pages/payout-file.html',
-    'pages/commission-calculation.html',
-    'pages/rule-builder.html',
-    'pages/commission-approval.html',
-    'pages/data-preparation.html',
-    'pages/dashboard.html'
-]
-
-for f in files:
-    if os.path.exists(f):
-        process_file(f)
-    else:
-        print(f"File not found: {f}")
-

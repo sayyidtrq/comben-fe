@@ -1,76 +1,86 @@
 const root = document.documentElement;
-const sidebarToggle = document.querySelector("[data-sidebar-toggle]");
-const sidebar = document.querySelector(".sidebar");
+let sidebarToggle = null;
+let sidebar = null;
 
-function pruneDeprecatedNavItems() {
-  document.querySelectorAll(".nav-sub-link").forEach((item) => {
-    const label = item.textContent.trim();
-    const href = item.getAttribute("href") || "";
-    if (label === "Interview Mendatang" || label === "Candidate Detail" || href.includes("recruitment-interviews.html") || href.includes("candidate-detail.html")) {
-      item.remove();
-    }
-  });
-}
+window.initCombenLayout = function() {
+  sidebarToggle = document.querySelector("[data-sidebar-toggle]");
+  sidebar = document.querySelector(".sidebar");
 
-pruneDeprecatedNavItems();
-
-function setSidebarState() {
-  const collapsed = localStorage.getItem("comben-sidebar") === "collapsed";
-  root.classList.toggle("sidebar-collapsed", collapsed);
-}
-
-setSidebarState();
-
-function syncNavigationState() {
-  const currentPage = window.location.pathname.split("/").pop() || "index.html";
-
-  document.querySelectorAll(".nav-link.active, .nav-sub-link.active").forEach((item) => {
-    item.classList.remove("active");
-  });
-
-  document.querySelectorAll(".nav-group").forEach((group) => {
-    group.classList.remove("nav-group-active");
-  });
-
-  document.querySelectorAll(".nav-link[href], .nav-sub-link[href]").forEach((item) => {
-    const hrefPage = item.getAttribute("href")?.split("/").pop();
-    if (hrefPage !== currentPage) return;
-
-    item.classList.add("active");
-    const group = item.closest(".nav-group");
-    if (group) {
-      group.classList.add("nav-group-active");
-      group.classList.remove("collapsed");
-    }
-  });
-}
-
-syncNavigationState();
-
-sidebarToggle?.addEventListener("click", () => {
-  if (window.matchMedia("(max-width: 980px)").matches) {
-    root.classList.toggle("sidebar-open");
-    return;
+  function pruneDeprecatedNavItems() {
+    document.querySelectorAll(".nav-sub-link").forEach((item) => {
+      const label = item.textContent.trim();
+      const href = item.getAttribute("href") || "";
+      if (label === "Interview Mendatang" || label === "Candidate Detail" || href.includes("recruitment-interviews.html") || href.includes("candidate-detail.html")) {
+        item.remove();
+      }
+    });
   }
 
-  const nextCollapsed = !root.classList.contains("sidebar-collapsed");
-  root.classList.toggle("sidebar-collapsed", nextCollapsed);
-  localStorage.setItem("comben-sidebar", nextCollapsed ? "collapsed" : "expanded");
-});
+  pruneDeprecatedNavItems();
 
-document.addEventListener("click", (event) => {
-  if (!window.matchMedia("(max-width: 980px)").matches) return;
-  if (!root.classList.contains("sidebar-open")) return;
-  if (sidebar?.contains(event.target) || sidebarToggle?.contains(event.target)) return;
-  root.classList.remove("sidebar-open");
-});
+  function setSidebarState() {
+    const collapsed = localStorage.getItem("comben-sidebar") === "collapsed";
+    root.classList.toggle("sidebar-collapsed", collapsed);
+  }
 
-document.querySelectorAll(".nav-group-head").forEach((button) => {
-  button.addEventListener("click", (event) => {
-    event.preventDefault();
-    button.closest(".nav-group")?.classList.toggle("collapsed");
+  setSidebarState();
+
+  function syncNavigationState() {
+    const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+    document.querySelectorAll(".nav-link.active, .nav-sub-link.active").forEach((item) => {
+      item.classList.remove("active");
+    });
+
+    document.querySelectorAll(".nav-group").forEach((group) => {
+      group.classList.remove("nav-group-active");
+    });
+
+    document.querySelectorAll(".nav-link[href], .nav-sub-link[href]").forEach((item) => {
+      const hrefPage = item.getAttribute("href")?.split("/").pop();
+      if (hrefPage !== currentPage) return;
+
+      item.classList.add("active");
+      const group = item.closest(".nav-group");
+      if (group) {
+        group.classList.add("nav-group-active");
+        group.classList.remove("collapsed");
+      }
+    });
+  }
+
+  syncNavigationState();
+
+  sidebarToggle?.addEventListener("click", () => {
+    if (window.matchMedia("(max-width: 980px)").matches) {
+      root.classList.toggle("sidebar-open");
+      return;
+    }
+
+    const nextCollapsed = !root.classList.contains("sidebar-collapsed");
+    root.classList.toggle("sidebar-collapsed", nextCollapsed);
+    localStorage.setItem("comben-sidebar", nextCollapsed ? "collapsed" : "expanded");
   });
-});
+
+  document.addEventListener("click", (event) => {
+    if (!window.matchMedia("(max-width: 980px)").matches) return;
+    if (!root.classList.contains("sidebar-open")) return;
+    if (sidebar?.contains(event.target) || sidebarToggle?.contains(event.target)) return;
+    root.classList.remove("sidebar-open");
+  });
+
+  document.querySelectorAll(".nav-group-head").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      button.closest(".nav-group")?.classList.toggle("collapsed");
+    });
+  });
+};
+
+// Fallback in case layout is already there (e.g. without layout loader)
+if (document.querySelector(".sidebar") && document.querySelector(".sidebar").innerHTML.trim() !== "") {
+  window.initCombenLayout();
+}
 
 const moduleGrid = document.querySelector("[data-module-grid]");
 const modulePage = moduleGrid?.closest(".modules-page") || document;
