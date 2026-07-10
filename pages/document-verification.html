@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document Verification - COMBEN</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M24 3 42 13.5v21L24 45 6 34.5v-21L24 3Z' fill='%2312B9C3'/%3E%3Cpath d='M24 12.2 34.5 18.3v12.2L24 36.7l-10.5-6.2V18.3L24 12.2Z' fill='%23F8FBFD'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css?v=3">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/document-verification.css">
+</head>
+<body class="agent-lifecycle-body">
+  <aside class="sidebar agent-sidebar compact-sidebar" aria-label="Navigasi utama">
+    <a class="agent-logo-panel compact-logo" href="modules.html" aria-label="COMBEN Home">
+      <span class="agent-logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none">
+          <path d="M24 3 42 13.5v21L24 45 6 34.5v-21L24 3Z" fill="#12B9C3"/>
+          <path d="M24 12.2 34.5 18.3v12.2L24 36.7l-10.5-6.2V18.3L24 12.2Z" fill="#F8FBFD"/>
+          <path d="M24 12.2 34.5 18.3 24 24.3 13.5 18.3 24 12.2Z" fill="#D9F8F8"/>
+        </svg>
+      </span>
+      <span>
+        <strong>COMBEN</strong>
+        <small>Agent Lifecycle</small>
+      </span>
+    </a>
+
+    <div class="agent-sidebar-scroll">
+      <nav class="agent-menu compact-menu" aria-label="COMBEN navigation">
+        <section class="agent-menu-section">
+          <a class="agent-menu-link" href="dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 11 12 3l9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg><span>Dashboard</span></a>
+          <a class="agent-menu-link" href="recruitment-pipeline.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 5h16M4 12h16M4 19h16"/><path d="M8 5v14"/></svg><span>Recruitment Pipeline</span></a>
+          <a class="agent-menu-link" href="candidate-list.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 22c.8-4.6 4-7 8-7s7.2 2.4 8 7"/></svg><span>Candidates</span></a>
+          <a class="agent-menu-link active" href="document-verification.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg><span>Document Verification</span></a>
+          <a class="agent-menu-link" href="recruitment-approval.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg><span>Recruitment Approval</span></a>
+          <a class="agent-menu-link" href="agent-onboarding.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg><span>Onboarding</span></a>
+          <a class="agent-menu-link" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16v16H4Z"/><path d="M8 4v16M16 4v16M4 10h16M4 16h16"/></svg><span>Agent Master</span></a>
+          <a class="agent-menu-link" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><path d="M12 8v4M5 16l7-4 7 4"/></svg><span>Hierarchy</span></a>
+          <a class="agent-menu-link" href="agent-mutation.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m16 3 4 4-4 4"/><path d="M20 7H8a4 4 0 0 0 0 8h8"/><path d="m8 21-4-4 4-4"/></svg><span>Mutation</span></a>
+          <a class="agent-menu-link" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg><span>Status &amp; License</span></a>
+          <a class="agent-menu-link" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 16v-5M13 16V8M18 16v-9"/></svg><span>Reports</span></a>
+          <a class="agent-menu-link" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1.05V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-.4-1.05 1.7 1.7 0 0 0-1-.6 1.7 1.7 0 0 0-1.88.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1.05-.4H3a2 2 0 1 1 0-4h.09a1.7 1.7 0 0 0 1.05-.4 1.7 1.7 0 0 0 .6-1 1.7 1.7 0 0 0-.34-1.88l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1.05V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 .4 1.05 1.7 1.7 0 0 0 1 .6 1.7 1.7 0 0 0 1.88-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 9c.2.37.52.68.9.86.25.12.53.18.82.18H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.05.4c-.2.18-.36.4-.46.56Z"/></svg><span>Settings</span></a>
+        </section>
+      </nav>
+      <button class="collapse-button" type="button" data-sidebar-toggle><span>&lt;&lt;</span> Collapse</button>
+    </div>
+  </aside>
+
+  <div class="app-shell">
+    <header class="topbar agent-topbar">
+      <div class="topbar-left">
+        <div class="search-box dv-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" placeholder="Cari menu, data, atau laporan...">
+          <span class="search-shortcut">K</span>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <button class="top-filter" type="button" data-cycle-filter="period">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          <span><small>Periode</small><b data-filter-value="period">Mei 2025</b></span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <button class="top-filter" type="button" data-cycle-filter="branch">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 3H2l8 9.5V20l4 2v-9.5L22 3Z"/></svg>
+          <span><small>Filter</small><b data-filter-value="branch">Semua Cabang</b></span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <button class="icon-button" type="button" aria-label="Notifikasi">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 7h18s-3 0-3-7"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="badge">8</span>
+        </button>
+        <div class="profile">
+          <span class="avatar avatar-photo"></span>
+          <span class="profile-copy">
+            <span class="profile-name">Budi Santoso</span>
+            <span class="profile-role">Super Admin</span>
+          </span>
+          <button class="icon-button" type="button" aria-label="Menu profil">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-main document-page">
+      <section class="dv-header">
+        <h1>Document Verification</h1>
+        <p>Verifikasi keaslian dan kelengkapan dokumen kandidat</p>
+      </section>
+
+      <section class="dv-metric-grid" aria-label="Ringkasan dokumen">
+        <article class="dv-card dv-metric-card">
+          <span class="dv-metric-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h4"/></svg></span>
+          <div><span class="metric-label">Total Dokumen</span><strong>3.248</strong><small class="trend up">&uarr; 12.6% dari Apr 2025</small></div>
+        </article>
+        <article class="dv-card dv-metric-card">
+          <span class="dv-metric-icon amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+          <div><span class="metric-label">Pending Verification</span><strong>276</strong><small class="trend up">&uarr; 8.3% dari Apr 2025</small></div>
+        </article>
+        <article class="dv-card dv-metric-card">
+          <span class="dv-metric-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <div><span class="metric-label">Verified</span><strong>2.412</strong><small class="trend up">&uarr; 9.2% dari Apr 2025</small></div>
+        </article>
+        <article class="dv-card dv-metric-card">
+          <span class="dv-metric-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span>
+          <div><span class="metric-label">Need Revision</span><strong>312</strong><small class="trend warn">&uarr; 6.1% dari Apr 2025</small></div>
+        </article>
+        <article class="dv-card dv-metric-card">
+          <span class="dv-metric-icon red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></svg></span>
+          <div><span class="metric-label">Rejected</span><strong>248</strong><small class="trend down">&darr; 3.4% dari Apr 2025</small></div>
+        </article>
+      </section>
+
+      <section class="dv-workspace">
+        <article class="dv-card verification-panel">
+          <div class="panel-head">
+            <h2>Workbench Verifikasi <span>i</span></h2>
+          </div>
+          <div class="candidate-bar">
+            <label>Pilih Kandidat</label>
+            <select data-candidate-select>
+              <option>Rina Setiawati (AGT-002546)</option>
+              <option>Dewi Sartika (AGT-000456)</option>
+              <option>Nanda Pratama (AGT-002347)</option>
+            </select>
+            <button type="button" class="ghost-btn" data-candidate-prev>&lt; Kandidat Sebelumnya</button>
+            <button type="button" class="next-btn" data-candidate-next>Kandidat Berikutnya &gt;</button>
+          </div>
+          <div class="dv-table-wrap">
+            <table class="dv-table">
+              <thead>
+                <tr><th>Dokumen</th><th>Status Verifikasi</th><th>Hasil Pemeriksaan (OCR/Check)</th><th>Skor Kecocokan</th><th>Tanggal Kedaluwarsa</th><th></th></tr>
+              </thead>
+              <tbody>
+                <tr class="selected" data-doc-row data-doc="KTP"><td><span class="doc-icon blue"></span><strong>KTP</strong><small>Wajib</small></td><td data-status-cell><span class="pill verified">Verified</span></td><td><strong>Nama, NIK, Tgl Lahir sesuai</strong><small>NIK: 3175016501990002</small></td><td><span class="score good">98%</span></td><td>-</td><td>&gt;</td></tr>
+                <tr data-doc-row data-doc="NPWP"><td><span class="doc-icon blue"></span><strong>NPWP</strong><small>Wajib</small></td><td data-status-cell><span class="pill verified">Verified</span></td><td><strong>NPWP Aktif</strong><small>12.345.678.9-012.000</small></td><td><span class="score good">100%</span></td><td>-</td><td>&gt;</td></tr>
+                <tr data-doc-row data-doc="Buku Rekening"><td><span class="doc-icon orange"></span><strong>Buku Rekening</strong><small>Wajib</small></td><td data-status-cell><span class="pill revision">Need Revision</span></td><td><strong>Nama tidak sesuai</strong><small>Nama di rekening berbeda</small></td><td><span class="score warn">78%</span></td><td>-</td><td>&gt;</td></tr>
+                <tr data-doc-row data-doc="Lisensi Asuransi"><td><span class="doc-icon blue"></span><strong>Lisensi Asuransi</strong><small>Wajib</small></td><td data-status-cell><span class="pill pending">Pending</span></td><td>Menunggu verifikasi</td><td>-</td><td>15 Des 2025</td><td>&gt;</td></tr>
+                <tr data-doc-row data-doc="SKCK"><td><span class="doc-icon gray"></span><strong>Surat Keterangan Catatan Kepolisian (SKCK)</strong><small>Optional</small></td><td data-status-cell><span class="pill muted">N/A</span></td><td>Belum diunggah</td><td>-</td><td>-</td><td>&gt;</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="workbench-footer">
+            <span>Menampilkan 1 - 5 dari 5 dokumen</span>
+            <div class="action-row">
+              <button class="btn teal" type="button" data-doc-action="verified">&check; Verify</button>
+              <button class="btn orange" type="button" data-doc-action="revision">Request Resubmission</button>
+              <button class="btn red" type="button" data-doc-action="rejected">Reject</button>
+              <button class="btn outline" type="button" data-doc-action="approve-all">Approve All</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="dv-card preview-panel">
+          <div class="panel-head preview-head">
+            <h2>Preview Dokumen</h2>
+            <label>Pilih Dokumen <select data-document-select><option>KTP</option><option>NPWP</option><option>Buku Rekening</option><option>Lisensi Asuransi</option><option>SKCK</option></select></label>
+          </div>
+          <div class="preview-grid">
+            <div class="id-card" data-zoom-target>
+              <div class="id-title">PROVINSI DKI JAKARTA<br>JAKARTA SELATAN</div>
+              <div class="id-content">
+                <div class="id-data">
+                  <p><b>NIK</b><span>3175016501990002</span></p>
+                  <p><b>Nama</b><span>RINA SETIAWATI</span></p>
+                  <p><b>Tempat/Tgl Lahir</b><span>JAKARTA, 25-01-1990</span></p>
+                  <p><b>Jenis Kelamin</b><span>PEREMPUAN</span></p>
+                  <p><b>Alamat</b><span>JL. CILANDAK KKO NO.12</span></p>
+                  <p><b>Kel/Desa</b><span>CILANDAK BARAT</span></p>
+                  <p><b>Kecamatan</b><span>CILANDAK</span></p>
+                  <p><b>Agama</b><span>ISLAM</span></p>
+                  <p><b>Status</b><span>BELUM KAWIN</span></p>
+                  <p><b>Pekerjaan</b><span>KARYAWAN SWASTA</span></p>
+                </div>
+                <div class="id-photo"><img src="../assets/images/agent_aisyah_putri.png" alt="Foto kandidat"><span>JAKARTA SELATAN<br>20-12-2020</span><em>Rina</em></div>
+              </div>
+            </div>
+            <div class="ocr-panel">
+              <h3>Hasil Pemeriksaan (OCR/Check)</h3>
+              <dl>
+                <div><dt>Nama</dt><dd>RINA SETIAWATI <span>&check;</span></dd></div>
+                <div><dt>NIK</dt><dd>3175016501990002 <span>&check;</span></dd></div>
+                <div><dt>Tempat, Tgl Lahir</dt><dd>JAKARTA, 25-01-1990 <span>&check;</span></dd></div>
+                <div><dt>Jenis Kelamin</dt><dd>Perempuan <span>&check;</span></dd></div>
+                <div><dt>Alamat</dt><dd>JL. CILANDAK KKO NO.12 <span>&check;</span></dd></div>
+              </dl>
+              <div class="ocr-row"><strong>Skor Kecocokan</strong><span class="score good">98%</span></div>
+              <div class="ocr-row"><strong>Tanggal Kedaluwarsa</strong><span>-</span></div>
+              <label class="note-box">Catatan Verifikator<textarea>Dokumen asli dan data sesuai.</textarea><small>0/500</small></label>
+            </div>
+          </div>
+          <div class="preview-tools">
+            <button type="button" data-zoom-out aria-label="Zoom out">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/><path d="M8 11h6"/></svg>
+            </button>
+            <button type="button" data-zoom-in aria-label="Zoom in">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg>
+            </button>
+            <select data-zoom-select aria-label="Pilih zoom dokumen">
+              <option value="25">25%</option>
+              <option value="50">50%</option>
+              <option value="75">75%</option>
+              <option value="100" selected>100%</option>
+              <option value="125">125%</option>
+              <option value="150">150%</option>
+              <option value="200">200%</option>
+            </select>
+            <button type="button" data-download-preview>Unduh</button>
+          </div>
+        </article>
+      </section>
+
+      <section class="dv-card activity-panel">
+        <div class="panel-head activity-head">
+          <h2>Aktivitas Verifikasi Terbaru</h2>
+          <a href="#">Lihat semua aktivitas &gt;</a>
+        </div>
+        <div class="dv-table-wrap">
+          <table class="dv-table activity-table">
+            <thead><tr><th>Waktu</th><th>Kandidat (ID)</th><th>Dokumen</th><th>Status</th><th>Verifikator</th><th>Catatan</th><th>Aksi</th></tr></thead>
+            <tbody>
+              <tr><td>22 Mei 2025 10:24</td><td>Rina Setiawati (AGT-002546)</td><td>KTP</td><td><span class="pill verified">Verified</span></td><td>Budi Santoso</td><td>Dokumen asli dan data sesuai.</td><td>view</td></tr>
+              <tr><td>22 Mei 2025 09:47</td><td>Dewi Sartika (AGT-000456)</td><td>NPWP</td><td><span class="pill verified">Verified</span></td><td>Ahmad Fauzi</td><td>NPWP aktif dan data sesuai.</td><td>view</td></tr>
+              <tr><td>21 Mei 2025 16:32</td><td>Nanda Pratama (AGT-002347)</td><td>Buku Rekening</td><td><span class="pill revision">Need Revision</span></td><td>Maya Lestari</td><td>Nama pada rekening tidak sesuai dengan identitas.</td><td>view</td></tr>
+              <tr><td>20 Mei 2025 14:10</td><td>Yuliana Lestari (AGT-001234)</td><td>Lisensi Asuransi</td><td><span class="pill pending">Pending</span></td><td>Siti Nurhaliza</td><td>Menunggu verifikasi dokumen oleh reviewer.</td><td>view</td></tr>
+              <tr><td>19 Mei 2025 09:15</td><td>Andi Hermawan (AGT-000123)</td><td>KTP</td><td><span class="pill rejected">Rejected</span></td><td>Dedi Kurniawan</td><td>Foto buram, data tidak terbaca dengan jelas.</td><td>view</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="dv-toast" data-dv-toast role="status" aria-live="polite"></div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/document-verification.js?v=5"></script>
+</body>
+</html>
