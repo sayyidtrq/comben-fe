@@ -3,7 +3,7 @@ const path = require("path");
 
 const rootDir = path.resolve(__dirname, "..");
 const outputDir = path.join(rootDir, "dist");
-const publicEntries = ["index.html", "assets", "css", "js", "pages"];
+const publicEntries = ["index.html", "assets", "css", "js", "pages", "components"];
 
 fs.rmSync(outputDir, { recursive: true, force: true });
 fs.mkdirSync(outputDir, { recursive: true });
