@@ -36,6 +36,17 @@ window.initCombenLayout = function() {
       group.classList.remove("nav-group-active");
     });
 
+    // Restore expanded states from sessionStorage
+    try {
+      const expandedGroups = JSON.parse(sessionStorage.getItem('comben-expanded-groups') || '[]');
+      document.querySelectorAll('.nav-group').forEach((group) => {
+        const groupTitle = group.querySelector('.nav-group-head .nav-text')?.textContent.trim();
+        if (expandedGroups.includes(groupTitle)) {
+           group.classList.remove('collapsed');
+        }
+      });
+    } catch (e) {}
+
     document.querySelectorAll(".nav-link[href], .nav-sub-link[href]").forEach((item) => {
       const hrefPage = item.getAttribute("href")?.split("/").pop();
       if (hrefPage !== currentPage) return;
@@ -72,7 +83,22 @@ window.initCombenLayout = function() {
   document.querySelectorAll(".nav-group-head").forEach((button) => {
     button.addEventListener("click", (event) => {
       event.preventDefault();
-      button.closest(".nav-group")?.classList.toggle("collapsed");
+      const group = button.closest(".nav-group");
+      if (group) {
+        group.classList.toggle("collapsed");
+        
+        // Save state to sessionStorage
+        try {
+          const expandedGroups = [];
+          document.querySelectorAll(".nav-group").forEach((g) => {
+            if (!g.classList.contains("collapsed")) {
+              const groupTitle = g.querySelector('.nav-group-head .nav-text')?.textContent.trim();
+              if (groupTitle) expandedGroups.push(groupTitle);
+            }
+          });
+          sessionStorage.setItem('comben-expanded-groups', JSON.stringify(expandedGroups));
+        } catch (e) {}
+      }
     });
   });
 };
