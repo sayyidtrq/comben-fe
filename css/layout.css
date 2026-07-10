@@ -177,25 +177,39 @@
   color: #eaf4ff;
   font-size: 14px;
   font-weight: 600;
+  padding: 0 10px;
+  margin-left: -10px;
+  border-radius: 6px;
+  transition: all 150ms ease;
 }
 
 .nav-sub-link::before {
   position: absolute;
-  left: -22px;
+  left: -12px;
   width: 14px;
   height: 2px;
   border-radius: 999px;
   background: rgba(34, 207, 210, 0.28);
   content: "";
+  transition: all 150ms ease;
 }
 
-.nav-sub-link:hover,
+.nav-sub-link:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
 .nav-sub-link.active {
   color: #ffffff;
+  background: rgba(34, 207, 210, 0.15);
+  font-weight: 700;
 }
 
 .nav-sub-link.active::before {
   background: #22cfd2;
+  width: 16px;
+  height: 3px;
+  box-shadow: 0 0 8px rgba(34, 207, 210, 0.6);
 }
 
 .nav-chevron,
